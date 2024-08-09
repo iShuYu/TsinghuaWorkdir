@@ -1,0 +1,10 @@
+516700
+NsigError = 802.114
+Nbkg = 191136
+NbkgError = 563.766
+mean = -1.2046
+meanError = 0.0206571
+sigma = 5.01577
+sigmaError = 0.0426106
+p0 =-0.000410184
+p0Error =3.48896e-05

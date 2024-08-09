@@ -1,0 +1,78 @@
+% ===============================================================================
+% Purpose: LHCb-ANA Note title page template
+% Author: 
+% Created on: 2010-10-05
+% ===============================================================================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  TITLE PAGE  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+
+% Header ---------------------------------------------------
+\vspace*{-1.5cm}
+
+\noindent
+\begin{tabular*}{\linewidth}{lc@{\extracolsep{\fill}}r@{\extracolsep{0pt}}}
+\ifthenelse{\boolean{pdflatex}}% Logo format choice
+{\vspace*{-1.2cm}\mbox{\!\!\!\includegraphics[width=.14\textwidth]{figs/lhcb-logo.pdf}} & &}%
+{\vspace*{-1.2cm}\mbox{\!\!\!\includegraphics[width=.12\textwidth]{figs/lhcb-logo.eps}} & &}
+ \\
+ & & LHCb-ANA-2023-015 \\  % ID 
+ & & \today \\ % Date - Can also hardwire e.g.: 23 March 2010
+ & & \\
+\hline
+\end{tabular*}
+
+\vspace*{4.0cm}
+
+% Title --------------------------------------------------
+{\normalfont\bfseries\boldmath\huge
+\begin{center}
+% DO NOT EDIT HERE. Instead edit macro in main.tex to keep metadata correct
+  \papertitle
+\end{center}
+}
+
+\vspace*{2.0cm}
+
+% Authors -------------------------------------------------
+\begin{center}
+% If changing to list here, make pdfauthors in main.tex a comma
+% separated list with the same names. Otherwise metadata in file will be wrong.
+\paperauthors.
+\bigskip\\
+{\normalfont\itshape\footnotesize
+  Tsinghua University\\
+}
+\end{center}
+
+\vspace{\fill}
+
+% Abstract -----------------------------------------------
+\begin{abstract}
+  \noindent
+  Using a data sample with an integrated Luminosity of 658 pb$^{-1}$ collected by the LHCb detector in the LHC operations in 2016, ratio of production cross section of $\psi(2S)$ over $J/\psi$ as a function of multiplicity was measured in proton-proton collisions at a centre-of-mass energy $\sqrt{s}=13$ TeV. 
+	A multiplicity-dependent modification of the ratio has been observed for prompt mesons when there is an overlap between the rapidity ranges where the multiplicity and the charmonia production are measured. No evident modification of same significance for that of non-prompt component is observed. 
+	The ratio as a function of multiplicity is compared to co-mover model and show agreements except in low multiplicity region. The ratio and ratio as a function of \pt are compared to other measurements in different collision systems, which shows a good agreement.
+	
+\end{abstract}
+
+\vspace*{2.0cm}
+\vspace{\fill}
+
+\end{titlepage}
+
+
+\pagestyle{empty}  % no page number for the title 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  EOD OF TITLE PAGE  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  empty page follows the title page ----
+\newpage
+\setcounter{page}{2}
+\mbox{~}
+
+

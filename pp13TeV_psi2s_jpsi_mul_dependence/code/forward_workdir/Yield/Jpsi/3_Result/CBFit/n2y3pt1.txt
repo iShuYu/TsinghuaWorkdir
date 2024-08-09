@@ -1,0 +1,10 @@
+684604
+NsigError = 900.479
+Nbkg = 63244.3
+NbkgError = 435.178
+mean = 3096.23
+meanError = 0.0198945
+sigma1 = 19.1913
+sigma1Error = 0.279974
+attenuation constant p0 = 0.000215462
+p0Error = 6.98717e-05

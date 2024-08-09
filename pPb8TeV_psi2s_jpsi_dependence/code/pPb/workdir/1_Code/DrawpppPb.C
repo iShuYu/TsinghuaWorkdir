@@ -1,0 +1,184 @@
+#define sPlot_cxx
+#include <TGraphMultiErrors.h>
+#include <TGraphAsymmErrors.h>
+#include <iostream>
+#include <fstream>
+#include <TFile.h>
+#include <TH1D.h>
+#include <math.h>
+#include <TCanvas.h>
+#include <TF1.h>
+#include <TROOT.h>
+#include <TStyle.h>
+#include <TLegend.h>
+#include "0_header/lhcbStyle.h"
+#include "0_header/sPlot.h"
+using namespace std;
+int main(int argc, char* argv[])
+{
+	//pp result
+	double BRErr = 0.022;
+        double rBR = 7.93/59.61;
+	ifstream ppBin("/nishome/kangye/disk402_ppAnalysis/workdir/Yield/result/3_Result/promptBin.txt");
+        double ppNobias = 25.88;
+        int Npp;
+        double xpp[Npp];
+        ppBin >> Npp;
+        for(int i = 0; i<Npp; i++)
+        {
+                ppBin >> xpp[i];
+                xpp[i] = xpp[i]*ppNobias;
+        }
+        ifstream ppbin("/nishome/kangye/disk402_ppAnalysis/workdir/Yield/rawdata/3_Bins/nbin");
+        ppbin >> Npp;
+        double x_lo[Npp], x_hi[Npp], b[Npp+1];
+        for(int i=0; i<Npp+1; i++)
+        {
+                ppbin >> b[i];
+        }
+        for(int i=0; i<Npp; i++)
+        {
+                x_lo[i] = xpp[i] - b[i];
+                x_hi[i] = b[i+1] - xpp[i];
+        }
+
+        TFile *allT = TFile::Open("/nishome/kangye/disk402_ppAnalysis/workdir/Yield/result/3_Result/SaveSys.root");
+        TH1D *tempSysp = (TH1D*)allT->Get("allp");
+        allT = TFile::Open("/nishome/kangye/disk402_ppAnalysis/workdir/Yield/result/3_Result/SaveStats.root");
+        TH1D *tempStatsp = (TH1D*)allT->Get("allp");
+        double yp[Npp], yp_lo[Npp], yp_hi[Npp];
+	for(int i=1;i<=Npp;i++)
+        {
+                yp[i-1]=tempStatsp->GetBinContent(i)*rBR;
+                yp_lo[i-1]=tempStatsp->GetBinError(i)*rBR;
+                yp_hi[i-1]=yp_lo[i-1];
+        }
+	cout << yp[0];
+        //Sys Err
+        double pHeight[Npp];
+        for(int i=1;i<=Npp;i++)
+        {
+                pHeight[i-1]=tempSysp->GetBinError(i)*rBR;
+                pHeight[i-1] = sqrt(1+BRErr*BRErr/pHeight[i-1]/pHeight[i-1]*yp[i-1]*yp[i-1])*pHeight[i-1];
+        }
+
+	
+	
+	
+	//input nbin
+	int N;
+	double Nf_noBias = 60.54;
+	double Nb_noBias = 69.54;
+	ifstream Bin("0_Bin/nbin");
+	Bin >> N;
+	double xf[N];
+	double ypf[N], ybf[N], ypfStatsErr[N], ybfStatsErr[N], ypfSysErr[N], ybfSysErr[N];
+	double rpf;
+	double rbf;
+	double xb[N];
+        double ypb[N], ybb[N], ypbStatsErr[N], ybbStatsErr[N], ypbSysErr[N], ybbSysErr[N];
+        double rpb;
+        double rbb;
+	ifstream pPb("../4_Result/Ratio/ForPlot.txt");
+	ifstream Pbp("/disk411/lhcb/kangye/Leadp/Workdir/4_Result/Ratio/ForPlot.txt");
+	pPb >> rpf >> rbf;
+	Pbp >> rpb >> rbb;	
+	for(int i=0;i<N;i++)
+        {
+		pPb >> xf[i] >> ypf[i] >> ybf[i] >> ypfStatsErr[i] >> ybfStatsErr[i] >> ypfSysErr[i] >> ybfSysErr[i];
+		Pbp >> xb[i] >> ypb[i] >> ybb[i] >> ypbStatsErr[i] >> ybbStatsErr[i] >> ypbSysErr[i] >> ybbSysErr[i];
+
+		ypf[i] = ypf[i]*rpf/rBR;
+		ypfStatsErr[i] = ypfStatsErr[i]*rpf/rBR;
+		ypfSysErr[i] = sqrt(pow(ypfSysErr[i]/ypf[i],2)+BRErr*BRErr)*ypf[i]*rpf/rBR;
+		
+		ybf[i] = ybf[i]*rbf/rBR;
+                ybfStatsErr[i] = ybfStatsErr[i]*rbf/rBR;
+                ybfSysErr[i] = sqrt(pow(ybfSysErr[i]/ybf[i],2)+BRErr*BRErr)*ybf[i]*rbf/rBR;
+		
+		ypb[i] = ypb[i]*rpb/rBR;
+                ypbStatsErr[i] = ypbStatsErr[i]*rpb/rBR;
+                ypbSysErr[i] = sqrt(pow(ypbSysErr[i]/ypb[i],2)+BRErr*BRErr)*ypb[i]*rpb/rBR;
+                
+		ybb[i] = ybb[i]*rbb/rBR;
+                ybbStatsErr[i] = ybbStatsErr[i]*rbb/rBR;
+                ybbSysErr[i] = sqrt(pow(ybbSysErr[i]/ybb[i],2)+BRErr*BRErr)*ybb[i]*rbb/rBR;
+	}
+	int bin[N+1];
+	for(int i=0;i<=N;i++)
+	{
+		Bin >> bin[i];
+	}
+	Bin.close();
+	pPb.close();
+	Pbp.close();
+	double xf_lo[N], xf_hi[N];
+	for(int i=0; i<N; i++)
+        {
+		xf_lo[i] = xf[i]*Nf_noBias - bin[i];
+		xf_hi[i] = bin[i+1] - xf[i]*Nf_noBias;
+		xf[i] = xf[i]*Nf_noBias;
+	}
+	ifstream Binb("/disk411/lhcb/kangye/Leadp/Workdir/3_Script/0_Bin/nbin");
+	Binb >> N;
+	for(int i=0;i<=N;i++)
+	{
+		Binb >> bin[i];
+	}
+	Binb.close();
+	double xb_lo[N];
+       	double xb_hi[N];
+	for(int i=0; i<N; i++)
+        {
+		xb_lo[i] = xb[i]*Nb_noBias - bin[i];
+		xb_hi[i] = bin[i+1]-xb[i]*Nb_noBias;
+		xb[i] = xb[i]*Nb_noBias;
+	}
+	
+	//Draw
+	setLHCbStyle();
+	TCanvas *can = new TCanvas("can","can",1200,800);
+	TGraphMultiErrors *TGE = new TGraphMultiErrors(Npp,xpp,yp,x_lo,x_hi,yp_lo,yp_hi);
+	TGraphMultiErrors *TGEf = new TGraphMultiErrors(N,xf,ypf,xf_lo,xf_hi,ypfStatsErr,ypfStatsErr);
+	TGraphMultiErrors *TGEb = new TGraphMultiErrors(N,xb,ypb,xb_lo,xb_hi,ypbStatsErr,ypbStatsErr);
+
+	TGE -> AddYError(Npp,pHeight,pHeight);
+	TGEf -> AddYError(N,ypfSysErr,ypfSysErr);
+	TGEb -> AddYError(N,ypbSysErr,ypbSysErr);
+	TGE -> SetMarkerColor(kRed);
+	TGEf -> SetMarkerColor(kBlue);
+	TGEb -> SetMarkerColor(kGreen);
+	TGE -> SetLineColor(kRed);
+	TGEf -> SetLineColor(kBlue);
+	TGEb -> SetLineColor(kGreen);
+	TGE -> SetMarkerStyle(21);
+	TGEf -> SetMarkerStyle(21);
+	TGEb -> SetMarkerStyle(21);
+	TGE -> GetAttLine(0)->SetLineColor(kRed);
+        TGE -> GetAttLine(1)->SetLineColor(kRed);
+	TGE -> GetAttFill(1)->SetFillStyle(0);
+	TGEf -> GetAttLine(0)->SetLineColor(kBlue);
+   	TGEf -> GetAttLine(1)->SetLineColor(kBlue);
+   	TGEf -> GetAttFill(1)->SetFillStyle(0);
+	TGEb -> GetAttLine(0)->SetLineColor(kGreen);
+   	TGEb -> GetAttLine(1)->SetLineColor(kGreen);
+   	TGEb -> GetAttFill(1)->SetFillStyle(0);
+	TGEf -> Draw("APS same; Z ; 5 s=0.5 ; same");
+	TGEb -> Draw("PS same; Z ; 5 s=0.5 ; same");
+	TGE -> Draw("PS same; Z ; 5 s=0.5 ; same");
+	TGEf -> GetXaxis()->SetTitle("#font[12]{N}_{tracks}^{PV}");
+        TGEf -> GetYaxis()->SetTitle("BR #sigma_{#psi(2S)}/BR #sigma_{J/#psi}");
+	TGEf -> GetYaxis()->SetRangeUser(0,0.25);
+	TLegend *legSys = new TLegend(0.2,0.2,0.50,0.40);
+	legSys->SetTextFont(132);
+	legSys->SetBorderSize(2);
+	legSys->SetTextSize(0.06);
+	legSys->AddEntry(TGE,"pp","PLEZ");
+	legSys->AddEntry(TGEf,"p-Pb","PLEZ");
+	legSys->AddEntry(TGEb,"Pb-p","PLEZ");
+	legSys->Draw("same");	
+	lhcbName->Draw();
+	can -> SaveAs("../5_Plots/Result/pppPb.pdf");
+	can -> Close();
+	return 0;
+}

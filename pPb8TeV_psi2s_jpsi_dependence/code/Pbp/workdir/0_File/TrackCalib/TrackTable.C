@@ -1,0 +1,54 @@
+void TrackTable()
+{
+	TFile *out = new TFile("TrackTable.root","recreate");
+	const int nx = 5;
+	const int ny = 2;
+	const double X[6] = {6000,10000,20000,40000,100000,500000};
+	const double Y[3] = {1.9,3.2,5.0}; 
+	TH2D *pPb = new TH2D("pPb","pPb",nx,X,ny,Y);
+	TH2D *Pbp = new TH2D("Pbp","Pbp",nx,X,ny,Y);
+	pPb->SetBinContent(1,1,0.998);
+	pPb->SetBinContent(2,1,1.010);
+	pPb->SetBinContent(3,1,0.982);
+	pPb->SetBinContent(4,1,1.005);
+	pPb->SetBinContent(5,1,1.000);
+	pPb->SetBinContent(1,2,0.922);
+	pPb->SetBinContent(2,2,1.005);
+	pPb->SetBinContent(3,2,1.001);
+	pPb->SetBinContent(4,2,0.997);
+	pPb->SetBinContent(5,2,1.055);
+	pPb->SetBinError(1,1,0.041);
+	pPb->SetBinError(2,1,0.011);
+	pPb->SetBinError(3,1,0.009);
+	pPb->SetBinError(4,1,0.018);
+	pPb->SetBinError(5,1,0.050);
+	pPb->SetBinError(1,2,0.136);
+	pPb->SetBinError(2,2,0.022);
+	pPb->SetBinError(3,2,0.010);
+	pPb->SetBinError(4,2,0.009);
+	pPb->SetBinError(5,2,0.040);
+	pPb->Write();
+	Pbp->SetBinContent(1,1,0.874);
+	Pbp->SetBinContent(2,1,1.006);
+	Pbp->SetBinContent(3,1,0.969);
+	Pbp->SetBinContent(4,1,0.955);
+	Pbp->SetBinContent(5,1,1.000);
+	Pbp->SetBinContent(1,2,1.128);
+	Pbp->SetBinContent(2,2,0.973);
+	Pbp->SetBinContent(3,2,0.976);
+	Pbp->SetBinContent(4,2,0.997);
+	Pbp->SetBinContent(5,2,0.966);
+	Pbp->SetBinError(1,1,0.084);
+	Pbp->SetBinError(2,1,0.030);
+	Pbp->SetBinError(3,1,0.017);
+	Pbp->SetBinError(4,1,0.046);
+	Pbp->SetBinError(5,1,0.050);
+	Pbp->SetBinError(1,2,0.321);
+	Pbp->SetBinError(2,2,0.055);
+	Pbp->SetBinError(3,2,0.029);
+	Pbp->SetBinError(4,2,0.028);
+	Pbp->SetBinError(5,2,0.156);
+	Pbp->Write();
+	out->Close();
+}
+

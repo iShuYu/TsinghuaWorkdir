@@ -1,0 +1,1 @@
+./reweightMCtracks ../../3_Result/2DFit/2D.root ../../../../../workdir/Yield/rawdata/1_Rootfile/MCtracks/Jpsi/Tuplep.root ../../../../../workdir/Yield/rawdata/1_Rootfile/MCtracks/Jpsi/Tupleb.root /nishome/kangye/public/ntup_rec_nobias.root ../../3_Result/reweight/dNcharge_Reweight.root

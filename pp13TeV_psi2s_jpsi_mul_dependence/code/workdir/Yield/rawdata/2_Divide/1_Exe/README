@@ -1,0 +1,4 @@
+*_Divide.sh: 将rawdata分区间
+MC*Divide.sh: 将fillSimMC分区间（由于GenMC不需要分多重数区间，只需要去../../1_Rootfile/GenMC/里对其进行相关操作）
+merge.sh: 在fullSimMC分区间之后，对每个多重数区间，把MagUD合成总的，用于total的eff计算
+

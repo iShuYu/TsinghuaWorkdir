@@ -1,0 +1,6 @@
+step 1: GenTables.sh, 根据中心值和误差产生200张Up&Down的PIDTables
+step 2: Fill.sh, 用上一步产生的table去重新fill效率表格，得到200张表格
+step 3: fitGaus.sh, 用gauss函数拟合每个bin的效率分布得到宽度(Stats误差)
+step 4: fillInBin.sh, 重新修改了两次PIDTable的分bin方式, 重新fill两张新table
+step 5: Compare.sh 把两张表格和原来的比较, 取偏离远的那个为误差
+

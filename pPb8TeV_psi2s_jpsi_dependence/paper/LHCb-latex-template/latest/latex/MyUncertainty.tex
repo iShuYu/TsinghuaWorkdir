@@ -1,0 +1,43 @@
+\section{Other Systematic uncertainties}
+\label{Systematic uncertainty}
+Systematic uncertainties from different sources are studied and presented as follows.
+
+The uncertainties due to limit size of data and simulated samples are considered, which manifests as the uncertainties in PID table, data-over-simulation single tracking efficiency ratio table, and correction of \pt and $y^*$ distributions between simulated sample and s-weighted data containing only signal obtained by $sPlot$ method~\cite{Pivk:2004ty}. Imperfection on simulating the acceptance is studied by performing a re-weight of \pt and $y^*$ distributions on simulated samples to match the distributions of s-Weighted samples, and hence, is also influenced by the limit sample size. The uncertainties listed above are propagated to the results using a large number of pseudoexperiments.
+
+The uncertainties due to fit model is studied by replacing the single Crystal Ball function for \psitwos by a double Crystal Ball function with common means, and the relation between two widths, between the widths and positions of tails are determined through simulation. Then a new two-dimensional fit is performed. Difference between the results and original results are compared to the statistical uncertainties, which are 3 to 8 times smaller and hence, negligible.
+
+The trigger efficiency is estimated from simulation and is cross-checked by a data-driven method using a fully reconstructed sample. The trigger efficiency in data is determined using a subset of events that would have triggered if the \jpsi and \psitwos signal were excluded~\cite{LHCb-DP-2012-004}. The relative difference between data and simulation is taken as a systematic uncertainty.
+
+The uncertainty of $\BR(\jpsi\rightarrow\mu^+\mu^-)=(5.961\pm0.033)\%$ and  $\BR(\psitwos\rightarrow e^+e^-)=(7.93\pm0.17)\times10^{-3}$ are quoted from 2022 PDG review, and they are canceled when \psitwos-to-\jpsi production ratio is normalized to that $pp$ collisions. The uncertainty of the luminosity is canceled out when calculating the ratio. 
+
+The uncertainties are summarized in table~\ref{AllSysErr}.
+\begin{table}[!tbp]
+\caption{Summary of systematic uncertainties on \psitwos-to-\jpsi cross-section ratio.}
+\begin{center}
+\begin{tabular}{llll}
+\hline
+\textbf{source} & \textbf{$p$Pb} & \textbf{Pb$p$} \\
+\hline
+Trigger(L0\&HLT) & 3.2\%-3.9\% & 3.6\%-4.1\% \\
+\hline
+        Tracking Table Uncertainty\& & & \\
+        PID Table Uncertainty\& & & \\
+        \pt spectrum\& & & \\
+        $y$ spectrum & 1.7\%-3.6\% & 2.1\%-3.6\% \\
+\hline
+        PID Table scheme & 0.4\%-1.7\% & 0.1\%-1.8\% \\
+\hline
+        Imperfectly simulating acceptance & 0.8\%-1.2\% & 0.9\%-1.3\% \\
+        $\frac{\BR(\jpsi\rightarrow\mu^+\mu^-)}{\BR(\psitwos\rightarrow\mu^+\mu^-}$(canceled if normalized) & 2.2\% &2.2\% \\
+\hline
+        Fit model & negligible & negligible \\
+\hline
+        MC sample size & negligible & negligible \\
+\hline
+        Multiplicity global cut & negligible & negligible \\
+\hline
+\end{tabular}
+\label{AllSysErr}
+\end{center}
+\end{table}
+

@@ -1,0 +1,126 @@
+#include <TH1D.h>
+#include <TFile.h>
+#include <TROOT.h>
+#include <iostream>
+#include <fstream>
+#include <TH2.h>
+#include <TStyle.h>
+#include <math.h>
+#include <TAxis.h>
+#include <TCanvas.h>
+#include <TLegend.h>
+#include "../../../Yield/Jpsi/0_CFile/header/lhcbStyle.h"
+using namespace std;
+int main(int argc, char *argv[])
+{
+        
+	ifstream TT("../../Trigger/3_Result/TriggerErr/err.txt");
+	double tt[5];
+	for(int i=1;i<=5;i++) {TT >> tt[i-1];} //cout<< tt[i-1] << endl;}
+	gROOT->SetBatch(true);
+        setLHCbStyle();
+        gStyle->SetPalette(55);
+        gStyle->SetPaintTextFormat("4.3f");
+        int N;
+        sscanf(argv[1],"%d",&N);
+	double ErrBrPsi2S_ee = 0.17/7.93;
+        double ErrBrJpsi_mumu = 0.006;
+	//input
+	TFile *input;
+
+	//All eff Err is Jpsi/Psi2S, opposite to yield
+	//PID in bin
+	input = TFile::Open(Form("../../PID/3_Result/InBinVar/n%d_int_pt_frombInBinErr.root",N));
+	TH1D *PIDfrombInBinErr = (TH1D*)input->Get("h_eff_px");
+	input = TFile::Open(Form("../../PID/3_Result/InBinVar/n%d_int_pt_promptInBinErr.root",N));
+        TH1D *PIDpromptInBinErr = (TH1D*)input->Get("h_eff_px");
+	//PID Stats
+	input = TFile::Open(Form("../../PID/3_Result/StatCalibVar/n%d_int_pt_fromb.root",N));
+	TH1D *PIDfrombStatsErr = (TH1D*)input->Get("h_eff_px");
+	input = TFile::Open(Form("../../PID/3_Result/StatCalibVar/n%d_int_pt_prompt.root",N));
+        TH1D *PIDpromptStatsErr = (TH1D*)input->Get("h_eff_px");
+	//Trigger (for from b and prompt)
+	input = TFile::Open(Form("../../Trigger/3_Result/TriggerErr/n%d_int_pt_fromb.root",N));
+	TH1D *TriggerErrb = (TH1D*)input->Get("ErrTemp");
+	input = TFile::Open(Form("../../Trigger/3_Result/TriggerErr/n%d_int_pt_prompt.root",N));
+        TH1D *TriggerErrp = (TH1D*)input->Get("ErrTemp");
+	//tracking
+	input = TFile::Open(Form("../../tracking/3_Result/StatsErr/n%d_int_pt_fromb.root",N));
+	TH1D *trackfromb = (TH1D*)input->Get("h_eff_px");
+	input = TFile::Open(Form("../../tracking/3_Result/StatsErr/n%d_int_pt_prompt.root",N));
+        TH1D *trackprompt = (TH1D*)input->Get("h_eff_px");
+	//tz sigal fit
+	input = TFile::Open(Form("../../tzFit/3_Result/Error/tzsig/n%d_int_pt_J_and_P_b_and_p.root",N));
+	TH1D *tzsigfromb = (TH1D*)input->Get("Errb");
+	TH1D *tzsigprompt = (TH1D*)input->Get("Errp");
+	//tz bkg and 2D
+	input = TFile::Open(Form("../../tzFit/3_Result/Error/tzbkg_2D/n%d_int_pt_J_and_P_b_and_p.root",N));
+        TH1D *tzbkg2Dfromb = (TH1D*)input->Get("Errb");
+        TH1D *tzbkg2Dprompt = (TH1D*)input->Get("Errp");
+	//MC sample size
+	input = TFile::Open(Form(" ../../MCSampleSize_int/3_Result/n%dMCSizeErrIntPt.root",N));
+	TH1D *MCsampleSizefromb = (TH1D*)input->Get("MCSizeErrFromb");
+	TH1D *MCsampleSizeprompt = (TH1D*)input->Get("MCSizeErrPrompt");
+	//massfit
+	input = TFile::Open(Form(" ../../massFit/3_Result/massFitErr/n%d_sumPt_Err.root",N));
+	TH1D *massfit = (TH1D*)input->Get("h_eff_px");
+	//StatErr
+	input = TFile::Open(Form(" ../../StatsErr/3_Result/n%dStatsErrIntPt.root",N));
+	TH1D *StatsbErr = (TH1D*)input->Get("StatsErrFromb");
+	TH1D *StatspErr = (TH1D*)input->Get("StatsErrPrompt");
+
+	//output
+	TFile *out = new TFile(Form("../3_Result/n%d_int_pt_OnlySysErr.root",N),"recreate");
+	TH1D *prompt = (TH1D*)PIDpromptInBinErr->Clone(0);
+	TH1D *fromb = (TH1D*)PIDfrombInBinErr->Clone(0);
+	int npt = prompt->GetNbinsX();
+	//int ny = prompt->GetNbinsY();
+	for(int pt=1;pt<=npt;pt++)
+	{
+		//for(int y=1;y<=ny;y++)
+		//{
+			double pErr = 0;
+			double bErr = 0;
+			if(0)
+			{
+				cout << PIDpromptInBinErr->GetBinContent(pt) << endl << PIDpromptStatsErr->GetBinContent(pt) << endl  << tt[N-1] << endl  << trackprompt->GetBinContent(pt) << endl  << tzsigprompt->GetBinContent(pt) << endl  << tzbkg2Dprompt->GetBinContent(pt) << endl  << tzbkg2Dprompt->GetBinContent(pt) << endl  << MCsampleSizeprompt->GetBinContent(pt) << endl; }
+			pErr =  PIDpromptInBinErr->GetBinContent(pt)*PIDpromptInBinErr->GetBinContent(pt)+
+				PIDpromptStatsErr->GetBinContent(pt)*PIDpromptStatsErr->GetBinContent(pt)+
+				//TriggerErrp->GetBinContent(pt)* TriggerErrp->GetBinContent(pt)+
+				tt[N-1]*tt[N-1]+
+				trackprompt->GetBinContent(pt)*trackprompt->GetBinContent(pt)+
+				tzsigprompt->GetBinContent(pt)*tzsigprompt->GetBinContent(pt)+
+				tzbkg2Dprompt->GetBinContent(pt)*tzbkg2Dprompt->GetBinContent(pt)+
+				massfit->GetBinContent(pt)*massfit->GetBinContent(pt)+
+				//StatspErr->GetBinContent(pt)* StatspErr->GetBinContent(pt)+
+				MCsampleSizeprompt->GetBinContent(pt)*MCsampleSizeprompt->GetBinContent(pt);
+
+			bErr =  PIDfrombInBinErr->GetBinContent(pt)*PIDfrombInBinErr->GetBinContent(pt)+
+                                PIDfrombStatsErr->GetBinContent(pt)*PIDfrombStatsErr->GetBinContent(pt)+
+                                //TriggerErrb->GetBinContent(pt)* TriggerErrb->GetBinContent(pt)+
+                                tt[N-1]*tt[N-1]+
+				trackfromb->GetBinContent(pt)*trackfromb->GetBinContent(pt)+
+                                tzsigfromb->GetBinContent(pt)*tzsigfromb->GetBinContent(pt)+
+                                tzbkg2Dfromb->GetBinContent(pt)*tzbkg2Dfromb->GetBinContent(pt)+
+				massfit->GetBinContent(pt)*massfit->GetBinContent(pt)+
+				//StatsbErr->GetBinContent(pt)* StatsbErr->GetBinContent(pt)+
+				MCsampleSizefromb->GetBinContent(pt)*MCsampleSizefromb->GetBinContent(pt);
+			pErr = sqrt(pErr+0*ErrBrPsi2S_ee*ErrBrPsi2S_ee+0*ErrBrJpsi_mumu*ErrBrJpsi_mumu);
+			bErr = sqrt(bErr+0*ErrBrPsi2S_ee*ErrBrPsi2S_ee+0*ErrBrJpsi_mumu*ErrBrJpsi_mumu);
+			prompt -> SetBinContent(pt,pErr);
+			fromb -> SetBinContent(pt,bErr);
+			prompt -> SetBinError(pt,0.);
+			fromb -> SetBinError(pt,0.);
+		//}
+	}
+	prompt -> Write("prompt");
+	fromb -> Write("fromb");
+	out -> Close();
+	return 0;
+}
+
+	
+
+
+	
+

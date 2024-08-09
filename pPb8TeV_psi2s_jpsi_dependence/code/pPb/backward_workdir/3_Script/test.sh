@@ -1,0 +1,1 @@
+ ./../2_Exe/Draw_TwoProjTz ../4_Result/TwoDimFit/PDF/Jpsi_n1y1pt1.root ../5_Plots/TwoDimFit/ProjTz/Jpsi_n1y1pt1.pdf ../4_Result/TwoDimFit/PDF/Psi2S_n1y1pt1.root ../5_Plots/TwoDimFit/ProjTz/Psi2S_n1y1pt1.pdf

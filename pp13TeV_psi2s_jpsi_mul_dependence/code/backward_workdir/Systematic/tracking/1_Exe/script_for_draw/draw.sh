@@ -1,0 +1,2 @@
+./draw ../../../Yield/rawdata/3_Bins/ybin ../../../Yield/rawdata/3_Bins/ptbin ../3_Result/StatsErr/n${1}_prompt.root h_eff ../4_Plot/n${1}Errp.pdf "Sys_{tracking}(prompt)" ../4_Plot/n${1}Errp_point.pdf
+./draw ../../../Yield/rawdata/3_Bins/ybin ../../../Yield/rawdata/3_Bins/ptbin ../3_Result/StatsErr/n${1}_fromb.root h_eff ../4_Plot/n${1}Errb.pdf "Sys_{tracking}(b decay)" ../4_Plot/n${1}Errb_point.pdf

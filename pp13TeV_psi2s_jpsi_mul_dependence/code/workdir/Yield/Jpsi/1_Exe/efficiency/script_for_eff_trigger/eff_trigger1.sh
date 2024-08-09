@@ -1,0 +1,2 @@
+./eff_triggerTISTOS ../../../rawdata/3_Bins/ybin_1 ../../../rawdata/3_Bins/ptbin_1 ../../3_Result/reweight/reweightTIS.root ../../../rawdata/1_Rootfile/TrackCalib/Ratio_Long_P-ETA_2016_25ns.root ../../../rawdata/1_Rootfile/TrackCalib/Ratio_Long_P-ETA_2016_25ns.root ../../2_Rootfile/MCTIS_after_cut/n$1_MagUp.root ../../2_Rootfile/MCTIS_after_cut/n$1_MagDown.root ../../3_Result/eff_trigger/n$1total_for_triggerErr.root
+

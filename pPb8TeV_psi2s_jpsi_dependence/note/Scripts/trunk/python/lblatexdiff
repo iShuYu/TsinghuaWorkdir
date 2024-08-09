@@ -1,0 +1,144 @@
+#!/usr/bin/env python
+# $Id: $
+"""This script finds the difference between two LHCb documents"""
+from sys import argv
+from os import listdir, symlink, unlink
+from os.path import join, abspath, expanduser
+from optparse import OptionParser
+from tempfile import mkdtemp
+from subprocess import call
+from shutil import copyfile, rmtree
+
+def test():
+    pass
+
+import inspect, os.path
+scriptpath =  os.path.dirname(inspect.getsourcefile(test))
+
+
+class DiffLHCbError(Exception):
+    """Exception class for DiffLHCb"""
+    pass
+
+
+class DiffLHCb:
+    """Find differences between LHCb documents"""
+    def __init__(self,options):
+        self.options = options
+        
+        # Directory where diff will be located
+        self.diffdirname = mkdtemp()
+
+        # Setup old and new directories
+        if self.options.svn:
+            self._svn()
+        else:
+            self.olddirname=abspath(expanduser(self.options.old))
+            self.newdirname=abspath(expanduser(self.options.new))
+
+        for item in listdir(self.newdirname):
+            symlink(join(self.newdirname,item), join(self.diffdirname,item))
+
+        self.latexfile=self.options.name+'.tex'
+
+    def _shell(self, command):
+        """Execute shell command and throw exception if an error occurs"""
+        rc = call(command, shell=True)
+        if rc != 0:
+            self._clean()
+            err = "{0!r} failed with return code {1}."
+            raise DiffLHCbError(err.format(command,rc)) 
+
+    def _svn(self):
+        """Check out documents from SVN if required"""
+        svnhead=join('svn+ssh://svn.cern.ch/reps/lhcbdocs',self.options.svn)
+        self.oldco=mkdtemp()
+        self.newco=mkdtemp()
+
+        self._shell('svn co '+ join(svnhead,self.options.old) + " " + 
+                    self.oldco)
+                  
+        self._shell('svn co '+ join(svnhead,self.options.new) + " " + 
+                    self.newco)
+        
+        self.olddirname=self.oldco
+        self.newdirname=self.newco
+
+    def _clean(self):
+        
+        if self.options.svn:
+            for d in [self.oldco,self.newco]:
+                rmtree(d)
+        
+    def diff(self):
+        
+        self.oldfname=join(self.olddirname,self.latexfile)
+        self.newfname=join(self.newdirname,self.latexfile)
+
+        self._shell('cd '+self.diffdirname+'; make clean')
+        unlink(join(self.diffdirname,self.latexfile))
+
+        self._shell(join(scriptpath,'latexdiff') + ' --flatten ' + 
+                    self.oldfname+' '+self.newfname+
+                    ' > ' + join(self.diffdirname,self.latexfile))
+
+    def latex(self):
+        self._shell('cd '+self.diffdirname+'; make')
+
+        pdf = join(self.diffdirname,self.options.name)+'.pdf'
+        print '*'*50
+        print 'Difference PDF file is at : '+pdf
+
+if __name__ == '__main__':
+
+    import os,sys
+    
+    usage = """usage: %prog [options] old [new]
+
+Find the difference between two versions of an LHCb document. If no
+new location is given, the current directory is used. The location of
+the old version can either be given as a directory or as a location in
+SVN. The toplevel is by default taken as main.tex. See options for how
+to change this.
+
+Compare the version in the current directory with the one in the
+draft3 directory given as a relative path
+
+lblatexdiff ../../draft3/latex
+
+
+Compare draft v1r3 to the latest version in SVN
+
+lblatexdiff --svn=Publications/PAPER/2012/011 drafts/v1r3/latex  latest/latex
+"""
+    parser = OptionParser(usage=usage)
+
+    parser.add_option("-s", "--svn", dest="svn",
+                      default = None,
+                      help="Document in lhcbdocs to make comparison for "+ \
+                          "like Publications/PAPER/2012/011", 
+                      metavar="DIR")
+
+    options, args = parser.parse_args()
+
+    if len(args)<1 or len(args)>2:
+        print "{0} takes one or two arguments.\n".format(parser.get_prog_name())
+        parser.print_help()
+        sys.exit(0)
+
+    options.name = 'main'
+
+    options.old=args[0]
+    if len(args) == 2:
+        options.new=args[1]
+    else:
+        options.new='.'
+
+    try:
+        differ = DiffLHCb(options)
+        differ.diff()
+        differ.latex()
+        differ._clean()
+    except DiffLHCbError, detail:
+        print detail
+        print "Run with option --help to see syntax."

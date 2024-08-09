@@ -1,0 +1,1 @@
+./realNum_fromb_prompt_MC ../../massFit/2_Rootfile/Jpsi/n${1}y${2}pt${3}.root ../../massFit/2_Rootfile/Psi2S/n${1}y${2}pt${3}.root ../3_Result/realNum/Jpsi/n${1}y${2}pt${3}.txt ../3_Result/realNum/Psi2S/n${1}y${2}pt${3}.txt

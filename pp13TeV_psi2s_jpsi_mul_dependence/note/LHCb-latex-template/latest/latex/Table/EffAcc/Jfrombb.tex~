@@ -1,0 +1,17 @@
+\begin{table}[H]
+\centering
+\caption{The efficiency $\epsilon_\mathrm{acc}$ in different bins of \pt and $y$ for \jpsi from b hardron decay mesons for PVZ > -30mm.}
+\begin{center}
+\begin{tabular}{c|ccc}
+\hline
+\pt(\gevc)& $2<y<2.8$& $2.8<y<3.5$& $3.5<y<4.5$ \\
+\hline
+0-2&$0.661\pm0.009$&$0.894\pm0.007$&$0.846\pm0.008$\\
+2-4&$0.743\pm0.007$&$0.924\pm0.005$&$0.885\pm0.006$\\
+4-6&$0.834\pm0.008$&$0.958\pm0.005$&$0.952\pm0.006$\\
+6-8&$0.859\pm0.012$&$0.982\pm0.006$&$0.971\pm0.008$\\
+8-20&$0.927\pm0.009$&$0.998\pm0.002$&$0.991\pm0.005$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}

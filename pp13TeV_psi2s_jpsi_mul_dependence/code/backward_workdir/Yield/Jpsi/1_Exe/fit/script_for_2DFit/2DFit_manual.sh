@@ -1,0 +1,1 @@
+./../2DFit_manual ../../2_Rootfile/Data_after_cut/SPD3y2pt4.root ../../3_Result/2DFit/SPD3y2pt4.root ../MFit_to_2DFit/SPD3y2pt4.txt ../Tzbkg_to_2DFit/Tzbkg_SPD3y2pt4.txt ../../3_Result/2DFit/result_SPD3y2pt4.txt ../../3_Result/2DFit/splot_SPD3y2pt4.root ../../2_Rootfile/tailroot/tail.root

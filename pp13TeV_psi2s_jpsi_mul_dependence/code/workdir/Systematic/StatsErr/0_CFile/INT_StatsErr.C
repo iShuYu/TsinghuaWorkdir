@@ -1,0 +1,78 @@
+#include <fstream>
+#include <RooFormulaVar.h>
+#include <TROOT.h>
+#include <TChain.h>
+#include <TFile.h>
+#include <TH2.h>
+#include <TF1.h>
+#include <TStyle.h>
+#include <TCanvas.h>
+#include <TLegend.h>
+#include <RooFit.h>
+#include <RooPlot.h>
+#include <RooRealVar.h>
+#include <RooDataSet.h>
+#include <RooAddPdf.h>
+#include <RooCBShape.h>
+#include <RooExponential.h>
+#include <RooGaussian.h>
+#include <string>
+#include <RooStats/SPlot.h>
+#include <vector>
+#include "../../../Yield/Jpsi/0_CFile/header/lhcbStyle.h"
+using namespace std;
+int main(int argc, char *argv[])
+{
+	//input total efficiency
+	ofstream out(Form("../3_Result/INTErr.txt"));
+	double Sum_SigJb = 0;
+                double Sum_SigPb = 0;
+                double Sum_SigJp = 0;
+                double Sum_SigPp = 0;
+		double Sum_ErrJb = 0;
+		double Sum_ErrPb = 0;
+		double Sum_ErrJp = 0;
+                double Sum_ErrPp = 0;
+	for(int N=1;N<=5;N++){	
+	TFile *input;
+	//input cross section result
+	input = TFile::Open(Form("../../../Yield/result/3_Result/Conclude.root"));
+	TH2D *CSJb = (TH2D*)input->Get(Form("Jb%d",N));
+	TH2D *CSJp = (TH2D*)input->Get(Form("Jp%d",N));
+	TH2D *CSPb = (TH2D*)input->Get(Form("Pb%d",N));
+        TH2D *CSPp = (TH2D*)input->Get(Form("Pp%d",N));
+	int npt = CSJb->GetNbinsX();
+	int ny = CSJb->GetNbinsY();	
+	double cs, rErr;
+		for(int pt=1;pt<npt;pt++)
+		{
+		for(int y=1;y<=ny;y++)
+		{
+			cs = CSJp->GetBinContent(pt,y);
+			rErr = CSJp->GetBinError(pt,y);
+			Sum_SigJp = Sum_SigJp + cs;
+			Sum_ErrJp = Sum_ErrJp + rErr*rErr;
+			cs = CSPp->GetBinContent(pt,y);
+			rErr = CSPp->GetBinError(pt,y);
+                        Sum_SigPp = Sum_SigPp + cs;
+			Sum_ErrPp = Sum_ErrPp + rErr*rErr;
+			cs = CSJb->GetBinContent(pt,y);
+			rErr = CSJb->GetBinError(pt,y);
+                        Sum_SigJb = Sum_SigJb + cs;
+			Sum_ErrJb = Sum_ErrJb + rErr*rErr;
+			cs = CSPb->GetBinContent(pt,y);
+			rErr = CSPb->GetBinError(pt,y);
+                        Sum_SigPb = Sum_SigPb + cs;
+			Sum_ErrPb = Sum_ErrPb + rErr*rErr;
+		}
+		}
+	}
+		Sum_ErrJp = sqrt(Sum_ErrJp)/Sum_SigJp;
+		Sum_ErrPp = sqrt(Sum_ErrPp)/Sum_SigPp;
+		Sum_ErrJb = sqrt(Sum_ErrJb)/Sum_SigJb;
+		Sum_ErrPb = sqrt(Sum_ErrPb)/Sum_SigPb;	
+	out << sqrt(Sum_ErrPp*Sum_ErrPp+Sum_ErrJp*Sum_ErrJp) << endl;
+	out << sqrt(Sum_ErrPb*Sum_ErrPb+Sum_ErrJb*Sum_ErrJb) << endl;
+	out.close();
+	return 0;
+}

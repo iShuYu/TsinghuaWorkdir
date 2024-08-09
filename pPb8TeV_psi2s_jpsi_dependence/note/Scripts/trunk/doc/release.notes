@@ -1,0 +1,9 @@
+!-----------------------------------------------------------------------------
+! Package     : Scripts
+! Responsible : Tomasz Skwarnicki
+! Purpose     : script to help with lhcbdocs use
+!-----------------------------------------------------------------------------
+
+! 2010-10-24 - Tomasz Skwarnicki
+ - first versions of getDoc.pt tagDoc.py
+

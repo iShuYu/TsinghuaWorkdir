@@ -1,0 +1,1 @@
+./CBFit ../../2_Rootfile/Data_after_cut/SPD${1}y${2}pt${3}.root ../../4_Plot/CB/SPD${1}y${2}pt${3}.pdf ../../3_Result/CBFit/SPD${1}y${2}pt${3}.txt ../../3_Result/CBFit/MFit_to_2DFit/SPD${1}y${2}pt${3}.txt  ../../2_Rootfile/CB_splot/Jpsi_splot_SPD${1}y${2}pt${3}.root

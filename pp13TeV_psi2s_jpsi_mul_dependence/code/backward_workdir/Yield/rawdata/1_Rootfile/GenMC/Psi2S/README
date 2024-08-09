@@ -1,0 +1,2 @@
+Divide_fromb_prompt.sh: 把prompt和fromb分开
+merge.sh: 把MagUp和MagDown合成，用于totalEff的计算

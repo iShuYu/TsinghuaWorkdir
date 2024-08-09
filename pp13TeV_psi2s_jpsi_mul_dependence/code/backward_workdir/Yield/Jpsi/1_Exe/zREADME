@@ -1,0 +1,6 @@
+step 1: cut里执行cut.sh和cut_for_rec_sel.sh将分区间之后的data和MC进行cut
+step 2: selection里执行sideband.sh和tail_selection.sh，筛选出用于tzbkg拟合的sideband和用于2D拟合的tailroot
+step 3: fit里执行CBFit.sh, tzbkgfit.sh对mass和tz背景进行拟合，完成之后再用2DFit.sh进行2D拟合。可能需要手动调某些区间的拟合（主要是tzbkg_manual.sh，因为2D的基本上就是减少一个探测器效率的高斯成分beta）
+step 4: reweight.sh，对拟合之后用sweight的办法进行reweight，在multiplicity和PT*Y二维区间上进行reweight，用于效率修正
+step 5: 在efficiency里对各种eff.sh调用，直接包括了画图结果，可以并行，且这里没有放后台是因为，确保这里的计算是可以的
+

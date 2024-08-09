@@ -1,0 +1,1 @@
+./tzbkgfit_Manual ../../2_Rootfile/sideband/SPD5y1pt1.root            ../../3_Result/TzbkgFit/Tzpdf_SPD5y1pt1.root              ../../3_Result/TzbkgFit/Tzbkg_SPD5y1pt1.txt               ../Tzbkg_to_2DFit/Tzbkg_SPD5y1pt1.txt ./script_for_tzbkg/config_manual   >&    ../../3_Result/TzbkgFit/Tzbkg_to_2DFit/SPD5y1pt1.log

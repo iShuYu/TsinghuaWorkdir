@@ -1,0 +1,36 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}% 
+\contentsline {section}{\numberline {2}Data and Monte Carlo samples}{3}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Data}{3}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Monte Carlo}{3}{subsection.2.2}% 
+\contentsline {section}{\numberline {3}Candidate Reconstruction and selection}{4}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Trigger and Turbo stream selection}{4}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Offline Selection}{4}{subsection.3.2}% 
+\contentsline {section}{\numberline {4}Ratio of Cross-Section Determination}{7}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Double Differential Cross-Section}{7}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Ratio of Cross-Section}{8}{subsection.4.2}% 
+\contentsline {section}{\numberline {5}Signal Extraction}{9}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}Determination of the prompt and detached signal yields}{9}{subsection.5.1}% 
+\contentsline {section}{\numberline {6}Efficiency determination}{13}{section.6}% 
+\contentsline {subsection}{\numberline {6.1}Geometrical acceptance}{14}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {6.2}Reconstruction-selection efficiency}{15}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {6.3}Muon identification efficiency}{17}{subsection.6.3}% 
+\contentsline {subsection}{\numberline {6.4}Trigger efficiency}{19}{subsection.6.4}% 
+\contentsline {subsection}{\numberline {6.5}Total efficiency}{19}{subsection.6.5}% 
+\contentsline {subsection}{\numberline {6.6}Variation due do different reweight samples}{20}{subsection.6.6}% 
+\contentsline {section}{\numberline {7}Systematic Uncertainties}{21}{section.7}% 
+\contentsline {subsection}{\numberline {7.1}Signal extraction}{22}{subsection.7.1}% 
+\contentsline {subsubsection}{\numberline {7.1.1}Signal mass shape}{22}{subsubsection.7.1.1}% 
+\contentsline {subsubsection}{\numberline {7.1.2}Fit to $t_z$ background}{23}{subsubsection.7.1.2}% 
+\contentsline {subsubsection}{\numberline {7.1.3}Fit to $t_z$ signal}{24}{subsubsection.7.1.3}% 
+\contentsline {subsection}{\numberline {7.2}Trigger efficiency}{24}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {7.3}Tracking efficiency}{26}{subsection.7.3}% 
+\contentsline {subsection}{\numberline {7.4}MuonID efficiency}{27}{subsection.7.4}% 
+\contentsline {subsection}{\numberline {7.5}MC sample size}{29}{subsection.7.5}% 
+\contentsline {subsection}{\numberline {7.6}Other systematic uncertainties}{29}{subsection.7.6}% 
+\contentsline {section}{\numberline {8}Bin Width Correction}{30}{section.8}% 
+\contentsline {section}{\numberline {9}Results}{31}{section.9}% 
+\contentsline {subsection}{\numberline {9.1}{\ensuremath {\ensuremath {\psi }\xspace {(2S)}}}\xspace -to-{\ensuremath {{\ensuremath {J}\xspace \mskip -3mu/\mskip -2mu\ensuremath {\psi }\xspace }}}\xspace ratio as functions of multiplicity}{31}{subsection.9.1}% 
+\contentsline {subsection}{\numberline {9.2}{\ensuremath {\ensuremath {\psi }\xspace {(2S)}}}\xspace -to-{\ensuremath {{\ensuremath {J}\xspace \mskip -3mu/\mskip -2mu\ensuremath {\psi }\xspace }}}\xspace ratio in different \ensuremath {p_{\mathrm {T}}}\xspace regions}{33}{subsection.9.2}% 
+\contentsline {subsection}{\numberline {9.3}{\ensuremath {\ensuremath {\psi }\xspace {(2S)}}}\xspace -to-{\ensuremath {{\ensuremath {J}\xspace \mskip -3mu/\mskip -2mu\ensuremath {\psi }\xspace }}}\xspace ratio in different $y$ regions}{35}{subsection.9.3}% 
+\contentsline {section}{\numberline {10}Conclusion}{37}{section.10}% 
+\contentsline {section}{References}{173}{figure.caption.303}% 
