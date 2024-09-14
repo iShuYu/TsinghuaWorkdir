@@ -1,0 +1,23 @@
+./IntErr_common ../../Systematic/massFit/3_Result/massFitErr/n${1}_sumy_Err.root "h_eff_py" ../../Systematic/massFit/3_Result/massFitErr/n${1}_sumPt_Err.root "h_eff_px" ../../Systematic/massFit/3_Result/massFitErr/n${1}_int_Err.txt ../2_Table/massFit/n${1}.tex ${1} "imperfect modelling on mass fit"
+
+./IntErr_PandB ../../Systematic/tzFit/3_Result/Error/tzbkg_2D/n${1}_int_y_J_and_P_b_and_p.root "Errp" ../../Systematic/tzFit/3_Result/Error/tzbkg_2D/n${1}_int_pt_J_and_P_b_and_p.root "Errp" ../../Systematic/tzFit/3_Result/Error/tzbkg_2D/n${1}_int_y_J_and_P_b_and_p.root "Errb" ../../Systematic/tzFit/3_Result/Error/tzbkg_2D/n${1}_int_pt_J_and_P_b_and_p.root "Errb" ../../Systematic/tzFit/3_Result/Error/tzbkg_2D/n${1}_int_J_and_P_b_and_p.txt ../../Systematic/tzFit/3_Result/Error/tzbkg_2D/n${1}_int_J_and_P_b_and_p.txt ../2_Table/tzbkg/n${1}.tex ${1} "imperfect modelling on \$t_z\$ background fit"
+
+./IntErr_PandB ../../Systematic/tzFit/3_Result/Error/tzsig/n${1}_int_y_J_and_P_b_and_p.root "Errp" ../../Systematic/tzFit/3_Result/Error/tzsig/n${1}_int_pt_J_and_P_b_and_p.root "Errp" ../../Systematic/tzFit/3_Result/Error/tzsig/n${1}_int_y_J_and_P_b_and_p.root "Errb" ../../Systematic/tzFit/3_Result/Error/tzsig/n${1}_int_pt_J_and_P_b_and_p.root "Errb" ../../Systematic/tzFit/3_Result/Error/tzsig/n${1}_int_J_and_P_b_and_p.txt ../../Systematic/tzFit/3_Result/Error/tzsig/n${1}_int_J_and_P_b_and_p.txt ../2_Table/tzsig/n${1}.tex ${1} "imperfect modelling on \$t_z\$ signal fit"
+
+./IntErr_PandB ../../Systematic/Trigger/3_Result/TriggerErr/n${1}_int_y_prompt.root "ErrTemp" ../../Systematic/Trigger/3_Result/TriggerErr/n${1}_int_pt_prompt.root "ErrTemp" ../../Systematic/Trigger/3_Result/TriggerErr/n${1}_int_y_fromb.root "ErrTemp" ../../Systematic/Trigger/3_Result/TriggerErr/n${1}_int_pt_fromb.root "ErrTemp" ../../Systematic/Trigger/3_Result/TriggerErr/n${1}_int_prompt.txt ../../Systematic/Trigger/3_Result/TriggerErr/n${1}_int_fromb.txt ../2_Table/Trigger/n${1}.tex ${1} "trigger requirement"
+
+./IntErr_PandB ../../Systematic/tracking/3_Result/StatsErr/n${1}_int_y_prompt.root "h_eff_py" ../../Systematic/tracking/3_Result/StatsErr/n${1}_int_pt_prompt.root "h_eff_px" ../../Systematic/tracking/3_Result/StatsErr/n${1}_int_y_fromb.root "h_eff_py" ../../Systematic/tracking/3_Result/StatsErr/n${1}_int_pt_fromb.root "h_eff_px"  ../../Systematic/tracking/3_Result/StatsErr/n${1}_int_prompt.txt  ../../Systematic/tracking/3_Result/StatsErr/n${1}_int_fromb.txt ../2_Table/tracking/n${1}.tex ${1} "uncertainty of track table"
+
+./IntErr_PandB ../../Systematic/PID/3_Result/StatCalibVar/n${1}_int_y_prompt.root "h_eff_py" ../../Systematic/PID/3_Result/StatCalibVar/n${1}_int_pt_prompt.root "h_eff_px" ../../Systematic/PID/3_Result/StatCalibVar/n${1}_int_y_fromb.root "h_eff_py" ../../Systematic/PID/3_Result/StatCalibVar/n${1}_int_pt_fromb.root "h_eff_px" ../../Systematic/PID/3_Result/StatCalibVar/n${1}_type1.txt ../../Systematic/PID/3_Result/StatCalibVar/n${1}_type2.txt ../2_Table/PID1/n${1}.tex ${1} "uncertainty of PID table"
+
+./IntErr_PandB ../../Systematic/PID/3_Result/InBinVar/n${1}_int_y_promptInBinErr.root "h_eff_py" ../../Systematic/PID/3_Result/InBinVar/n${1}_int_pt_promptInBinErr.root "h_eff_px" ../../Systematic/PID/3_Result/InBinVar/n${1}_int_y_frombInBinErr.root "h_eff_py" ../../Systematic/PID/3_Result/InBinVar/n${1}_int_pt_frombInBinErr.root "h_eff_px" ../../Systematic/PID/3_Result/InBinVar/n${1}_int_promptInBinErr.txt ../../Systematic/PID/3_Result/InBinVar/n${1}_int_frombInBinErr.txt ../2_Table/PID2/n${1}.tex  ${1} "binning scheme of PID table"
+
+./IntErr_PandB ../../Systematic/StatsErr/3_Result/n${1}StatsErrIntY.root "StatsErrPrompt" ../../Systematic/StatsErr/3_Result/n${1}StatsErrIntPt.root "StatsErrPrompt" ../../Systematic/StatsErr/3_Result/n${1}StatsErrIntY.root "StatsErrFromb" ../../Systematic/StatsErr/3_Result/n${1}StatsErrIntPt.root "StatsErrFromb" ../../Systematic/StatsErr/3_Result/n${1}StatsErrInt.txt ../../Systematic/StatsErr/3_Result/n${1}StatsErrInt.txt ../2_Table/Stats/n${1}.tex ${1} "statistical uncertainty"
+
+./IntErr_PandB  ../../Systematic/MCSampleSize_int/3_Result/n${1}MCSizeErrIntY.root "MCSizeErrPrompt" ../../Systematic/MCSampleSize_int/3_Result/n${1}MCSizeErrIntPt.root "MCSizeErrPrompt" ../../Systematic/MCSampleSize_int/3_Result/n${1}MCSizeErrIntY.root "MCSizeErrFromb" ../../Systematic/MCSampleSize_int/3_Result/n${1}MCSizeErrIntPt.root "MCSizeErrFromb" ../../Systematic/MCSampleSize_int/3_Result/n${1}MCSizeErrInt.txt ../../Systematic/MCSampleSize_int/3_Result/n${1}MCSizeErrInt.txt ../2_Table/MCSize/n${1}.tex ${1} "limit sample size of MC"
+
+
+
+
+
+

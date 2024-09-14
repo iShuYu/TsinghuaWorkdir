@@ -1,0 +1,1 @@
+先筛选特定的TCK之后，再打印runnumber，这里如果要不重复的打印会非常困难，一个比较好的算法是先判断相邻两个event的runNo是不是一致（因为基本都是连号儿，用的是PrintRunNo.C），这样可以大幅度缩减事例数，然后再对产生的结果进行unique筛选，不重复地打印所有runNo.，对应的C文件都在MagUp那里。然后去查表得到Luminosity

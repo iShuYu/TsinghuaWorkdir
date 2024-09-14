@@ -1,0 +1,145 @@
+\section{Data sets}
+\label{Data and Monte Carlo samples}
+\subsection{Data samples}
+The data used in this analysis was recorded during the Heavy Ion run 2016, between Nov. 18th and Nov. 25th for the $p$Pb configurtion and between Nov. 26th and Dec. 4th for the Pb$p$ configuration, both at a center-of-mass energy of 8.16 TeV. The total recorded luminosity is of $13.6\pm0.3$nb$^{-1}$ for $p$Pb and $20.8\pm0.5$nb$^{-1}$ for Pb$p$. The magnet polarity was always DOWN throughout the whole period. The list of good runs are listed in Table~\ref{GoodRun}. The bookkeeping paths for data samples are as follows.
+\begin{itemize}
+\item $p$Pb \  /LHCb/Protonion16/Beam6500GeV-VeloClosed-MagDown/Real Data/Turbo03pLead/94000000/TURBO.MDST
+\item Pb$p$ \ /LHCb/Ionproton16/Beam6500GeV-VeloClosed-MagDown/Real Data/Turbo03pLead/94000000/TURBO.MDST
+\end{itemize}
+\begin{table}[!tbp]
+\caption{List of good runs}
+\begin{center}
+\begin{tabular}{ll}
+\hline
+\multicolumn{2}{l}{$p$Pb}\\
+\hline
+5519 & 186555, 186557, 186558, 186564, 186565 \\
+5520 & 186583, 186584, 186585, 186587, 186588, 186590 \\
+5521 & 186601, 186602, 186603, 186604, 186608, 186609, 186610, 186611, 186612, 186613 \\
+5522 & 186614, 186615, 186616, 186626, 186628, 186629, 186631, 186632, 186633, 186634, \\
+     & 186635, 186636, 186637, 186638, 186639\\
+5523 & 186647, 186650, 186651, 186652, 186653, 186654, 186655, 186656 \\
+5524 & 186670, 186673 \\
+5526 & 186718, 186721, 186722, 186723, 186724, 186725, 186726, 186727 \\
+5527 & 186735, 186737, 186739, 186740, 186741, 186744, 186745, 186746 \\
+5533 & 186782, 186783, 186785, 186798, 186799, 186802, 186806, 186807 \\
+5534 & 186818, 186819, 186823, 186824 \\
+5538 & 186920, 186915, 186914, 186907, 186903, 186896,186890, 186884, 186879, 186876 \\
+\hline
+\multicolumn{2}{l}{Pb$p$}\\
+\hline
+5545 &  186989, 186990, 186991, 186992, 186993 \\
+5546 &  187002, 187005, 187007\\
+5547 &  187015, 187018, 187019, 187020, 187021, 187023, 187025, 187026\\
+5549 &  187038, 187040, 187042, 187043, 187044, 187045, 187047, 187048, 187049, 187050,\\
+     & 187051 \\
+5550 &  187058, 187061, 187062, 187063, 187064, 187065\\
+5552 &  187074, 187078, 187080, 187082, 187083, 187083, 187084, 187085, 187086\\
+5553 &  187106, 187109, 187110, 187111, 187112, 187113, 187115\\
+5554 &  187123, 187124, 187127, 187128, 187129\\
+5558 &  187178, 187182, 187183, 187184\\
+5559 &  187198, 187199, 187202, 187203, 187204\\
+5562 &  187229, 187230, 187232, 187233, 187234\\
+5563 &  187244, 187247, 187248, 187249, 187250, 187251, 187252, 187253, 187254, 187255\\
+5564 &  187266\\
+5565 &  187282, 187283, 187289, 187290, 187291, 187292\\
+5568 &  187325, 187328, 187329, 187330, 187331, 187332, 187333, 187334, 187335, 187336,\\
+1873 & 37, 187339, 187340\\
+5569 &  187348, 187349, 187350, 187351, 187355, 187357, 187358\\
+5570 &  187372, 187375, 187376, 187377, 187378, 187380, 187381\\
+5571 &  187389, 187392, 187393, 187394, 187395\\
+5573 &  187406, 187409, 187410\\
+\hline
+\end{tabular}
+\end{center}
+\label{GoodRun}
+\end{table}
+
+\subsection{Monte Carlo samples}
+The efficiency of the various steps in the analysis is estimated using samples of fully simulated events using the standard LHCb simulation software tools as the ones used for data. The simulation is done in two successive steps, first a generation phase based on several external tools such as event generators, and second a simulation phase based on the Geant4 package~\cite{AGOSTINELLI2003250,1610988}. The simulation phase is the same as the one used for the simulation of $pp$ events within LHCb and is described in Ref.~\cite{LHCb:2011dpk} while the geneartion phase is specific to the heavy ion analysis. And in this analysis, we use a multiplicity-fix Monte Carlo sample which has a multiplicity distribution more closed to the data sample. The version of the software for the simulation is Sim09l and the bookkeeping paths are as follows.
+\begin{itemize}
+\item $p$Pb \ /MC/2016/pPb-Beam6500GeV-2560GeV-2016-MagDown-Fix1-Epos/Sim09l/Trig0x61421621/Reco16pLead/Turbo03/eventType/DST
+\item Pb$p$ \ /MC/2016/Pbp-Beam2560GeV-6500GeV-2016-MagDown-Fix1-Epos/Sim09l/Trig0x61421621/Reco16pLead/Turbo03/eventType/DST
+\end{itemize}
+In the paths, eventType is 24142001 for \jpsi and 28142001 for \psitwos. Minimum bias samples of pPb and Pbp collisions are generated using the Epos event generator, using the LHC model~\cite{Pierog:2013ria}. This generator is interfaced with the Gauss simulation software via the CRMC (Cosmic Ray Monte Carlo) interface library. All short lived particles are decayed with the EvtGen decay package~\cite{LANGE2001152}, similarly to what is done for $pp$ simulation in LHCb. Radiative QED corrections to the decays containing charged particles in the final state are applied with the Photos package~\cite{Golonka:2005pn} and is particularly important for \jpsi and \psitwos ro dimuon decays. Since the instantaneous luminosity of the collisions recorded by the experiment in the various heavy ion configuration is low, no pile-up is generated, and events contain only one interaction.
+Signal samples of $\jpsi  \rightarrow \mu^+ \mu^-$ and $\psitwos \rightarrow \mu^+ \mu^-$ are generated using an embedding technique: minimum bias events are generated using the EPOS generator, with colliding proton beams having momenta equal to the momenta per nucleon of the heavy ion beams or targets. The \jpsi(\psitwos) mesons are then extracted from these minimum bias events, discarding all other particles in the events. Their decays are forced to the signal decay modes using the EvtGen package, and the resulting decay chain is added to a single minimum bias EPOS event generated with beam parameters identical to those seen in data. All the samples are listed in Table~\ref{MC}.
+\begin{table}[!tbp]
+\caption{Event type, decay and statistics of the simulation samples.}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+\textbf{EventType} & \textbf{Decay chain} & \textbf{Number of events} \\
+\hline
+24142001 & $p$Pb \ $\jpsi\rightarrow \mu^+ \mu^-$ & $4.0\times 10^6$ \\
+24142001 & Pb$p$ \ $\jpsi\rightarrow \mu^+ \mu^-$ & $4.0\times 10^6$  \\
+28142001 & $p$Pb \ $\psitwos\rightarrow \mu^+ \mu^-$ & $4.0\times 10^6$  \\
+28142001 & Pb$p$ \ $\psitwos\rightarrow \mu^+ \mu^-$ & $4.0\times 10^6$  \\
+\hline
+\end{tabular}
+\end{center}
+\label{MC}
+\end{table}
+
+\subsection{Trigger}
+The trigger selections applied during the $p$Pb and Pb$p$ runs were close but looser than the selections used during the first month of data taking for Run 2, where the measurement of the \jpsi cross-section at 13 TeV in $pp$ collisions was performed.
+\subsubsection{L0}
+A single L0 TCK was used throughout this run, 0x1621. The main corresponding configuration related in this analysis is given in Table~\ref{L0TCK}. For this analysis, only reconstructed \jpsi and \psitwos with one of their muons satisfying the Muon line criteria are considered (i.e. L0Muon TOS candidates). For the lines used in the analysis, no SPD multiplicity cut was applied at L0. The threshold for the muon trigger is also looser than the one used in $pp$ collisions, which is equal to 800 MeV.
+\begin{table}[H]
+\caption{Cuts in L0 TCK 0x1621.}
+\begin{center}
+\begin{tabular}{ll}
+\hline
+\textbf{Line name} & \textbf{Conditions}\\
+\hline
+	SPD & SPD multiplicity $>$ 0\\
+	PU & Pile-Up multiplicity $>$ 3\\
+	Muon & \pt $>$ 500 MeV\\
+	B1gas & SumEt $>$ 4992 MeV on beam-empty crossings \\
+	B2gas & Pile-up multiplicity $>$ 9 on empty-beam crossings\\
+\hline
+\end{tabular}
+\end{center}
+\label{L0TCK}
+\end{table}
+
+\subsubsection{HLT1}
+Two different HLT1 configurations were used: TCK 0x11431621 for runs between 186555 and 187204, and TCK 0x11441621 for the other runs. As far as the analysis presented here is concerned, these two configurations are identical (they differ only for pre-scales of the NoBias line and of dedicated high multiplicity lines). The trigger lines used in the analysis are given in Table~\ref{Hlt1TCK}. All candidates kept for the analysis must be TOS of the DiMuonHighMass line.
+\begin{table}[H]
+\caption{Cuts in HLT1 trigger line.}
+\begin{center}
+\begin{tabular}{ll}
+\hline
+\textbf{Variables} & \textbf{Cuts}\\
+\hline
+Global event cut & nVelocluster $<$ 8000\\
+Muon \pt & $>$ 300 \mevc \\
+Muon $p$ & $>$ 4 \gevc \\
+Track $\chi^2$ & $<$4 \\
+IsMuon & =1 \\
+$M_{\mu^+\mu^-}$ & $>$ 2.5\gevc\\
+\hline
+\end{tabular}
+\end{center}
+\label{Hlt1TCK}
+\end{table}
+
+\subsubsection{HLT2}
+Three HLT2 configurations were used: TCK 0x21421621, 0x21451621 and 0x21461621. Here also all these TCKs are identical as far as this analysis is concerned. The selections applied in HLT2 are described in Table~\ref{Hlt2TCK}. The lines used in the analysis are saved in the TURBO format and the triggers candidates saved in the data RAW files are taken directly for the final analysis. The offline processing relevant for this analysis was performed using processing pass Turbo03pLead with DaVinci version v41r3.
+\begin{table}[H]
+\caption{Cuts in HLT2 trigger line.}
+\begin{center}
+\begin{tabular}{ll}
+\hline
+\textbf{Variables} & \textbf{Cuts}\\
+\hline
+Mass windows & 150 \mevcc \\
+Muon \pt & $>$ 500 \mevc \\
+Vertex $\chi^2$ & $<25$ \\
+\hline
+\end{tabular}
+\end{center}
+\label{Hlt2TCK}
+\end{table}
+
+
+

@@ -1,0 +1,1 @@
+./../2_Exe/TwoDimFit 2 ../0_File/Data/Cut/Psi2S_n$1y$2pt$3.root ../4_Result/TwoDimFit/PDF/Psi2S_n$1y$2pt$3.root ../4_Result/CBFit/n$1y$2pt$3.txt ../4_Result/TzbkgFit/Psi2S_n$1y$2pt$3.txt ../4_Result/TwoDimFit/Psi2S_n$1y$2pt$3.txt  >& ../4_Result/TwoDimFit/log/Psi2S_n$1y$2pt$3.log

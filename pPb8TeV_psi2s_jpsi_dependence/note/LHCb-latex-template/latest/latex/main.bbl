@@ -1,0 +1,249 @@
+\ifx\mcitethebibliography\mciteundefinedmacro
+\PackageError{LHCb.bst}{mciteplus.sty has not been loaded}
+{This bibstyle requires the use of the mciteplus package.}\fi
+\providecommand{\href}[2]{#2}
+\begin{mcitethebibliography}{10}
+\mciteSetBstSublistMode{n}
+\mciteSetBstMaxWidthForm{subitem}{\alph{mcitesubitemcount})}
+\mciteSetBstSublistLabelBeginEnd{\mcitemaxwidthsubitemform\space}
+{\relax}{\relax}
+
+\bibitem{MATSUI1986416}
+T.~Matsui and H.~Satz, \ifthenelse{\boolean{articletitles}}{\emph{J/psi
+  suppression by quark-gluon plasma formation},
+  }{}\href{https://doi.org/https://doi.org/10.1016/0370-2693(86)91404-8}{Physics
+  Letters B \textbf{178} (1986) 416}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{PHENIX:2007tnc}
+PHENIX collaboration, A.~Adare {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{\emph{{Cold Nuclear Matter Effects on
+  J/Psi as Constrained by Deuteron-Gold Measurements at s(NN)**(1/2) =
+  200-GeV}}, }{}\href{https://doi.org/10.1103/PhysRevC.77.024912}{Phys.\ Rev.\
+  C \textbf{77} (2008) 024912},
+  \href{http://arxiv.org/abs/0903.4845}{{\normalfont\ttfamily
+  arXiv:0903.4845}}, [Erratum: Phys.Rev.C 79, 059901 (2009)]\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{LHCb:2017ygo}
+LHCb collaboration, R.~Aaij {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{\emph{{Prompt and nonprompt J/$\psi$
+  production and nuclear modification in $p$Pb collisions at
+  $\sqrt{s_{\text{NN}}}= 8.16$ TeV}},
+  }{}\href{https://doi.org/10.1016/j.physletb.2017.09.058}{Phys.\ Lett.\ B
+  \textbf{774} (2017) 159},
+  \href{http://arxiv.org/abs/1706.07122}{{\normalfont\ttfamily
+  arXiv:1706.07122}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Arleo:2014oha}
+F.~Arleo and S.~Peign\'e,
+  \ifthenelse{\boolean{articletitles}}{\emph{{Quarkonium suppression in
+  heavy-ion collisions from coherent energy loss in cold nuclear matter}},
+  }{}\href{https://doi.org/10.1007/JHEP10(2014)073}{JHEP \textbf{10} (2014)
+  073}, \href{http://arxiv.org/abs/1407.5054}{{\normalfont\ttfamily
+  arXiv:1407.5054}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Ferreiro:2012rq}
+E.~G. Ferreiro, \ifthenelse{\boolean{articletitles}}{\emph{{Charmonium
+  dissociation and recombination at LHC: Revisiting comovers}},
+  }{}\href{https://doi.org/10.1016/j.physletb.2014.02.011}{Phys.\ Lett.\ B
+  \textbf{731} (2014) 57},
+  \href{http://arxiv.org/abs/1210.3209}{{\normalfont\ttfamily
+  arXiv:1210.3209}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{ALICE:2016fzo}
+ALICE collaboration, J.~Adam {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{\emph{{Enhanced production of
+  multi-strange hadrons in high-multiplicity proton-proton collisions}},
+  }{}\href{https://doi.org/10.1038/nphys4111}{Nature Phys.\  \textbf{13} (2017)
+  535}, \href{http://arxiv.org/abs/1606.07424}{{\normalfont\ttfamily
+  arXiv:1606.07424}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{CMS:2016fnw}
+CMS collaboration, V.~Khachatryan {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{\emph{{Evidence for collectivity in pp
+  collisions at the LHC}},
+  }{}\href{https://doi.org/10.1016/j.physletb.2016.12.009}{Phys.\ Lett.\ B
+  \textbf{765} (2017) 193},
+  \href{http://arxiv.org/abs/1606.06198}{{\normalfont\ttfamily
+  arXiv:1606.06198}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Ball:2006wn}
+P.~Ball, V.~M. Braun, and A.~Lenz,
+  \ifthenelse{\boolean{articletitles}}{\emph{{Higher-twist distribution
+  amplitudes of the K meson in QCD}},
+  }{}\href{https://doi.org/10.1088/1126-6708/2006/05/004}{JHEP \textbf{05}
+  (2006) 004}, \href{http://arxiv.org/abs/hep-ph/0603063}{{\normalfont\ttfamily
+  arXiv:hep-ph/0603063}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{LHCb:2011dpk}
+LHCb collaboration, I.~Belyaev {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{\emph{{Handling of the generation of
+  primary events in Gauss, the LHCb simulation framework}},
+  }{}\href{https://doi.org/10.1088/1742-6596/331/3/032047}{J.\ Phys.\ Conf.\
+  Ser.\  \textbf{331} (2011) 032047}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Lange:2001uf}
+D.~J. Lange, \ifthenelse{\boolean{articletitles}}{\emph{{The EvtGen particle
+  decay simulation package}},
+  }{}\href{https://doi.org/10.1016/S0168-9002(01)00089-4}{Nucl.\ Instrum.\
+  Meth.\  \textbf{A462} (2001) 152}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Golonka:2005pn}
+P.~Golonka and Z.~Was, \ifthenelse{\boolean{articletitles}}{\emph{{PHOTOS Monte
+  Carlo: A precision tool for QED corrections in $Z$ and $W$ decays}},
+  }{}\href{https://doi.org/10.1140/epjc/s2005-02396-4}{Eur.\ Phys.\ J.\
+  \textbf{C45} (2006) 97},
+  \href{http://arxiv.org/abs/hep-ph/0506026}{{\normalfont\ttfamily
+  arXiv:hep-ph/0506026}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{GEANT4:2002zbu}
+GEANT4 collaboration, S.~Agostinelli {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{\emph{{GEANT4--a simulation toolkit}},
+  }{}\href{https://doi.org/10.1016/S0168-9002(03)01368-8}{Nucl.\ Instrum.\
+  Meth.\ A \textbf{506} (2003) 250}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Clemencic:2011zza}
+LHCb collaboration, M.~Clemencic {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{\emph{{The LHCb simulation application,
+  Gauss: Design, evolution and experience}},
+  }{}\href{https://doi.org/10.1088/1742-6596/331/3/032023}{J.\ Phys.\ Conf.\
+  Ser.\  \textbf{331} (2011) 032023}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Bargiotti:2007zz}
+M.~Bargiotti and V.~Vagnoni, \ifthenelse{\boolean{articletitles}}{\emph{{Heavy
+  quarkonia sector in PYTHIA 6.324: Tuning, validation and perspectives at
+  LHCb}}, }{}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Workman:2022ynf}
+Particle Data Group, R.~L. Workman and Others,
+  \ifthenelse{\boolean{articletitles}}{\emph{{Review of Particle Physics}},
+  }{}\href{https://doi.org/10.1093/ptep/ptac097}{PTEP \textbf{2022} (2022)
+  083C01}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{LHCb:2022syj}
+LHCb collaboration, \ifthenelse{\boolean{articletitles}}{\emph{{Evidence for
+  modification of $b$ quark hadronization in high-multiplicity $pp$ collisions
+  at $\sqrt{s} = 13$ TeV}},
+  }{}\href{http://arxiv.org/abs/2204.13042}{{\normalfont\ttfamily
+  arXiv:2204.13042}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Koba:1972ng}
+Z.~Koba, H.~B. Nielsen, and P.~Olesen,
+  \ifthenelse{\boolean{articletitles}}{\emph{{Scaling of multiplicity
+  distributions in high-energy hadron collisions}},
+  }{}\href{https://doi.org/10.1016/0550-3213(72)90551-2}{Nucl.\ Phys.\ B
+  \textbf{40} (1972) 317}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{LHCb-PAPER-2015-037}
+LHCb collaboration, R.~Aaij {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{\emph{{Measurement of forward \jpsi
+  production cross-sections in \proton\proton collisions at
+  \mbox{$\sqs=$13\tev}}},
+  }{}\href{https://doi.org/10.1007/JHEP10(2015)172}{JHEP \textbf{10} (2015)
+  172}, Erratum \href{https://doi.org/10.1007/JHEP05(2017)063}{ibid.\
+  \textbf{05} (2017) 063},
+  \href{http://arxiv.org/abs/1509.00771}{{\normalfont\ttfamily
+  arXiv:1509.00771}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{LHCb:2019eaj}
+LHCb collaboration, R.~Aaij {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{\emph{{Measurement of $\psi$(2$S$)
+  production cross-sections in proton-proton collisions at $\sqrt{s}$ = 7 and
+  13 TeV}}, }{}\href{https://doi.org/10.1140/epjc/s10052-020-7638-y}{Eur.\
+  Phys.\ J.\ C \textbf{80} (2020) 185},
+  \href{http://arxiv.org/abs/1908.03099}{{\normalfont\ttfamily
+  arXiv:1908.03099}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Skwarnicki:1986xj}
+T.~Skwarnicki, {\em {A study of the radiative cascade transitions between the
+  Upsilon-prime and Upsilon resonances}}, PhD thesis, Institute of Nuclear
+  Physics, Krakow, 1986,
+  {\href{http://inspirehep.net/record/230779/}{DESY-F31-86-02}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{LefrancoisTalk}
+J.~Lefrancous, \ifthenelse{\boolean{articletitles}}{\emph{Crystal ball fits},
+  }{}
+  \href{https://indico.cern.ch/event/120195/contribution/1/material/slides/1.pdf}{link}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{LHCb-DP-2013-002}
+LHCb collaboration, R.~Aaij {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{\emph{{Measurement of the track
+  reconstruction efficiency at LHCb}},
+  }{}\href{https://doi.org/10.1088/1748-0221/10/02/P02007}{JINST \textbf{10}
+  (2015) P02007}, \href{http://arxiv.org/abs/1408.1251}{{\normalfont\ttfamily
+  arXiv:1408.1251}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Trackweb}
+\ifthenelse{\boolean{articletitles}}{\emph{Tracking correction table}, }{}
+  \href{https://twiki.cern.ch/twiki/bin/view/LHCb/LHCbTrackingEfficiencies}{https://
+  twiki.cern.ch/twiki/bin/view/LHCb/LHCbTrackingEfficiencies}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\end{mcitethebibliography}

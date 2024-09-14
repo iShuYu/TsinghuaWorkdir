@@ -1,0 +1,498 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{ifthen} 
+\newboolean{pdflatex}
+\setboolean{pdflatex}{true} 
+\newboolean{articletitles}
+\setboolean{articletitles}{true}
+\newboolean{uprightparticles}
+\setboolean{uprightparticles}{false}
+\def\paperauthors{LHCb Collaboration}
+\def\paperasciititle{Multiplicity Dependence of ratio of production of psi(2S) over J/psi in pp collisions at center of mass energy 13 TeV} 
+\def\papertitle{Multiplicity dependence of $\sigma_{\psitwos}/\sigma_{\jpsi}$ in $pp$ collisions at $\sqrt{s}=13$ TeV} 
+\def\paperkeywords{{High Energy Physics}, {LHCb}} 
+\def\papercopyright{\the\year\ CERN for the benefit of the LHCb collaboration} 
+\def\paperlicence{CC BY 4.0 licence}
+\def\paperlicenceurl{https://creativecommons.org/licenses/by/4.0/}
+\input{preamble}
+\usepackage{longtable} 
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{url}
+\usepackage{amsmath}
+\begin{document}
+\newcommand{\lhcborcid}[1]{\href{https://orcid.org/#1}{\hspace*{0.1em}\raisebox{-0.45ex}{\includegraphics[width=1em]{orcidIcon.pdf}}}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\setcounter{footnote}{1}
+
+%Title page:
+\begin{titlepage}
+\pagenumbering{roman}
+\vspace*{-1.5cm}
+\centerline{\large EUROPEAN ORGANIZATION FOR NUCLEAR RESEARCH (CERN)}
+\vspace*{1.5cm}
+\noindent
+\begin{tabular*}{\linewidth}{lc@{\extracolsep{\fill}}r@{\extracolsep{0pt}}}
+\ifthenelse{\boolean{pdflatex}}
+{\vspace*{-1.5cm}\mbox{\!\!\!\includegraphics[width=.14\textwidth]{figs/lhcb-logo.pdf}} & &}%
+{\vspace*{-1.2cm}\mbox{\!\!\!\includegraphics[width=.12\textwidth]{figs/lhcb-logo.eps}} & &}%
+\\
+ & & CERN-EP-2023-277 \\ 
+ & & LHCb-PAPER-2023-035 \\  
+ & & May 22, 2024 \\ 
+ & & \\
+\end{tabular*}
+\vspace*{2.0cm}
+{\normalfont\bfseries\boldmath\huge
+\begin{center}
+  \papertitle 
+\end{center}
+}
+\vspace*{2.0cm}
+\begin{center}
+\paperauthors\footnote{Authors are listed at the end of this paper.}
+\end{center}
+\vspace{\fill}
+
+\begin{abstract}
+  \noindent
+  The ratio of production cross-sections of $\psi(2S)$ over $J/\psi$ mesons as a function of charged-particle multiplicity in proton-proton collisions at a centre-of-mass energy \mbox{$\sqrt{s}=13 \tev$} is measured with a data sample collected by the LHCb detector, corresponding to an integrated luminosity of 658 pb$^{-1}$. The ratio is measured for both prompt and non-prompt $\psi(2S)$ and $J/\psi$ mesons. When there is an overlap between the rapidity ranges over which multiplicity and charmonia production are measured, a multiplicity-dependent modification of the ratio is observed for prompt mesons. No significant multiplicity dependence is found when the ranges do not overlap. For non-prompt production, the \psitwos-to-\jpsi production ratio is roughly independent of multiplicity, irrespective of the rapidity range over which the multiplicity is measured.
+  The results are compared to predictions of the co-mover model and agree well except in the low multiplicity region. The ratio of production cross-sections of $\psi(2S)$ over $J/\psi$ mesons are cross-checked with other measurements in di-lepton channels and found to be compatible.
+\end{abstract}
+\vspace*{2.0cm}
+\begin{center}
+Published in JHEP 05 (2024) 243
+\end{center}
+{\footnotesize 
+\centerline{\copyright~\papercopyright. \href{\paperlicenceurl}{\paperlicence}.}}
+\vspace*{2mm}
+\vspace{\fill}
+\end{titlepage}
+\newpage
+\setcounter{page}{2}
+\mbox{~}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+\cleardoublepage
+\pagestyle{plain}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\newpage
+
+
+
+%Introduction
+\section{Introduction}
+\label{sec:Introduction}
+Heavy quarkonium production has long served as a pivotal tool for probing the intricate dynamics of quantum chromodynamics (QCD). Heavy-ion collisions in particular offer a unique vantage point. Heavy quarks are generated in the initial stages of the collisions, making quarkonium production a powerful probe for the evolution of heavy-ion interactions. Quarkonium production in heavy-ion collisions are influenced by several mechanisms. These include phenomena such as Debye screening, which suppresses the production in quark-gluon plasma (QGP)\cite{MATSUI1986416} and recombination processes~\cite{Zhao:2020jqu}, which lead to an enhancement at higher energies\cite{Thews:2000rj}. To reliably interpret the results from heavy-ion measurements, reference measurements without these nuclear matter effects, such as in proton-proton ($pp$) collisions, are required.
+
+In heavy-ion collisions, quarkonium production is affected by initial-state effects like modification of parton distribution function (PDF)~\cite{AtashbarTehrani:2017mzi} and energy losses through multi-particle scattering~\cite{Arleo:2014oha}. While comparing the production rates for excited quarkonium states to those of the ground states can mitigate the initial-state effects listed above, observations highlight a distinct suppression of excited charmonia (\psitwos) and bottomonia (\TwoS, \ThreeS) compared to their ground states $\jpsi(1S)$ and $\OneS$, from collaborations at the SPS~\cite{NA50:2006yzz}, RHIC~\cite{PHENIX:2022nrm} and LHC~\cite{LHCb:2018psc,ALICE:2020vjy, LHCb:2016vqr,CMS:2022wfi,ATLAS:2017prf}. This difference points towards the necessity of considering additional effects.
+
+These modifications can arise in the presence of QGP, which, together with the Debye color screening may lead to the deconfinement of quarks and hence, the dissociation of quarkonia. The signatures of QGP are observed in small system collisions including protons, at high charged-particle multiplicities. For instance, the ALICE collaboration reported strangeness enhancement in high-multiplicity $pp$ and $p$Pb collisions at $\sqrt{s}=7$ TeV~\cite{ALICE:2016fzo}, while the CMS collaboration identified significant collective flow in high-multiplicity $pp$ collisions at $\sqrt{s}=13$ TeV~\cite{CMS:2016fnw}. Additionally, long-range correlations between particles emitted in a given rapidity range, resembling anisotropic collective flow, have been detected in high-multiplicity $pp$ and $p$Pb collisions at the LHC~\cite{ALICE:2012eyl,ATLAS:2012cix,CMS:2012qk,CMS:2010ifv}. With an increasing number of QGP-like signatures being observed, there is growing interest in investigating quarkonium suppression in high-multiplicity small system collisions as a probe for QGP in such environment.
+
+Another mechanism that affects the quarkonium production is the co-mover effect~\cite{Ferreiro:2012rq}, in which co-moving particles can modify quarkonium properties, resulting in the suppression of these states. Excited states of quarkonium are loosely bound with larger radii, and are more likely to dissociate in the interaction with co-moving particles, which manifests as relative suppression compared to ground states. The suppression by interaction with co-moving particles is correlated to the charged-particle multiplicity since the latter influences the number of co-moving particles. The co-mover model has been successful at describing suppression of charmonia, bottomonia, and $X(3872)$ hadrons in various collision systems ~\cite{Gavin:1996yd,Ferreiro:2018wbd,Esposito:2020ywk,Braaten:2020iqw}. 
+
+This study uses $pp$ collision data at a center-of-mass energy of 13~TeV collected by the LHCb detector in 2016, corresponding to a luminosity of $658\pm13$~pb$^{-1}$, to measure and compare the production cross-sections of prompt and non-prompt (from $b-$hadron decay) \psitwos and \jpsi mesons.  The subsequent determination of cross-section ratios across different multiplicity regions help to understand the relation between charmonium production, QGP and the co-mover effect. 
+
+To distinguish between the influence of the co-mover effect on the production and that of QGP, several types of multiplicity variables are needed. In this analysis, the \psitwos-to-\jpsi cross-section ratio is measured as a function of local multiplicity, which is the multiplicity close to PV, as well as forward (backward) multiplicity, which is measured in same (opposite) rapidity range over which the charmonia production is measured. The usage of backward multiplicity allows the co-mover effect to be removed so that the existence of QGP can be tested. 
+
+
+%DATA and MC
+\section{Detector and data samples}
+\label{Data and Monte Carlo samples}
+The LHCb detector~\cite{LHCb-DP-2008-001,LHCb-DP-2014-002} is a single-arm forward spectrometer covering the pseudorapidity range $2 < \eta < 5$, designed primarily for the study of particles containing $b$ or $c$ quarks. The detector includes a high-precision tracking system consisting of a silicon-strip vertex detector surrounding the $pp$ interaction region~\cite{LHCb-DP-2014-001}, a large-area silicon-strip detector located upstream of a dipole magnet with a bending power of about 4 Tm, and three stations of silicon-strip detectors and straw drift tubes~\cite{LHCb-DP-2013-003} placed downstream of the magnet. The tracking system provides a measurement of momentum, $p$, of charged particles with a relative uncertainty that varies from $0.5\%$ at low momentum to $1.0\%$ at 200~\gevc. The minimum distance of a track to a primary vertex (PV), the impact parameter, is measured with a resolution of $(15 + 29/\pt)\mum$, where \pt is expressed in \gevc. Different types of charged hadrons are distinguished using information from two ring-imaging Cherenkov detectors~\cite{LHCb-DP-2012-003}. Photons, electrons and hadrons are identified by a calorimeter system consisting of scintillating-pad (SPD) and preshower detectors, an electromagnetic calorimeter and a hadronic calorimeter. Muons are identified by a system composed of alternating layers of iron and multiwire proportional chambers~\cite{LHCb-DP-2012-002}.
+
+Simulated signal samples are used to study the efficiencies. In the simulation, $pp$ collisions are generated using \pythia~\cite{Sjostrand:2006za} with a specific LHCb configuration~\cite{LHCb:2011dpk}. The prompt-charmonium production is simulated in \pythia with contributions from both the leading order color-singlet and color-octet mechanisms~\cite{LHCb:2011dpk,Bargiotti:2007zz}. Decays of hadronic particles are described by \evtgen~\cite{Lange:2001uf}, in which final state radiation is generated using \photos~\cite{Golonka:2005pn}. The interaction of the generated particles with the detector and its response are implemented using the \geant toolkit~\cite{GEANT4:2002zbu,Clemencic:2011zza}.  The charmonia are generated unpolarised since all the LHC measurements so far indicate that the polarisation is small~\cite{LHCb-PAPER-2013-008,LHCb-PAPER-2013-067}.
+
+
+%Selection
+\section{Selection of \boldmath{\jpsi} and \boldmath{\psitwos} candidates}
+\label{Candidate Reconstruction and selection}
+
+The \jpsi and \psitwos candidates are reconstructed through their decays to the $\mu^+\mu^-$ final state.
+The trigger selection consists of a hardware stage and a software stage. The hardware trigger selects events containing two tracks identified as muon tracks. Then in the software stage, the two muons are required to be oppositely charged and have good qualities of the track fit and vertex reconstruction fit. Both muons are required to have a momentum of at least $6 \gevc$ and transverse momentum $\pt > 0.3$~\gevc. The invariant masses of the \jpsi and \psitwos candidates must be within $120 \mevcc $ of the known  masses~\cite{Workman:2022ynf}. 
+
+Additional selections and particle identification (PID) requirements are imposed to suppress the background from random combinations of tracks. Each muon is further required to have $\pt>1.2\gevc$ and $2.0<\eta<4.9$. Events are required to have exactly one PV, with a coordinate along the beam direction, $z_{\mathrm{PV}}$, within a range in which the Vertex Locator (VELO) acceptance is uniform and the vertex reconstruction efficiency is weakly dependent on the track multiplicity. The range varies for the multiplicity variables due to the different rapidity ranges they are measured and is listed in Table~\ref{T1}, which is introduced together with multiplicity variables in Sec~\ref{sec:mul}. 
+
+The pseudo decay time $t_z$ is defined as
+\begin{equation}
+    \label{PseudoDecayTime}
+    t_z = \frac{(z-z_{\mathrm{PV}}) \times{} m}{p_z},
+\end{equation}
+where $z$ is the decay vertex $z$ coordinate of the charmonium candidate, $p_z$ is the momentum in $z$-direction, and $m$ is the known mass for the corresponding charmonium state~\cite{Workman:2022ynf}. Candidates are required to satisfy $|t_z|<10$~ps and $|\sigma_{t_z}|<0.3$~ps, where $\sigma_{t_z}$ is the uncertainty of $t_z$. The pseudo decay time distribution is used to distinguish the prompt from non-prompt charmonia, since $t_z$ tends to be larger for non-prompt components.
+
+%section for multiplicity variables
+\section{Multiplicity variables}
+\label{sec:mul}
+The multiplicity variables to be studied are defined as follows. 
+
+The local multiplicity, $N_{\rm tracks}^{\rm PV}$,  is the number of VELO tracks considered for a PV reconstruction, which is a good estimator for prompt charged-particle multiplicity  for events with one PV~\cite{Aaij:2014zzy, Kucharczyk:1756296}. The forward (backward) multiplicity is represented by $N_{\rm fwd}^{\rm PV}$ ($N_{\rm bwd}^{\rm PV}$), corresponding to the number of tracks in the forward (backward) pseudorapidity region of $1.5<\eta<5.2$ ($-5.2<\eta<-1.5$). The forward region roughly coincides with the LHCb acceptance. The two muon tracks are thus included in $N_{\rm tracks}^{\rm PV}$ and $N_{\rm fwd}^{\rm PV}$ but not in $N_{\rm bwd}^{\rm PV}$. The restriction on $z_{\rm PV}$ for different multiplicity variables is listed in Table~\ref{T1}, within which the VELO acceptance is roughly uniform for different multiplicity variables. 
+\begin{table}[H]
+\caption{Requirements on $z_{\rm PV}$ for different multiplicity variables.}
+\begin{center}
+\begin{tabular}{ll}
+\hline
+	Variable & $z_{\rm PV}$ range (mm)\\
+\hline
+         $N_{\rm tracks}^{\rm PV}$ & [--60, 180]\\
+         $N_{\rm fwd}^{\rm PV}$ & [--180, 180] \\
+         $N_{\rm bwd}^{\rm PV}$ & [--30, 180] \\
+\hline
+\end{tabular}
+\end{center}
+\label{T1}
+\end{table}
+
+The multiplicity variables are further nondimensionalised by dividing their corresponding mean values in no-bias data. The no-bias data are recorded with random trigger decisions, which makes its mean values of multiplicity good references. By nondimensionalising the multiplicity variables, the nearly negligible inefficiency can be further canceled. The mean values in no-bias data are summarized in Table~\ref{NoBiasMult}. The forward and backward multiplicity slightly don't sum up to the local multiplicity due to different constraints in the $z_{\rm PV}$ for different multiplicity variables. 
+\begin{table}[H]
+\caption{Mean values of the three multiplicity variables in no-bias data.}
+\begin{center}
+\begin{tabular}{ll}
+\hline
+Variable & mean value\\
+\hline
+	 $N_{\rm tracks}^{\rm PV}$ & 26.74 \\
+	 $N_{\rm fwd}^{\rm PV}$  & 16.53 \\
+	 $N_{\rm bwd}^{\rm PV}$  & 11.26 \\
+\hline
+\end{tabular}
+\end{center}
+\label{NoBiasMult}
+\end{table}
+
+
+%Cross section ratio
+\section{Determination of the cross-section ratio}
+\label{Ratio of Cross-Section Determination}
+\def\effTot{\ensuremath{\epsilon_{\mathrm{tot}}}\xspace}
+\def\effTotJ{\ensuremath{\epsilon_{\mathrm{tot,\jpsi}}}\xspace}
+\def\effTotP{\ensuremath{\epsilon_{\mathrm{tot,\psitwos}}}\xspace}
+\def\effiTotJ{\ensuremath{\epsilon_{\mathrm{\jpsi},i}}\xspace}
+\def\effiTotP{\ensuremath{\epsilon_{\mathrm{\psitwos},i}}\xspace}
+The double-differential cross-section for prompt and non-prompt $\jpsi$ and \psitwos production in a given (\pt, $y$) bin and multiplicity range is defined as
+\begin{equation}
+    \frac{\deriv^2\sigma}{\deriv y\deriv \pt} 
+	= \frac{N(\pt,y)}
+           {\mathcal{L}\times\effTot(\pt,y)\times \BR \times\Delta y \times \Delta \pt}, 
+  \label{CrossSecJ}
+\end{equation} 
+where $N(\pt,y)$ is the number of signal candidates extracted from a fit to the dimuon invariant mass, $\mathcal{L}$ is the integrated luminosity, \effTot is the total efficiency associated to the selection requirements, and $\Delta\pt$ and $\Delta y$ are the corresponding bin widths. The branching fractions $\BR(\jpsi\rightarrow\mu^+\mu^-)=(5.961\pm0.033)\%$ and $\BR(\psitwos\rightarrow e^+e^-)=(7.93\pm0.17)\times10^{-3}$ are used~\cite{Workman:2022ynf}. For the \psitwos mode, the dielectron decay, which has higher precision, is used under the assumption of lepton universality. The measurement is performed in the kinematic range $2.0<y<4.5$ and $0.3<\pt<20\gevc$, where the lower limit in \pt suppresses contributions from photon-induced production~\cite{Ma:2022rfl}.
+
+The double-differential ratio of prompt or non-prompt production in a certain multiplicity range is further defined by
+\begin{equation}
+    \frac{\sigma_{\psitwos}(\pt,y)}{\sigma_{\jpsi}(\pt,y)} =
+    \frac{N_{\psitwos}(\pt,y)}{N_{\jpsi}(\pt,y)} \times
+    \frac{\effTotJ(\pt,y)} {\effTotP(\pt,y)} \times
+    \frac{\mathcal{B}_{\jpsi \rightarrow \mu^+ \mu^-}}{\mathcal{B}_{\psitwos\rightarrow e^+e^-}}.
+    \label{Rsingle}
+\end{equation}
+Therefore, the ratio of production over an integrated (\pt, $y$) region can be calculated as $\Sigma_{k}\sigma_{\psitwos,k} / \Sigma_{k}\sigma_{\jpsi,k}$, where $k$ denotes the bin index for kinematic bins $(\pt,y)$.
+
+The yields of prompt and non-prompt charmonia are extracted by performing a two-dimensional extended unbinned maximum-likelihood fit to the distributions of invariant mass $m_{\mu^+\mu^-}$ and pseudo decay time $t_z$ of the candidates. The mass spectrum of signal is described by the sum of two Crystal Ball functions~\cite{Skwarnicki:1986xj}, which share a common mean but have independent width parameters. The relation between the widths and tail parameters are determined from simulation. The background in the mass spectrum is described by an exponential function whose decay parameter is allowed to vary. The pseudo decay time distribution of prompt and non-prompt charmonia are described by a Dirac delta function and an exponential function, respectively. Both are convolved with a common double-Gaussian function, which accounts for the detector resolution. The background $t_z$ distribution is parameterised with an empirical function consisting of three (two) exponential functions for positive (negative) $t_z$ direction, convolved with a double-Gaussian function. The parameters for the background shapes are determined from fits to data in the mass sideband regions, corresponding to candidates with masses at least $50\mev$ above or below the known charmonia masses, which are mostly populated by background. The background parameters are then fixed in the final two-dimensional fit. A charmonium candidate can also be associated to a wrong PV, resulting in a long tail component in the $t_z$ distribution. Even though the number of PVs is restricted to be exactly one, it is still possible that the true PV is not reconstructed and the candidate is associated to an incorrect PV. Its shape is modelled from data by calculating $t_z$ with respect to the PV of the next event. As an example, the projections in mass and pseudo decay time of two-dimensional fits to the \jpsi and \psitwos distributions are shown in Fig.~\ref{fig:2Dtz}.
+ \begin{figure}[!tbp]
+   \begin{center}
+     \includegraphics[width=0.49\linewidth]{pdf/Jpsi/2DFit/n1y2pt4.pdf}
+     \includegraphics[width=0.49\linewidth]{pdf/Jpsi/drawmass/n1y2pt4.pdf}
+     \includegraphics[width=0.49\linewidth]{pdf/Psi2S/2DFit/n1y2pt4.pdf}
+     \includegraphics[width=0.49\linewidth]{pdf/Psi2S/drawmass/n1y2pt4.pdf}
+   \end{center}
+   \caption{
+   Distributions of the (left) pseudo decay time and (right) mass for (upper) \jpsi and (lower) \psitwos are plotted in the region $4\leq N_{\rm tracks}^{\rm PV} < 20$, $2.8<y<3.5$, and $6<\pt<8\gevc$. The fit results are overlaid.
+     }
+   \label{fig:2Dtz}
+ \end{figure}
+The total efficiency \effTot is the product of the geometrical acceptance and the efficiencies of the particle reconstruction, event selection, muon identification and the trigger. The track reconstruction and muon identification efficiencies are determined using data-driven methods~\cite{Anderlini:2202412,LHCb-DP-2013-002}. The trigger efficiency is estimated on simulation and cross-checked using data~\cite{Tolk:2014llp}. The total efficiencies for prompt and non-prompt signals are calculated separately in each (\pt, $y$) and multiplicity bin. They are found to be very similar.
+The efficiencies in different multiplicity regions are determined separately, according to the binning scheme in data samples.
+
+
+%Systematic uncertainty
+\section{Systematic uncertainties}
+\def\effTri{\ensuremath{\epsilon_{\mathrm{trigger}}}\xspace}
+\def\effTotJ{\ensuremath{\epsilon_{\mathrm{tot,\jpsi}}}\xspace}
+\def\effTotP{\ensuremath{\epsilon_{\mathrm{tot,\psitwos}}}\xspace}
+\def\pandb{prompt components and components from $b$-hadron decay}
+Systematic uncertainties arising from a variety of sources are studied. The systematic uncertainty ranges for the ratios in different $N_{\rm tracks}^{\rm PV}$ bins are summarized in Table~\ref{SysU}. The binning scheme for multiplicity and (\pt, $y$) ensures that in each individual bin, analysis can be performed with enough events.
+
+To study the uncertainties related to the mass fits, the signal invariant mass distribution in each bin is also fitted with a kernel-estimated~\cite{Cranmer:2000du} distribution extracted from simulated samples. In order to account for the difference in resolution between data and simulation, a Gaussian function is used to smear the shape of the signals. The study is performed in each kinematic and multiplicity bin, and the relative difference between the ratio obtained from the default fit model and from the alternative fit model is quoted as a systematic uncertainty for both the prompt and non-prompt ratios.
+
+To estimate the uncertainty due to imperfection of the $t_z$ signal model, it is fitted to the simulated sample, where the true numbers of prompt and non-prompt candidates are known. Then the fit yield is compared to the true numbers and the variation is quoted as a systematic uncertainty. For the $t_z$ background model, the sideband sample which the model is originally fitted to, is replaced by the distribution extracted from the data using the $sPlot$~\cite{Pivk:2004ty} method. The invariant mass and pseudo decay time have a correlation factor of $10^{-3}$, so the invariant mass may be used as a discriminating variable to extract the signal and background distribution of pseudo decay time $t_z$ with the $sPlot$~\cite{Pivk:2004ty} method. The difference between the alternative and default fits is taken as a systematic uncertainty.
+
+
+The tracking efficiencies are determined from the simulation. Corrections, as a function of $p$ and $\eta$, are determined using \jpsi control samples in data~\cite{DeCian:1402577}. The uncertainty due to the limited size of the control samples are propagated to the results using pseudoexperiments. The multiplicity distribution of simulated samples is weighted to match that of the control samples, and the bias caused by the choice of the multiplicity variable is canceled in the \psitwos-to-\jpsi cross-section production ratio.
+
+The muon identification efficiency is obtained using simulated samples and calibrated with data samples of $\jpsi\rightarrow \mu^+\mu^-$ decays using the tag-and-probe method~\cite{Archilli:2013npa}.  The single-muon identification efficiency is calculated as a function of $p$, $\eta$ and the number of hits in the SPD, $N_{\rm spd}$. The uncertainty due to the limited size of control samples is propagated to the final result. The uncertainty related to the binning scheme is studied by changing the binning scheme of ($p$,$\eta$,$N_{\rm spd}$), and the variation on the ratio of production is quoted as a systematic uncertainty.
+
+The uncertainty due to limited size of the simulated sample used to determine the efficiencies is propagated to the final result. The trigger efficiency is estimated from simulation and is cross-checked by a data-driven method using a fully reconstructed sample. The trigger efficiency in data is determined using a subset of events that would have triggered independently of the \jpsi and \psitwos signal candidates~\cite{LHCb-DP-2012-004}. The relative difference between data and simulation in different multiplicity bins is taken as a systematic uncertainty.
+The uncertainties in the charmonium branching ratios and luminosity cancel in the normalised ratios, defined as the ratios in different multiplicity regions divided by the total ratio over all multiplicity regions.
+\begin{table}[!tbp]
+  \centering
+	\caption{Summary of systematic uncertainty ranges for the double-differential \psitwos-to-\jpsi cross-section ratio, in different kinematic bins within corresponding multiplicity intervals in $\%$. Sources marked with $\dagger$ are considered to be correlated beween bins.}
+\begin{center}
+  \begin{tabular}{l|ccccc}
+    \hline
+    & \multicolumn{5}{c}{Interval of $N_{\rm tracks}^{\rm PV}$}\\
+    Source &  4--20 & 20--45  & 45--70   & 70--95   & 95--200   \\ \hline
+    Signal mass shape$\dagger$ & & & & &  \\
+    prompt \& non-prompt & 0.1--1.6 & 0.1--1.3 & 0.1--1.1 & 0.1--1.8 & 0.1--3.2 \\ \hline
+    Signal $t_z$ shape$\dagger$  & & & & &  \\
+    prompt & 0.2--1.8 & 0.2--1.2 & 0.0--1.4 & 0.0--1.8 & 0.1--9.7 \\ 
+    non-prompt & 0.0--1.8 & 0.2--2.0 & 0.0--2.3 & 0.1--1.7 & 0.0--4.0 \\ \hline
+    Background $t_z$ shape$\dagger$  & & & & &  \\
+    prompt & 0.0--1.6 & 0.2--3.1 & 0.0--2.2 & 0.2--6.2 & 0.4--6.4 \\
+    non-prompt & 1.2--6.5 & 0.2--5.1 & 0.2--3.4 & 0.6--3.7 & 0.0--9.7 \\ \hline
+    Tracking efficiency$\dagger$ & & & & &  \\
+    prompt & 0.0--0.8 & 0.0--0.7 & 0.0--0.7 & 0.0--0.7 & 0.0--0.8 \\
+    non-prompt & 0.0--1.0 & 0.0--1.1 & 0.0--1.2 & 0.0--1.1 & 0.0--1.1 \\ \hline
+    Trigger efficiency$\dagger$ & & & & &  \\
+    prompt \& non-prompt & 2.1 & 4.0 & 1.0 & 0.0 & 1.1 \\ \hline
+    Muon ID sample size$\dagger$ & & & & &  \\
+    prompt & 0.0--0.1 & 0.0--0.1 & 0.0--0.1 & 0.0--0.1 & 0.0--0.1 \\
+    non-prompt & 0.0--0.1 & 0.0--0.1 & 0.0--0.1 & 0.0--0.1 & 0.0--0.1 \\
+    Muon ID binning$\dagger$ & & & & &  \\
+    prompt & 0.1--0.8 & 0.1--0.8 & 0.1--0.9 & 0.1--0.7 & 0.1--0.9 \\
+    non-prompt & 0.0--0.9 & 0.0--0.8 & 0.1--0.7 & 0.1--0.8 & 0.1--1.0 \\ \hline
+    Simulated sample size & & & & &  \\
+    prompt & 1.5--4.4 & 1.1--2.4 & 1.3--2.5 & 2.0--3.4 & 4.0--6.4 \\
+    non-prompt & 2.7--5.5 & 1.6--3.2 & 1.6--3.4 & 2.3--4.7 & 4.1--8.9 \\ \hline
+    Total & & & & &  \\
+    prompt & 3.1--7.7 & 4.3--5.5 & 2.2--3.9 & 2.9--7.7 & 6.1--13 \\
+    non-prompt &5.2--10.2 & 5.0--7.6 & 3.3--5.3 & 3.9--8.4 & 7.4--17\\ \hline
+\end{tabular}
+\end{center}
+\label{SysU}
+\end{table}
+
+The \psitwos-to-\jpsi cross-section ratios are reported with integration separately over \pt and $y$, and over the full \pt and $y$ range. The systematic uncertainties that are correlated across different bins may cancel each other when adding the production over different kinematic bins, since in some bins the production cross-section may be over-estimated and in other bins it may be under-estimated. The systematic uncertainties for ratios over integrated kinematic bins are obtained in the same way as for each bins. The uncertainties that are not correlated across different bins are propagated to the final result.
+
+%Result:
+\section{Results}
+\label{sec:results}
+
+\subsection{\boldmath{\psitwos-to-\jpsi} ratio as a function of multiplicity}
+The measured \psitwos-to-\jpsi production cross-section ratios are presented in various kinematic and multiplicity bins, with the full numerical data details provided in Appendix A~\ref{Sec:Ratio}. 
+Subsequently, the normalised ratio as a function of the nondimensionalised multiplicity can be obtained by integrating the double-differential results over the \pt and $y$ bins. The \psitwos-to-\jpsi ratio in each multiplicity bin is normalised to the ratio of total cross-section of \jpsi and \psitwos mesons as
+\begin{equation}
+\mathrm{Normalised \ } \sigma_{\psitwos,n}/\sigma_{\jpsi,n}=\frac{\sigma_{\psitwos,n}/\sigma_{\jpsi,n}}{\sum_n\sigma_{\psitwos,n}/\sum_n\sigma_{\jpsi,n}},
+\label{norm}
+\end{equation}
+where $n$ is the bin index for multiplicity.
+The normalised ratio for the integrated production over \pt and $y$ as a function of the nondimensionalised $N_{\rm tracks}^{\rm PV}$ is illustrated in Fig.~\ref{Ratio}. The multiplicity distribution for \jpsi and \psitwos are quite similar to each other, and the $x$-values are the weighted average of (non-)prompt \jpsi and \psitwos multiplicity in each bin, where the weight is the inverse variation of the multiplicity distribution in corresponding bin. The uncertainty for the $x$-values is nearly negligible. For the sake of visibility, a small width is applied when drawing the systematic uncertainty.
+
+The production ratio from $b$-hadron decays shows little dependence on multiplicity irrespective of the choice of multiplicity variable. For prompt \psitwos and \jpsi,  an evident decrease of ratio with $N_{\rm tracks}^{\rm PV}$ is observed (P-value of slope $<0.0005$), which aligns well with the predictions of the co-mover model, except in the low multiplicity region.
+\begin{figure}[H]
+    \begin{center}
+      \includegraphics[width=0.6\linewidth]{pdf/Result/All.pdf}
+    \end{center}
+	\caption{Normalised production ratio as a function of $N_{\rm tracks}^{\rm PV}/\langle N_{\rm tracks}^{\rm PV}\rangle_{\rm{NB}}$, integrated over the full \pt-$y$ range of $2.0<y<4.5$ and $0.3<\pt<20$~\gevc with $-60 < z_{\rm PV} < 180$~mm. The error bars represent statistical uncertainties and heights of the boxes represent systematical uncertainties. 
+      }
+    \label{Ratio}
+\end{figure}
+
+Additionally, the ratios are examined as a function of the nondimensionalised $N_{\rm bwd}^{\rm PV}$ and $N_{\rm fwd}^{\rm PV}$ in Fig.~\ref{RatioFB}. 
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.49\linewidth]{pdf/Result/AllB.pdf}
+    \includegraphics[width=0.49\linewidth]{pdf/Result/AllF.pdf}
+    \vspace*{-0.5cm}
+  \end{center}
+	\caption{Normalised production ratio as a function of (left) $N_{\rm bwd}^{\rm PV}/\langle N_{\rm bwd}^{\rm PV}\rangle_{\rm{NB}}$ , with $-30<z_{\rm PV}<180$~mm, and (right) $N_{\rm fwd}^{\rm PV}/\langle N_{\rm fwd}^{\rm PV}\rangle_{\rm{NB}}$, with $-180<z_{\rm PV}<180$~mm, integrated over the full \pt-$y$ range of $2.0<y<4.5$ and $0.3<\pt<20$~\gevc.
+    }
+  \label{RatioFB}
+\end{figure}
+Notably, the trend is weaker as a function of $N_{\rm bwd}^{\rm PV}$ than $N_{\rm fwd}^{\rm PV}$ and  $N_{\rm tracks}^{\rm PV}$. This suggests a correlation between the relative suppression and local particle multiplicity. According to comover effect~\cite{Ferreiro:2012rq}, the ratio should remain constant across different $N_{\rm bwd}^{\rm PV}$, with $N_{\rm bwd}^{\rm PV}$ being measured in a backward rapidity range and not including the muon tracks from charmonia. The slight decreasing trend of ratio as function of $N_{\rm bwd}^{\rm PV}$ could result from the correlation between $N_{\rm bwd}^{\rm PV}$ and $N_{\rm fwd}^{\rm PV}$, where the correlation factor is 0.54 and 0.51 for prompt \jpsi and \psitwos, respectively. To estimate the impact of this correlation, the mean $N_{\rm fwd}^{\rm PV}$ value within each $N_{\rm bwd}^{\rm PV}$ bin for prompt charmonia is calculated. Then, the normalised ratios across different $N_{\rm bwd}^{\rm PV}$ bins are plotted as a function of $N_{\rm fwd}^{\rm PV}$, as shown in Fig.~\ref{BtoF}. A coherent alignment in the decreasing trend is consistent with the hypothesis that the dependency of the normalised \psitwos-to-\jpsi ratio on $N_{\rm bwd}^{\rm PV}$ arises from $N_{\rm bwd}^{\rm PV}$-$N_{\rm fwd}^{\rm PV}$ correlation. 
+\begin{figure}[H] 
+    \begin{center}
+      \includegraphics[width=0.6\linewidth]{pdf/Result/AllBtoF.pdf}
+    \end{center}
+	\caption{Normalised production ratio as a function of $N_{\rm fwd}^{\rm PV}/\langle N_{\rm fwd}^{\rm PV}\rangle_{\rm{NB}}$, compared to a translation of the ratio as a function of $N_{\rm bwd}^{\rm PV}/\langle N_{\rm bwd}^{\rm PV}\rangle_{\rm{NB}}$.
+      } 
+    \label{BtoF}
+\end{figure}
+
+\subsection{\boldmath{\psitwos-to-\jpsi} ratio in different \pt and $y$ ranges}
+Figures~\ref{RatioPT_PVN},~\ref{RatioPT_For}, and~\ref{RatioPT_Back} present the normalised production ratios, as a function of the multiplicity, in different \pt ranges. The mean values for multiplicity variables in each bin are calculated in different kinematic regions accordingly, where their distributions are slight different. The relative production of \psitwos mesons is suppressed in the lower \pt region. However, in the high-\pt region, the prompt is almost independent of multiplicity as the non-prompt ratio. This is consistent with the measurement on multiplicity dependence of $\it{\Upsilon}(nS)$ by CMS~\cite{CMS:2020fae} and ATLAS~\cite{ATLAS-CONF-2022-023}, where the decreasing trend become slight in the high-\pt region.
+
+
+\begin{figure}[H]
+  \begin{center}
+
+	  \includegraphics[width=0.48\linewidth]{pdf/Result/promptRatioPT.pdf}
+          \includegraphics[width=0.48\linewidth]{pdf/Result/frombRatioPT.pdf}
+	  \vspace*{-0.5cm}
+  \end{center}
+	\caption{Normalised production ratio for (left) prompt and(right) non-prompt charmonia as a function of $N_{\rm tracks}^{\rm PV}/\langle N_{\rm tracks}^{\rm PV}\rangle_{\rm{NB}}$ in different \pt intervals.}
+  \label{RatioPT_PVN}
+\end{figure}
+\begin{figure}[H]
+  \begin{center}
+	  \vspace*{-0.5cm}
+    \includegraphics[width=0.48\linewidth]{pdf/Result/promptRatioPTF.pdf}
+    \includegraphics[width=0.48\linewidth]{pdf/Result/frombRatioPTF.pdf}
+	  \vspace*{-0.5cm}
+  \end{center}
+	\caption{Normalised production ratio for (left) prompt and(right) non-prompt charmonia as a function of $N_{\rm fwd}^{\rm PV}/\langle N_{\rm fwd}^{\rm PV}\rangle_{\rm{NB}}$ in different \pt intervals.}
+  \label{RatioPT_For}
+\end{figure}
+\begin{figure}[H]
+  \begin{center}
+	  \vspace*{-0.5cm}
+    \includegraphics[width=0.48\linewidth]{pdf/Result/promptRatioPTB.pdf}
+    \includegraphics[width=0.48\linewidth]{pdf/Result/frombRatioPTB.pdf}
+	  \vspace*{-0.5cm}
+  \end{center}
+	\caption{Normalised production ratio for (left) prompt and(right) non-prompt charmonia as a function of $N_{\rm bwd}^{\rm PV}/\langle N_{\rm bwd}^{\rm PV}\rangle_{\rm{NB}}$ in different \pt intervals.}
+  \label{RatioPT_Back}
+\end{figure}
+
+The results for the ratio in different rapidity bins are shown in Figs.~\ref{RatioY},~\ref{RatioY_For} and~\ref{RatioY_Back}. Notably, there is minimal difference across different rapidity regions, for both prompt and non-prompt signals.
+
+\begin{figure}[H]
+  \begin{center}
+
+    \includegraphics[width=0.48\linewidth]{pdf/Result/promptRatioY.pdf}
+    \includegraphics[width=0.48\linewidth]{pdf/Result/frombRatioY.pdf}
+	  \vspace*{-0.5cm}
+  \end{center}
+	\caption{Normalised production ratio for (left) prompt and(right) non-prompt charmonia as a function of $N_{\rm tracks}^{\rm PV}/\langle N_{\rm tracks}^{\rm PV}\rangle_{\rm{NB}}$ in different $y$ intervals.}
+  \label{RatioY}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+	  \vspace*{-0.5cm}
+    \includegraphics[width=0.48\linewidth]{pdf/Result/promptRatioYF.pdf}
+    \includegraphics[width=0.48\linewidth]{pdf/Result/frombRatioYF.pdf}
+	  \vspace*{-0.5cm}
+  \end{center}
+	\caption{Normalised production ratio for (left) prompt and(right) non-prompt charmonia as a function of $N_{\rm fwd}^{\rm PV}/\langle N_{\rm fwd}^{\rm PV}\rangle_{\rm{NB}}$ in different $y$ intervals.}
+  \label{RatioY_For}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+	  \vspace*{-0.5cm}
+    \includegraphics[width=0.48\linewidth]{pdf/Result/promptRatioYB.pdf}
+    \includegraphics[width=0.48\linewidth]{pdf/Result/frombRatioYB.pdf}
+	  \vspace*{-0.5cm}
+  \end{center}
+	\caption{Normalised production ratio for (left) prompt and(right) non-prompt charmonia as a function of $N_{\rm bwd}^{\rm PV}/\langle N_{\rm bwd}^{\rm PV}\rangle_{\rm{NB}}$ in different $y$ intervals.}
+  \label{RatioY_Back}
+\end{figure}
+
+\subsection{Comparisons with other measurements}
+\label{Compare}
+Measurements of $\BR_{\psitwos}\times\sigma_{\psitwos}$ with $\BR_{\jpsi}\times\sigma_{\jpsi}$ have been carried out across diverse collision systems and energies by comparing the ratio of $\sigma_{\psitwos}/\sigma_{\jpsi}$ alongside their branching fractions and systematic uncertainties. Remarkably, the ratio is consistent regardless of the collision systems and energies. A comprehensive comparison is shown in Figs.~\ref{compare_total} and~\ref{compare_pt}, revealing strong agreement with other measurements~\cite{PHENIX:2016vmz,NA50:2006rdp,PHENIX:2011gyb,E705:1992vec,NA51:1998uun,Clark:1978mg,UA1:1990eni,CDF:1997ykw,LHCb:2013nqs,CMS:2011rxs,ALICE:2017leg}, which has been summarized in~\cite{PHENIX:2016vmz}. The value of this measurement is
+\begin{equation}
+		\frac{\BR_{\psitwos}\times\sigma_{\psitwos}}{\BR_{\jpsi}\times\sigma_{\jpsi}} = (1.894\pm0.039)\%.
+\end{equation}
+
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=0.7\linewidth]{pdf/Result/VariousMeasurements.pdf }
+  \end{center}
+  \caption{Production ratios compared to existing measurements~\cite{PHENIX:2016vmz}.}
+\label{compare_total}
+\end{figure}
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=0.7\linewidth]{pdf/Result/Comparisons_PT_VariousMeasurements.pdf}
+  \end{center}
+  \caption{Production ratios as a function of \pt compared to existing measurements~\cite{PHENIX:2016vmz} and model predictions~\cite{Ma:2014mri}.}
+\label{compare_pt}
+\end{figure}
+
+
+
+%Conclusion:
+\cleardoublepage
+\section{Conclusion}
+\label{sec:conclusion}
+
+This analysis presents a measurement of the the normalised \psitwos-to-\jpsi cross-section ratio, as a function of different charged-track multiplicity variables, in $pp$ collisions at $\sqrt{s}=13$~TeV. The data sample was collected by the \lhcb detector in 2016 and corresponds to an integrated luminosity of $658\pm 13$\invpb.
+
+Notably, for non-prompt production the cross-section ratio exhibits no dependence on any of these multiplicity variables. In contrast, in prompt production the ratio decreases as a function of $N_{\rm tracks}^{\rm PV}$, which is a trend that aligns well with the predictions of the co-mover model. Furthermore, the ratio for prompt production has a similar trend as a function of $N_{\rm fwd}^{\rm PV}$, which can be attributed to the correlation between the multiplicity and the charmonium production, a phenomenon that can also be ascribed to the co-mover effect. The use of $N_{\rm bwd}^{\rm PV}$ serves to mitigate this correlation, leading to a small yet observable diminishing trend in relation to multiplicity. The small dependence on $N_{\rm bwd}^{\rm PV}$ could arise from the correlation between $N_{\rm bwd}^{\rm PV}$ and $N_{\rm fwd}^{\rm PV}$. The distinct behaviors exhibited by the prompt and non-prompt components underscore the significant influence of interactions with other particles within the collision event on charmonium production, even in $pp$ collisions. Furthermore, the variation of these ratios as a function of different multiplicity variables further solidifies this perspective. 
+
+The multiplicity dependence of the ratios is also measured in distinct \pt and $y$ regions, uncovering an enhanced suppression pattern at low \pt, and an almost multiplicity independence in the high-\pt region for prompt \psitwos-to-\jpsi ratio, regardless of the choice of multiplicity variables. Finally, the results of the ratio $\BR_{\psitwos} \times \sigma_{\psitwos}$ over $\BR_{\jpsi} \times \sigma_{\jpsi}$ are compared with other measurements, and are found to be in agreement with a relative higher precision.
+
+
+%Acknowledgements:
+\section*{Acknowledgements}
+%
+% These Acknowledgements valid from 3-May-2019
+%
+We express our gratitute to Elena Gonzalez Ferreiro for the co-mover model predictions and YanQing Ma for the NRQCD model predictions.
+We express our gratitude to our colleagues in the CERN
+accelerator departments for the excellent performance of the LHC. We
+thank the technical and administrative staff at the LHCb
+institutes.
+We acknowledge support from CERN and from the national agencies:
+CAPES, CNPq, FAPERJ and FINEP (Brazil); 
+MOST and NSFC (China); 
+CNRS/IN2P3 (France); 
+BMBF, DFG and MPG (Germany); 
+INFN (Italy); 
+NWO (Netherlands); 
+MNiSW and NCN (Poland); 
+MCID/IFA (Romania); 
+%MSHE (Russia); 
+MICINN (Spain); 
+SNSF and SER (Switzerland); 
+NASU (Ukraine); 
+STFC (United Kingdom); 
+DOE NP and NSF (USA).
+We acknowledge the computing resources that are provided by CERN, IN2P3
+(France), KIT and DESY (Germany), INFN (Italy), SURF (Netherlands),
+PIC (Spain), GridPP (United Kingdom), 
+%RRCKI and Yandex LLC (Russia), 
+CSCS (Switzerland), IFIN-HH (Romania), CBPF (Brazil),
+and Polish WLCG (Poland).
+We are indebted to the communities behind the multiple open-source
+software packages on which we depend.
+Individual groups or members have received support from
+ARC and ARDC (Australia);
+Key Research Program of Frontier Sciences of CAS, CAS PIFI, CAS CCEPP, 
+Fundamental Research Funds for the Central Universities, 
+and Sci. \& Tech. Program of Guangzhou (China);
+Minciencias (Colombia);
+EPLANET, Marie Sk\l{}odowska-Curie Actions, ERC and NextGenerationEU (European Union);
+A*MIDEX, ANR, IPhU and Labex P2IO, and R\'{e}gion Auvergne-Rh\^{o}ne-Alpes (France);
+%RFBR, RSF and Yandex LLC (Russia);
+AvH Foundation (Germany);
+ICSC (Italy); 
+GVA, XuntaGal, GENCAT, Inditex, InTalent and Prog.~Atracci\'on Talento, CM (Spain);
+SRC (Sweden);
+the Leverhulme Trust, the Royal Society
+ and UKRI (United Kingdom).
+
+ %Appendix
+\clearpage
+\section*{A. Numeric results}
+\label{Sec:Ratio}
+%\subsection*{A.1 Taking $N^{PV}_{tracks}$ as multiplicity variable} 
+\input{Table/Ratio/n1.tex}
+\input{Table/Ratio/n2.tex}
+\input{Table/Ratio/n3.tex}
+\input{Table/Ratio/n4.tex}
+\input{Table/Ratio/n5.tex}
+%\subsection*{A.2 Taking $N^{PV}_bwd$ as multiplicity variable} 
+\input{Table/Ratio/n1b.tex}
+\input{Table/Ratio/n2b.tex}
+\input{Table/Ratio/n3b.tex}
+\input{Table/Ratio/n4b.tex}
+\input{Table/Ratio/n5b.tex}
+%\subsection*{A.3 Taking $N^{PV}_{fwd}$ as multiplicity variable} 
+\input{Table/Ratio/n1f.tex}
+\input{Table/Ratio/n2f.tex}
+\input{Table/Ratio/n3f.tex}
+\input{Table/Ratio/n4f.tex}
+\input{Table/Ratio/n5f.tex}
+\clearpage
+
+
+\addcontentsline{toc}{section}{References}
+
+\bibliographystyle{LHCb}
+\bibliography{main,standard,LHCb-PAPER,LHCb-CONF,LHCb-DP,LHCb-TDR}
+\input{Authorship_LHCb-PAPER-2023-035}
+
+
+\end{document}

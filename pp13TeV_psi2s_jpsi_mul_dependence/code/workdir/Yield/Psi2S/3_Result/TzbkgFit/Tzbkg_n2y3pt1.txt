@@ -1,0 +1,28 @@
+bias = 0.00276836
+biasError = 0.000821845
+sigma1 = 1
+sigma1Error = 0
+sigma2 = 1.13395
+sigma2Error = 0.0115295
+beta = 0
+betaError = 0
+tau1 = 0.890342
+tau1Error = 0.0269226
+tau2 = 0.19604
+tau2Error = 0.00615378
+tau3 = 0.177811
+tau3Error = 0.00557442
+tau4 = 3.84712
+tau4Error = 0.549746
+f1 = 0.130247
+f1Error = 0.00585294
+f2 = 0.331607
+f2Error = 0.00642153
+f3 = 0.072785
+f3Error = 0.00282589
+f4 = 0.00535167
+f4Error = 0.000598565
+6
+f4Error = 0.000516392
+22
+

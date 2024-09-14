@@ -1,0 +1,1 @@
+./CBFit ../../2_Rootfile/Data_after_cut/n${1}y${2}pt${3}.root ../../4_Plot/CB/n${1}y${2}pt${3}.pdf ../../3_Result/CBFit/n${1}y${2}pt${3}.txt ../../3_Result/CBFit/MFit_to_2DFit/n${1}y${2}pt${3}.txt  ../../2_Rootfile/CB_splot/Psi2S_splot_n${1}y${2}pt${3}.root >& ../../3_Result/CBFit/MFit_to_2DFit/n${1}y${2}pt${3}.log

@@ -1,0 +1,44 @@
+\section{Data and Monte Carlo samples}
+\label{Data and Monte Carlo samples}
+\subsection{Data}
+The study here uses $pp$ collision data collected by the LHCb detector at a center-of-mass energy of 
+13 TeV in 2016 with a corresponding luminosity of 658$\pm$13 pb$^{-1}$. To enlarge the sample size, two different 
+TCKs 0x1138160F and 0x11381612 of both MagUp and MagDown were used. In this analysis, only muon triggers are 
+used, and both TCKs have identical criteria for muon selection. The bookkeeping paths for the mdst file for both \jpsi and \psitwos are as follows:
+\begin{itemize}
+    \item MagUp /LHCb/Collision16/Beam6500GeV-VeloClosed-MagUp/Real Data/Turbo03a/94000000/LEPTONS.MDST
+    \item MagDown /LHCb/Collision16/Beam6500GeV-VeloClosed-MagDown/Real Data/Turbo03a/94000000/LEPTONS.MDST
+\end{itemize}
+The NoBias data is used for normalization of multiplicity. The bookkeeping path for the mdst file is:
+\begin{itemize}
+    \item /LHCb/Collision16/Beam6500GeV-VeloClosed-MagDown/Real Data/Reco16/96000000/FULL.DST
+\end{itemize}
+
+
+\subsection{Monte Carlo}
+To study the efficiency, full simulation Monte Carlo samples with about 20 M candidates for \jpsi and 10 M for \psitwos. The bookKeeping path for them are:
+\begin{itemize}
+    \item \jpsi
+    \begin{itemize}
+        \item MagUp /MC/2016/24142001/Beam6500GeV-2016-MagUp-Nu1.6-25ns-Pythia8/Sim09b/Trig0x6138160F/Reco16/Turbo03/ \\
+        Stripping26NoPrescalingFlagged/ALLSTREAMS.DST
+        \item MagDown /MC/2016/24142001/Beam6500GeV-2016-MagDown-Nu1.6-25ns-Pythia8/Sim09b/Trig0x6138160F/Reco16/Turbo03/ \\
+        Stripping26NoPrescalingFlagged/ALLSTREAMS.DST
+    \end{itemize}
+    \item \psitwos
+    \begin{itemize}
+        \item MagUp: /MC/2016/28142001/Beam6500GeV-2016-MagDown-Nu1.6-25ns-Pythia8/Sim09i/Trig0x6139160F/Reco16/Turbo03a/ \\
+        Stripping28r2NoPrescalingFlagged/ALLSTREAMS.DST
+        \item MagDown: /MC/2016/28142001/Beam6500GeV-2016-MagUp-Nu1.6-25ns-Pythia8/Sim09i/Trig0x6139160F/Reco16/Turbo03/ \\
+        Stripping28r2NoPrescalingFlagged/ALLSTREAMS.DST
+    \end{itemize}
+\end{itemize}
+In the simulation, $pp$ collisions are generated using Pythia~\cite{Ball:2006wn} with a specific LHCb configuration~\cite{LHCb:2011dpk}. Decays of hadronic 
+particles are described by EvtGen~\cite{Lange:2001uf}, in which final state radiation is generated using Photos~\cite{Golonka:2005pn}. The 
+interaction of the generated particles with the detector and its response are implemented using the Geant4 
+toolkit~\cite{GEANT4:2002zbu} as described in Ref.~\cite{Clemencic:2011zza}. The prompt charmonium production is simulated in Pythia with 
+contributions from both the leading order color-singlet and color-octet mechanisms~\cite{LHCb:2011dpk,Bargiotti:2007zz}, and the charmonium 
+is generated without polarization.
+To study the geometrical acceptance, two samples of 100 k candidates generator level Monte Carlo are produced for both \jpsi and \psitwos respectively. Since the 
+acceptance is only a function of kinematic variables, hence, it is universal for all multiplicity regions. Under the binning scheme in Sec~\ref{Ratio of Cross-Section Determination}, the sample size is fairly enough.
+

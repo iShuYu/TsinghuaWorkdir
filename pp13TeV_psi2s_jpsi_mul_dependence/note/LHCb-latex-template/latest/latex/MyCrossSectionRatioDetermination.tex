@@ -1,0 +1,81 @@
+\section{Ratio of Cross-Section Determination}
+\label{Ratio of Cross-Section Determination}
+\def\effTot{\ensuremath{\epsilon_{\mathrm{tot}}}\xspace}
+\def\effTotJ{\ensuremath{\epsilon_{\mathrm{tot,\jpsi}}}\xspace}
+\def\effTotP{\ensuremath{\epsilon_{\mathrm{tot,\psitwos}}}\xspace}
+\subsection{Double Differential Cross-Section}
+The determination of the double-differential production cross-section requires knowledge 
+of the numbers of prompt and non-prompt signals of \jpsi and \psitwos in bins of the 
+kinematic variables $y$ and $p_T$, and multiplicity bin. This is done by 
+performing a simultaneous fit to the distributions of the dimuon invariant mass and the 
+pseudo-proper time $t_z$ in each bin. The $t_z$ of promptly produced signals has 
+zero lifetime, while the $t_z$ distribution for the non-prompt signal is 
+approximately exponential as seen from the simulation. The pseudo-proper time $t_z$ allows us 
+to statistically separate the prompt signal from that created in decays of b-hadrons.
+The double differential cross-section for prompt $\jpsi$ and $\jpsi$ from-$b$ production in a given (\pt, y) 
+bin with multiplicity in a certain range is defined as
+\begin{equation}
+    \frac{\deriv^2\sigma_{\jpsi}}{\deriv y\deriv \pt} 
+    = \frac{N(\jpsi\rightarrow\mu^+\mu^-)}
+           {\mathcal{L}\times\effTot\times \BR(\jpsi\rightarrow\mu^+\mu^-)\times\Delta y \times \Delta \pt}. 
+  \label{CrossSecJ}
+\end{equation}
+And for $\psitwos$
+\begin{equation}
+    \frac{\deriv^2\sigma_{\psitwos}}{\deriv y\deriv \pt} 
+    = \frac{N(\psitwos\rightarrow\mu^+\mu^-)}
+           {\mathcal{L}\times\effTot\times k\cdot \BR(\psitwos\rightarrow e^+ e^-)\times\Delta y \times \Delta \pt}. 
+  \label{CrossSecP}
+\end{equation}  
+where
+\begin{itemize}
+\item $N$ is either the number of prompt \psitwos or \psitwos from $b$-hadron signals of $\jpsi$ or $\psitwos$ reconstructed through the dimuon decay channel. They are obtained by the fits;
+\item $\mathcal{L}$ is the integrated luminosity;
+\item \effTot is the total efficiency in that particular $\pt-y$ bin with PVNTRACKS in a certain range, for both prompt and non-prompt and both  $\jpsi$ and $\psitwos$ respectively;
+\item $k$ is the phase space factor which is assume to be unit under the assumption of lepton universality.
+The lepton universality is a reasonable assumption under the current statistical precision;
+\item $\BR(\jpsi\rightarrow\mu^+\mu^-)=(5.961\pm0.033)\%$ is the branching fraction of the decay $\jpsi\rightarrow \mu^+ \mu^-$, quoted from the PDG 2022 review~\cite{Workman:2022ynf}.
+\item $\BR(\psitwos\rightarrow e^+e^-)=(7.93\pm0.17)\times10^{-3}$ is the branching fraction of the decay $\psitwos\rightarrow e^+ e^-$, quoted from the PDG 2022 review~\cite{Workman:2022ynf}. The dielectron branching fraction is used since it has a much smaller uncertainty than the dimuon one;
+\item $\Delta\pt$ is the bin width of the transverse momentum;
+\item $\Delta y$ is the bin width of the rapidity.
+\end{itemize}
+In the measurement of  modification of $b$ quark hadronization in high-multiplicity $pp$ collision at $\sqrt{s}=$ 13 TeV shows that, ratio of cross sections $\sigma_{B_s^0}/\sigma_{B^0}$ versus normalized multiplicity behaves differently according to the choices of multiplicity variable~\cite{LHCb:2022syj}. That motivates us to measure how the ratio changes with different multiplicity variables.
+The following boundaries are used for the binning scheme of \pt, $y$ and different multiplicity variables. To remove the contribution from photon-production charmonium, we remove the production for $\pt<0.3\gevc$:
+\begin{itemize}
+\item $\pt$ boundaries [\gevc]: 0.3, 2, 4, 6, 8, 20; 
+\item $y$ boundaries: 2.0, 2.8, 3.5, 4.5;
+\item For multiplicity (each at a time)
+\begin{itemize}
+  \item PVNTRACKS: 4, 20, 45, 70, 95, 200. (At least 4 tracks required.)
+  \item nBackTracks: 0, 8, 15, 22, 30, 80.
+  \item nForwardTracks: 0, 12, 24, 36, 48, 130.
+\end{itemize}  
+\end{itemize}
+There is a wider bin in high \pt and multiplicity region, and the scheme of $y$ is not exactly evenly distributed for the sake of significant signal numbers for fitting in each bin. And this binning scheme is common for both $\jpsi$ and $\psitwos$.
+To see how charmonium suppression is affected by charged particle multiplicity, we normalize the ratio of production to see the trend. The multiplicity variables are normalized by their respective mean value from an unbiased data sample from the same year. Here we divide them by the mean values from NoBias data rather than just the mean values in their trigger lines is due to the fact that the trigger line may influence the distribution of charged particle multiplicity. So the x-coordinate represents 'how many times is the multiplicity to the mean value of multiplicity from NoBias data'. Since the multiplicity distributions in high-energy hadron collisions is a KNO variable~\cite {Koba:1972ng}, which is, after normalized, the distribution of a certain collision system has the same distribution of a certain multiplicity variable. By scaling we change the multiplicity variable as a scale of how many times the mean number of charged particle multiplicity, so that the results are compatible with other results.
+
+
+\subsection{Ratio of Cross-Section}
+In each multiplicity region, we have defined the double differential cross-section in kinetic bin $(\pt,y)$ above. 
+Then the ratio of double differential cross-section is determined as follows
+\begin{equation} 
+    \frac{\sigma(\pt,y)_{\psitwos}}{\sigma(\pt,y,)_{\jpsi}} = 
+    \frac{N_{\psitwos}(\pt,y,)}{N_{\jpsi}(\pt,y,)} \times
+    \frac{\effTotJ(\pt,y)} {\effTotP(\pt,y)} \times 
+    \frac{\mathcal{B}_{\jpsi \rightarrow \mu^+ \mu^-}}{k\times \mathcal{B}_{\psitwos\rightarrow e^+e^-}},
+    \label{Rsingle}
+    \end{equation}
+where the bin widths for \pt and $y$ are canceled out, so as the luminosity term. While when calculating the ratio 
+of differential cross-section, the bin widths of \pt and $y$ are no longer canceled out since the binning scheme 
+is not uniform. Hence, the ratio of the cross-section is determined as follows,
+\begin{equation} 
+    \frac{\Sigma_{(\pt,y)}\sigma_{\psitwos}(\pt,y)}{\Sigma_{(\pt,y)}\sigma_{\jpsi}(\pt,y)} = 
+    \frac{\Sigma_{(\pt,y)}(\Delta \pt \times \Delta y \times N_{\psitwos}(\pt,y) / \effTotP(\pt,y))}
+    {\Sigma_{(\pt,y)}(\Delta \pt \times \Delta y \times N_{\jpsi}(\pt,y) / \effTotJ(\pt,y))} \times
+    \frac{\mathcal{B}_{\jpsi \rightarrow \mu^+ \mu^-}}{k\times \mathcal{B}_{\psitwos\rightarrow e^+e^-}}.
+\label{Rintegrated}
+\end{equation}
+
+In a small kinetic bin, the efficiency \effTot is assumed to be constant, and thus a single number with corresponding uncertainty is provided.
+The efficiency for prompt non-prompt signals is calculated separately for $\jpsi$ and $\psitwos$. And since our scheme is not significantly small, a re-weight in \pt-$y$ spectrum is performed when calculating the efficiency.
+

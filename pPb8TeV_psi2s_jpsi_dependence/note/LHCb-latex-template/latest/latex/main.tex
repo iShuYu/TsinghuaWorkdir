@@ -1,0 +1,1261 @@
+%\pdfoutput=1
+% Uncomment line above if submitting to arXiv and using pdflatex
+% ============================================================================
+% Purpose: Template for LHCb documents
+% Authors: Tomasz Skwarnicki, Roger Forty, Ulrik Egede, Patrick Koppenburg
+% Created on: 2010-09-24
+% ============================================================================
+\documentclass[12pt,a4paper]{article}
+%%\documentclass[12pt,letter]{article}
+% For two column text, add "twocolumn" as an option to the document
+% class. Also uncomment the two "onecolumn" and "twocolumn" lines
+% around the title page below.
+% Variables that controls behaviour
+\usepackage{ifthen} % for conditional statements
+\usepackage{setspace}
+\newboolean{pdflatex}
+\setboolean{pdflatex}{true} % False for eps figures 
+\newboolean{articletitles}
+\setboolean{articletitles}{true} % False removes titles in references
+\newboolean{uprightparticles}
+\setboolean{uprightparticles}{false} %True for upright particle symbols
+%\newboolean{inbibliography}
+%\setboolean{inbibliography}{false} %True once you enter the bibliography
+% Define titles and authors here. It will then be used both in metadata and in
+% what is printed on the front page.
+\def\paperauthors{Xianglei Zhu, Youen Kang, Li Xu, Chenzhi Dong} % Leave as is for PAPER, CONF and FIGURE
+\def\paperasciititle{Multiplicity dependence of ratio of production of psi(2S) over J/psi in pPb collisions at center-of-mass energy 8.16 TeV} % Set ASCII title here !! MAKE sure it's only ASCII characters !! 
+\def\papertitle{Multiplicity dependence of $\sigma_{\psitwos}/\sigma_{\jpsi}$ in $p$Pb collisions at $\sqrt{s_{NN}}=8.16$ TeV} % Latex formatted title
+\def\paperkeywords{{High Energy Physics}, {LHCb}} % Comma separated list
+%\def\papercopyright{CERN on behalf of the LHCb collaboration}
+\def\papercopyright{\the\year\ CERN for the benefit of the LHCb collaboration} % new since 9/Apr/2018
+\def\paperlicence{CC BY 4.0 licence}
+\def\paperlicenceurl{https://creativecommons.org/licenses/by/4.0/}
+\input{preamble}
+\usepackage{longtable} % only for template; not usually to be used in PAPERs
+\usepackage{multirow}
+\usepackage{float}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Title     %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\setcounter{footnote}{1}
+% %%%%%%% CHOOSE TITLE PAGE--------
+%\onecolumn
+%\input{title-LHCb-INT}
+% ===============================================================================
+% Purpose: LHCb-ANA Note title page template
+% Author: 
+% Created on: 2010-10-05
+% ===============================================================================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  TITLE PAGE  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+
+% Header ---------------------------------------------------
+\vspace*{-1.5cm}
+
+\noindent
+\begin{tabular*}{\linewidth}{lc@{\extracolsep{\fill}}r@{\extracolsep{0pt}}}
+\ifthenelse{\boolean{pdflatex}}% Logo format choice
+{\vspace*{-1.2cm}\mbox{\!\!\!\includegraphics[width=.14\textwidth]{figs/lhcb-logo.pdf}} & &}%
+{\vspace*{-1.2cm}\mbox{\!\!\!\includegraphics[width=.12\textwidth]{figs/lhcb-logo.eps}} & &}
+ \\
+ & & LHCb-ANA-XXX-XXX \\  % ID 
+ & & \today \\ % Date - Can also hardwire e.g.: 23 March 2010
+ & & \\
+\hline
+\end{tabular*}
+
+\vspace*{4.0cm}
+
+% Title --------------------------------------------------
+{\normalfont\bfseries\boldmath\huge
+\begin{center}
+% DO NOT EDIT HERE. Instead edit macro in main.tex to keep metadata correct
+  \papertitle
+\end{center}
+}
+
+\vspace*{2.0cm}
+
+% Authors -------------------------------------------------
+\begin{center}
+% If changing to list here, make pdfauthors in main.tex a comma
+% separated list with the same names. Otherwise metadata in file will be wrong.
+\paperauthors.
+\bigskip\\
+{\normalfont\itshape\footnotesize
+  Tsinghua University\\
+}
+\end{center}
+
+\vspace{\fill}
+
+% Abstract -----------------------------------------------
+\begin{abstract}
+  \noindent
+	Using a data sample with an integrated luminosity of 13.6 nb$^{-1}$ for $p$Pb collisions and 20.8 nb$^{-1}$ for Pb$p$ collisions collected by the LHCb detector in the LHC operations in 2016, the ratio of production cross section of $\psi(2S)$ over $J/\psi$ as a function of multiplicity was measured at a centre-of-mass energy $\sqrt{s_{NN}}=8.16$ TeV. 
+	A multiplicity-dependent modification of the ratio has been observed for prompt mesons in $p$Pb collisions when there is an overlap between the rapidity ranges where the multiplicity and the charmonia production are measured. No evident modification of the same significance for that of non-prompt component is observed. In Pb$p$ collisions, there is a overall reduction in the ratio compared to that in $p$Pb collisions, but no obvious decreasing trend on the ratio is observed for both prompt and non-prompt mesons.
+    The result in $pp$, $p$Pb (Pb$p$) and PbPb collisions are compared. A transition behaviour from small systems to large systems is observed. 
+	
+\end{abstract}
+
+\vspace*{2.0cm}
+\vspace{\fill}
+
+\end{titlepage}
+
+
+\pagestyle{empty}  % no page number for the title 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  EOD OF TITLE PAGE  %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  empty page follows the title page ----
+\newpage
+\setcounter{page}{2}
+\mbox{~}
+
+
+
+%\input{title-LHCb-CONF}
+%\input{title-LHCb-FIGURE}
+%\input{title-LHCb-PAPER}
+%\twocolumn
+% %%%%%%%%%%%%% ---------
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  Table of Content   %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Uncomment if desired
+%\tableofcontents
+\cleardoublepage
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Main text %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain} % restore page numbers for the main text
+\setcounter{page}{1}
+\pagenumbering{arabic}
+%% Uncomment during review phase. 
+%% Comment before a final submission.
+\linenumbers
+%% This is the main body
+%% It is useful to have a single file so comemnts are not missed in overleaf.
+\begin{spacing}{0.93}
+\tableofcontents 
+\end{spacing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Introduction%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:Introduction}
+Heavy quarkonium has long served as a probe for quantum chromodynamics (QCD). The production of heavy quarkonium can be separated into two steps: First, quark and anti-quark pairs $Q\bar{Q}$ with certain color and spin are produced in hard collisions, which can be calculated perturbatively Then, the produced $Q\bar{Q}$ hadronize into quarkonium at a momentum scale smaller than the mass of quarkonium. The second step is non-perturbative. Different treatments are proposed to solve the non-perturbative process, leading to differnt models like Color-Singlet Model (CSM), Color-Octet Model~\cite{Bodwin:1992qr}, Color-Evaporation Model (CEM)~\cite{Halzen:1977rs}, non-relavatistic QCD (NRQCD)~\cite{Bodwin:1994jh} and so on. 
+
+Quarkonium production is influenced by various mechanisms. In the very beginning stage of collisions, the color and momentum distributions of partons, which are governed by the nuclear parton distribution functions (nPDF)~\cite{AtashbarTehrani:2017mzi} will affect the quarkonium production. The geometry of the colliding nucleus also take part in the modification due to the resulting energy loss by multi-particle scattering~\cite{Arleo:2014oha}. These effects function on the quarkonium production in the initial stage are called initial-state effects. After heavy quarkonium is produced, it may also go through break-up and recombination, resulting in enhancement or suppression due to different effects. For example, quarkonium may break up via the multi-scattering in hot and dense quark-gluon plasma (QGP)~\cite{Wu:2010ze}. The Debye color screening~\cite{Quigg:1979vr} from the extremely dense color charge will also lead to the dissociation of heavy quarkonium. The dissociation due to the interaction with colliding nucleus is called nuclear absorption~\cite{Gavin:1990gm}. Luckily, in the rest frame of the target nucleus at high LHC energy, the formation time of quarkonium will boost to be larger than the radii of the nucleus. In this case, the nuclear absorption becomes negligible. The produced quarkonium will also interact with the comoving particles in similar rapidity ranges, known as comover effect~\cite{Ferreiro:2012rq}. These effects, occurring after the quarkonium is produced, are final-state effects. 
+
+By studying the \psitwos-to-\jpsi ratio, the initial-state effects cancel. Due to the larger radius of \psitwos, it will dissociate more easily in QGP due to Debye screening in a static and uniform medium and interaction in a dynamic and non-uniform environment like inhomogeneous fireball~\cite{Zhao:2020jqu}. Therefore, the \psitwos-to-\jpsi ratio can be a good probe for QGP.
+
+Another mechanism that affects the quarkonium production is the comover effect~\cite{Ferreiro:2012rq}, in which co-moving particles can modify quarkonium properties, resulting in the suppression of these states. Excited states of quarkonium are loosely bound with larger radii, and are more likely to dissociate in the interaction with co-moving particles, which manifests as relative suppression compared to ground states. The suppression by interaction with co-moving particles is correlated to the charged particle multiplicity since the latter influences the number of co-moving particles. The comover model has been successful at describing suppression of charmonia, bottomonia, and $X(3872)$ hadrons in various collision systems ~\cite{Gavin:1996yd,Ferreiro:2018wbd,Esposito:2020ywk,Braaten:2020iqw}. 
+
+Multiplicity dependence of the \psitwos-to-\jpsi production ratio has been studied by different experiments. The first measurement is given by NA50 experiment in PbPb collisions~\cite{NA50:2006yzz}. A decreasing trend for the \psitwos-to-\jpsi ratio with transverse energy, which is roughly proportional to the multiplicity, is found. However, ALICE did not find multiplicity dependence~\cite{Hushnud:2023kwf} in PbPb collisions. Then ALICE also measure the \psitwos-to-\jpsi production ratio in $pp$ and $p$Pb collisions~\cite{ALICE:2022gpu}, which didn't find a multiplicity dependence, either. The different behaviours may arise from the different kinematic regions for multiplicity measurements from ALICE and NA50 experiments. Meanwhile, the \psitwos-to-\jpsi ratio also behave differently in different collision systems. 
+
+This study uses $p$Pb collision data collected in 2016 by the LHCb detector at a center-of-mass energy of 8.16 TeV, corresponding to a luminosity of 13.6$\pm$0.3 pb$^{-1}$ (20.8$\pm$0.5 pb$^{-1}$ for Pb$p$), to measure and compare the production cross-sections of prompt and non-prompt (from $b-$hadron decay) \psitwos and \jpsi mesons.  The subsequent determination of cross-section ratios across different multiplicity regions help to understand the relation between charmonium production, QGP and the comover effect. 
+
+To distinguish between the influence of the comover effect on the production and that of QGP, several types of multiplicity variables are needed. In this analysis, the \psitwos-to-\jpsi cross-section ratio is measured as a function of the event multiplicity using the PV multiplicity, as well as forward (backward) multiplicity, which is measured in same (opposite) rapidity range over which the charmonia production is measured. The usage of backward multiplicity allows the comover effect to be removed so that the existence of QGP can be tested.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Data and MC%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data sets}
+\label{Data and Monte Carlo samples}
+\subsection{Data samples}
+The data used in this analysis was recorded during the Heavy Ion run 2016, between Nov. 18th and Nov. 25th for the $p$Pb configurtaion and between Nov. 26th and Dec. 4th for the Pb$p$ configuration, both at a center-of-mass energy of 8.16 TeV. The total recorded luminosity is of $13.6\pm0.3$nb$^{-1}$ for $p$Pb and $20.8\pm0.5$nb$^{-1}$ for Pb$p$. The magnet polarity was always DOWN throughout the whole period. The list of good runs are listed in Table~\ref{GoodRun}. The bookkeeping paths for data samples are as follows.
+\begin{itemize}
+\item $p$Pb \  /LHCb/Protonion16/Beam6500GeV-VeloClosed-MagDown/Real Data/Turbo03pLead/94000000/TURBO.MDST
+\item Pb$p$ \ /LHCb/Ionproton16/Beam6500GeV-VeloClosed-MagDown/Real Data/Turbo03pLead/94000000/TURBO.MDST
+\end{itemize}
+\begin{table}[!tbp]
+\caption{List of good runs}
+\begin{center}
+\begin{tabular}{l|l}
+\hline
+\multicolumn{2}{c}{$p$Pb}\\
+\hline
+Fill&Run\\
+\hline
+5519 & 186555, 186557, 186558, 186564, 186565 \\
+5520 & 186583, 186584, 186585, 186587, 186588, 186590 \\
+5521 & 186601, 186602, 186603, 186604, 186608, 186609, 186610, 186611, 186612, 186613 \\
+5522 & 186614, 186615, 186616, 186626, 186628, 186629, 186631, 186632, 186633, 186634, \\
+     & 186635, 186636, 186637, 186638, 186639\\
+5523 & 186647, 186650, 186651, 186652, 186653, 186654, 186655, 186656 \\
+5524 & 186670, 186673 \\
+5526 & 186718, 186721, 186722, 186723, 186724, 186725, 186726, 186727 \\
+5527 & 186735, 186737, 186739, 186740, 186741, 186744, 186745, 186746 \\
+5533 & 186782, 186783, 186785, 186798, 186799, 186802, 186806, 186807 \\
+5534 & 186818, 186819, 186823, 186824 \\
+5538 & 186920, 186915, 186914, 186907, 186903, 186896,186890, 186884, 186879, 186876 \\
+\hline
+\multicolumn{2}{c}{Pb$p$}\\
+\hline
+Fill&Run\\
+\hline
+5545 &  186989, 186990, 186991, 186992, 186993 \\
+5546 &  187002, 187005, 187007\\
+5547 &  187015, 187018, 187019, 187020, 187021, 187023, 187025, 187026\\
+5549 &  187038, 187040, 187042, 187043, 187044, 187045, 187047, 187048, 187049, 187050,\\
+     & 187051 \\
+5550 &  187058, 187061, 187062, 187063, 187064, 187065\\
+5552 &  187074, 187078, 187080, 187082, 187083, 187083, 187084, 187085, 187086\\
+5553 &  187106, 187109, 187110, 187111, 187112, 187113, 187115\\
+5554 &  187123, 187124, 187127, 187128, 187129\\
+5558 &  187178, 187182, 187183, 187184\\
+5559 &  187198, 187199, 187202, 187203, 187204\\
+5562 &  187229, 187230, 187232, 187233, 187234\\
+5563 &  187244, 187247, 187248, 187249, 187250, 187251, 187252, 187253, 187254, 187255\\
+5564 &  187266\\
+5565 &  187282, 187283, 187289, 187290, 187291, 187292\\
+5568 &  187325, 187328, 187329, 187330, 187331, 187332, 187333, 187334, 187335, 187336,\\
+1873 & 37, 187339, 187340\\
+5569 &  187348, 187349, 187350, 187351, 187355, 187357, 187358\\
+5570 &  187372, 187375, 187376, 187377, 187378, 187380, 187381\\
+5571 &  187389, 187392, 187393, 187394, 187395\\
+5573 &  187406, 187409, 187410\\
+\hline
+\end{tabular}
+\end{center}
+\label{GoodRun}
+\end{table}
+
+\subsection{Monte Carlo samples}
+\label{subsecMC}
+The efficiency of the various steps in the analysis is estimated using samples of fully simulated events using the standard LHCb simulation software tools as the ones used for data. The simulation is done in two successive steps, first a generation phase based on several external tools such as event generators, and second a reconstruction phase based on the Geant4 package~\cite{AGOSTINELLI2003250,1610988}. The reconstruction phase is the same as the one used for the simulation of $pp$ events within LHCb and is described in Ref.~\cite{LHCb:2011dpk} while the generation phase is specific to the heavy ion analysis. 
+In this analysis, a so-called multiplicity-fix Monte Carlo sample is used, where the simulated event multiplicity has been greatly improved by manually piling-up multiple minimum bias EPOS events in the same collision vertex. The multiplicity-fixed Monte Carlo sample has a multiplicity distribution more closed to the data sample. The slight differences are further corrected by re-weighting, as introduced in Sec~\ref{reweight}. The version of the software for the simulation is Sim09l and the bookkeeping paths are as follows.
+\begin{itemize}
+\item $p$Pb \ /MC/2016/pPb-Beam6500GeV-2560GeV-2016-MagDown-Fix1-Epos/Sim09l/Trig0x61421621/Reco16pLead/Turbo03/eventType/DST
+\item Pb$p$ \ /MC/2016/Pbp-Beam2560GeV-6500GeV-2016-MagDown-Fix1-Epos/Sim09l/Trig0x61421621/Reco16pLead/Turbo03/eventType/DST
+\end{itemize}
+In the paths, eventType is 24142001 for \jpsi and 28142001 for \psitwos. Minimum bias samples of pPb and Pbp collisions are generated using the EPOS event generator, using the LHC model~\cite{Pierog:2013ria}. This generator is interfaced with the Gauss simulation software via the CRMC (Cosmic Ray Monte Carlo) interface library. All short lived particles are decayed with the EvtGen decay package~\cite{LANGE2001152}, similarly to what is done for $pp$ simulation in LHCb. Radiative QED corrections to the decays containing charged particles in the final state are applied with the Photos package~\cite{Golonka:2005pn} and are particularly important for \jpsi and \psitwos to dimuon decays. Since the instantaneous luminosity of the collisions recorded by the experiment in the various heavy ion configurations are low, no pile-up is generated, and events contain only one interaction.
+Signal samples of $\jpsi  \rightarrow \mu^+ \mu^-$ and $\psitwos \rightarrow \mu^+ \mu^-$ are generated using an embedding technique: minimum bias events are generated using the EPOS generator, with colliding proton beams having momenta equal to the momenta per nucleon of the heavy ion beams. The \jpsi(\psitwos) mesons are then extracted from these minimum bias events, discarding all other particles in the events. Their decays are forced to the signal decay modes using the EvtGen package, and the resulting decay chain is added to a single minimum bias EPOS event generated with beam parameters identical to those seen in data. All the samples are listed in Table~\ref{MC}.
+\begin{table}[!tbp]
+\caption{Event type, decay and statistics of the simulation samples.}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+\textbf{EventType} & \textbf{Decay chain} & \textbf{Number of events} \\
+\hline
+24142001 & $p$Pb \ $\jpsi\rightarrow \mu^+ \mu^-$ & $4.0\times 10^6$ \\
+24142001 & Pb$p$ \ $\jpsi\rightarrow \mu^+ \mu^-$ & $4.0\times 10^6$  \\
+28142001 & $p$Pb \ $\psitwos\rightarrow \mu^+ \mu^-$ & $4.0\times 10^6$  \\
+28142001 & Pb$p$ \ $\psitwos\rightarrow \mu^+ \mu^-$ & $4.0\times 10^6$  \\
+\hline
+\end{tabular}
+\end{center}
+\label{MC}
+\end{table}
+
+\subsection{Trigger}
+The trigger selections applied during the $p$Pb and Pb$p$ runs were similar but looser than the selections used during the first month of data taking for Run 2, where the measurement of the \jpsi cross-section at 13 TeV in $pp$ collisions~\cite{LHCb-PAPER-2015-037}  was performed.
+\subsubsection{L0}
+A single L0 TCK was used throughout this run, 0x1621. The main corresponding configuration related to this analysis is given in Table~\ref{L0TCK}. For this analysis, only reconstructed \jpsi and \psitwos with one of their muons satisfying the Muon line criteria are considered (i.e. L0Muon TOS candidates). For the selection cuts used in the analysis, no SPD multiplicity cut was applied at L0. The threshold for the muon trigger is also looser than the one used in $pp$ collisions, which is equal to 800 MeV.
+\begin{table}[H]
+\caption{Cuts in L0 TCK 0x1621.}
+\begin{center}
+\begin{tabular}{ll}
+\hline
+\textbf{Line name} & \textbf{Conditions}\\
+\hline
+	SPD & SPD multiplicity $>$ 0\\
+	Muon & \pt $>$ 500 MeV\\
+\hline
+\end{tabular}
+\end{center}
+\label{L0TCK}
+\end{table}
+
+\subsubsection{HLT}
+The high-level trigger (HLT) includes Hlt1DiMuonHighMass and Hlt2DiMuonJpsiTurbo (Hlt2DiMuonPsi2STurbo for \psitwos). Two different HLT1 configurations were used: TCK 0x11431621 for runs between 186555 and 187204, and TCK 0x11441621 for the other runs. As far as the analysis presented here is concerned, these two configurations are identical (they differ only for pre-scales of the NoBias line and of dedicated high multiplicity lines). The trigger lines used in the analysis are given in Table~\ref{Hlt1TCK}. 
+\begin{table}[H]
+\caption{Cuts in HLT1 trigger line.}
+\begin{center}
+\begin{tabular}{ll}
+\hline
+\textbf{Variables} & \textbf{Cuts}\\
+\hline
+Global event cut & nVelocluster $<$ 8000\\
+Muon \pt & $>$ 300 \mevc \\
+Muon $p$ & $>$ 4 \gevc \\
+Track $\chi^2$ & $<$4 \\
+IsMuon & =1 \\
+$M_{\mu^+\mu^-}$ & $>$ 2.5\gevc\\
+\hline
+\end{tabular}
+\end{center}
+\label{Hlt1TCK}
+\end{table}
+
+Three HLT2 configurations were used: TCK 0x21421621, 0x21451621 and 0x21461621. Here also all these TCKs are identical as far as this analysis is concerned. The selections applied in HLT2 are described in Table~\ref{Hlt2TCK}. The lines used in the analysis are saved in the TURBO format and the triggers candidates saved in the data RAW files are taken directly for the final analysis. The offline processing relevant for this analysis was performed using processing pass Turbo03pLead with DaVinci version v41r3.
+\begin{table}[H]
+\caption{Cuts in HLT2 trigger line.}
+\begin{center}
+\begin{tabular}{ll}
+\hline
+\textbf{Variables} & \textbf{Cuts}\\
+\hline
+Mass windows & 150 \mevcc \\
+Muon \pt & $>$ 500 \mevc \\
+Vertex $\chi^2$ & $<25$ \\
+\hline
+\end{tabular}
+\end{center}
+\label{Hlt2TCK}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Selection%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Selections}
+\label{Selections}
+\subsection{Global Event Selections}
+Only events with less than 8000 VELO clusters are considered in this analysis, as imposed by the trigger requirements. When measuring the \psitwos-to-\jpsi production ratio, the bias caused by this global cut is negligible since the events with more than 8000 VELO clusters account for less than $0.1\%$ of the data sample. All events are also required to have exactly one reconstructed primary vertex to avoid pile-up.
+For the equivalence of VELO acceptance, we also need to restrict the z-coordinate of primary vertex. The restriction is made according to which multiplicity variable we choose to represent the charged particle multiplicity. As an example, Figure~\ref{JpsiPVZ} shows the $N_{\rm tracks}^{\rm PV}$ distribution in different $z_{\rm PV}$ ranges. We remove the data within which the $N_{\rm tracks}^{\rm PV}$ distribution is clearly deviated, which is $z_{PV}<-30$ mm in this case. The $z_{\rm PV}$ restrictions for other cases are summarized in Table~\ref{TablePVZ}.
+\begin{table}[H]
+\caption{Global cuts on $z_{\rm PV}$.}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+\textbf{Configuration} & \textbf{Mult. Variable} & \textbf{$z_{\rm PV}$}\\
+\hline
+	$p$Pb & $N_{\rm tracks}^{\rm PV}$ & [-30, 180] mm\\
+	$p$Pb & $N_{\rm fwd}^{\rm PV}$ & [-180, 180] mm\\
+	$p$Pb & $N_{\rm bwd}^{\rm PV}$ & [-30, 180] mm\\
+	Pb$p$ & $N_{\rm tracks}^{\rm PV}$ & [-60, 180] mm\\
+        Pb$p$ & $N_{\rm fwd}^{\rm PV}$ & [-180, 120] mm\\
+        Pb$p$ & $N_{\rm bwd}^{\rm PV}$ & [-30, 180] mm\\
+\hline
+\end{tabular}
+\end{center}
+\label{TablePVZ}
+\end{table}
+
+\begin{figure}[!tbp]
+\begin{center}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/PVZvsMul/Jpsi.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/Pbp/Workdir/PVZvsMul/Jpsi.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/FWorkdir/PVZvsMul/Jpsi.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/Pbp/FWorkdir/PVZvsMul/Jpsi.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/BWorkdir/PVZvsMul/Jpsi.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/Pbp/BWorkdir/PVZvsMul/Jpsi.pdf}
+\end{center}
+\caption{
+    Distribution of (top) $N_{\rm tracks}^{\rm PV}$, (middle)  $N_{\rm fwd}^{\rm PV}$, (bottom) $N_{\rm bwd}^{\rm PV}$ in different $z_{\rm PV}$ ranges for \jpsi in (left) $p$Pb collisions and (right) Pb$p$ collisions.}
+\label{JpsiPVZ}
+\end{figure}
+
+\subsection{Candidate Selection}
+The \jpsi and \psitwos candidates are formed from two oppositely charged muons coming from a common vertex. Both decay modes are using same selection criteria. They are required to be TOS (Trigger On Signal) for the L0Muon and Hlt1DiMuonHighMass trigger lines, i.e. that the reconstructed candidate or its decay products are associated with a trigger object fulfilling the trigger requirements. Then the candidates used are directly the ones selected by the line Hlt2DiMuonJPsiTurbo and Hlt2DiMuonPsi2STurbo lines respectively, in the TURBO stream, without offline reconstruction. 
+Additional cuts are applied at the analysis level. Muon tracks have to be in the geometrical acceptance of the spectrometer ($2 < \eta < 5$) and to have \pt $>$ 900 \mevc in order to improve the signal over background ratio. Both tracks are required to have a good fit quality, $\chi^2/ndof < 3$ and a ghost probability less than 0.4. They are identified as muons by requiring ProbNN($\mu$) $>$ 0.9 for both \jpsi and \psitwos. This is a harsh but appropriate PID cut since it can significantly reduce the background of high-multiplicity \psitwos data sample. And for low-multiplicity region, it doesn't remove too much of the signals. We can therefore achieve relative low statistical uncertainties when fitting the invariant mass spectrum and pseudo decay time spectrum, since the dominant uncertainties are statistical uncertainties of \psitwos which will be discussed later. The comparison for high- and low-multiplicity region of loose PID cut (ProbNN($\mu$) $>$ 0.6) and tight PID cut (ProbNN($\mu$) $>$ 0.9) can be seen in Figure~\ref{ProbNNmu}.
+In addition, for both \jpsi and \psitwos, the two muons are required to form a good vertex asking the vertex fit probability Prob($\chi^2$) $>$ $0.5\%$. The \psitwos and \jpsi candidates are required to have a mass within 120 \mevcc of the PDG value. All selection criteria are specified in Table~\ref{OfflineSelection}.
+\begin{table}[H]
+\caption{Offline selection for \jpsi and \psitwos.}
+\begin{center}
+\begin{tabular}{ll}
+\hline
+\textbf{Variable} & \textbf{Cuts}\\
+\hline
+	$\mu^{\pm} \eta$ & $2<\eta<5$\\
+	$\mu^{\pm} \pt$ & $>$900 \mevc\\
+	ProbNNmu & $>$0.9\\
+	TrackGhost Prob. & $<$0.4\\
+	Vertex $\chi^2$ Prob. & $>0.5\%$\\
+	Track $\chi^2/ndof$ & $<$3\\
+	mass window & $\pm$ 120 \mevcc\\
+\hline
+\end{tabular}
+\end{center}
+\label{OfflineSelection}
+\end{table}
+\begin{figure}[!tbp]
+\begin{center}
+\includegraphics[width=0.7\linewidth]{pdf/pPb/Workdir/Psi_M_ProbNNmu/Low.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/Psi_M_ProbNNmu/High1.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/Psi_M_ProbNNmu/High2.pdf}
+\end{center}
+\caption{
+	Mass spectrum of \psitwos after online and offline cuts with loose PID cut (blue) and tight PID cut (red). The first row is for lowest-multiplicity class and the second row is for highest-multiplicity class.}
+\label{ProbNNmu}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Multiplicity Variable%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Definition of observables}
+\label{Observables}
+\def\effTot{\ensuremath{\epsilon_{\mathrm{tot}}}\xspace}
+\def\effAcc{\ensuremath{\epsilon_{\mathrm{acc}}}\xspace}
+\def\effReco{\ensuremath{\epsilon_{\mathrm{Reco\&Sel}}}\xspace}
+\def\effID{\ensuremath{\epsilon_{\mathrm{MuonID}}}\xspace}
+\def\effTrigger{\ensuremath{\epsilon_{\mathrm{Trigger}}}\xspace}
+All observables involved in this analysis are multiplicity variables, cross-sections and ratios of cross-sections. For cross-sections and the ratios, they require efficiency corrections to event yields obtained from data. The raw event yields are extracted from a combined fit of the di-muon invariant mass and of the pseudo-proper decay time to separate the prompt and the from-$b$ signal contributions, where the pseudo-proper decay time is defined in Eq.~\ref{tz}.
+\begin{equation}
+	t_z=\frac{(z_{\jpsi(\psitwos)}-z_{PV})\times M_{\jpsi(\psitwos)}}{p_z},   
+\label{tz}
+\end{equation}
+with $z_{\jpsi(\psitwos)}$ the z-coordinate of the \jpsi or \psitwos decay vertex and $z_{\rm PV}$ the z-coordinate of the primary vertex.
+\textbf{Prompt} here means produced directly at the nucleon-nucleon interaction, or via a decay of a charmonium produced directly at the interaction (such as a $\chi_c\rightarrow \jpsi \gamma$ decay). \textbf{from-$b$} means a charmonium coming from a $B$ decay (either directly, or via a charmonium decay where the higher charmonium state is produced in a $B$ decay). The observables of the analysis are measured separately for the prompt and from-$b$ production components. Given the large statistics available, the observables are also computed in bin of \pt, the transverse momentum with respect to the beam axis and of $y^*$, the rapidity with respect to the beam axis in the center-of-mass frame, taking the direction of the proton beam to define the polar axis, and neglecting the small angle between the two due to the crossing angle of the two beams at LHCb. The rapidity is related to the rapidity in the lab frame, $y_{lab}$, with $y^* = y_{lab} - 0.465$ for the $p$Pb configuration and with $y^* = -(y_{lab} + 0.465)$ for the Pb$p$ configuration. For $pp$ collisions (used as reference in the various ratios given below), $y^*=y_{lab}$.
+
+\subsection{Multiplicity variables}
+For $p$Pb and Pb$p$ configurations, the variables we used to separate multiplicity classes are $N_{\rm tracks}^{\rm PV}$, $N_{\rm bwd}^{\rm PV}$ and $N_{\rm fwd}^{\rm PV}$. Cross-sections and cross-section ratios are calculated in each multiplicity class and then we can get the cross-section ratios as a function of different multiplicity variables. For the \jpsi and \psitwos mesons, cross-sections are extracted in the rapidity range $1.5 < y^* < 4.0 (-5.0 < y^* < -2.5)$ for $p$Pb (Pb$p$), together with the transverse momentum range $0 < \pt < 14\gevc$. In this analysis, we do not separate any rapidity bin or transverse momentum bin due to poor statistics of \psitwos meson. And the systematic uncertainties due to that is discussed thoroughly in chapter for systematic uncertainties. After calculating the ratio of \psitwos-to-\jpsi cross-section ratios in each multiplicity bin, we will further normalized the multiplicity variables by dividing it by the mean values from \textbf{NoBias} data samples.
+The binning schemes and mean values from \textbf{NoBias} data samples for different multiplicity variables are summarized in Table~\ref{MultiplicityBin}. This binning schemes are chosen to assure that in each multiplicity bin, there are enough \psitwos signal candidates that can be used in signal extraction. $N_{\rm tracks}^{\rm PV}$ starts at 4 since at least four tracks are required to form a primary vertex. 
+\begin{table}[H]
+\caption{Binning schemes for different multiplicity variables.}
+\begin{center}
+\begin{tabular}{c|c|l|c}
+\hline
+\textbf{Configurations} & \textbf{Mult. Variables} & \textbf{Schemes} & \textbf{Mean (NoBias)}\\
+\hline
+$p$Pb & $N_{\rm tracks}^{\rm PV}$ & 4, 45, 70, 90, 120, 270 & 60.54\\
+\hline
+$p$Pb & $N_{\rm fwd}^{\rm PV}$ & 0, 25, 43, 57, 72, 150 & 33.17 \\
+\hline
+$p$Pb & $N_{\rm bwd}^{\rm PV}$ & 0, 17, 29, 40, 54, 140 & 27.37 \\
+\hline
+Pb$p$ & $N_{\rm tracks}^{\rm PV}$ & 4, 60, 90, 120, 160, 330 & 69.54\\
+\hline
+Pb$p$ & $N_{\rm fwd}^{\rm PV}$ & 0, 35, 65, 85, 110, 250 & 47.07\\
+\hline
+Pb$p$ & $N_{\rm bwd}^{\rm PV}$ & 0, 13, 22, 30, 47, 120 & 22.47\\
+\hline
+\end{tabular}
+\end{center}
+\label{MultiplicityBin}
+\end{table}
+
+\subsection{Cross-sections and cross-section ratios}
+ The absolute double differential cross-sections for \jpsi or \psitwos production are defined in Eq~\ref{CrossSec}.
+\begin{equation}
+    \frac{\deriv^2\sigma}{\deriv y^*\deriv \pt}\bigg|_{Mult. \ bin}
+    = \frac{N}
+           {\mathcal{L}\times\effTot\times \BR_{\mu\mu}\times\Delta y^* \times \Delta \pt}\bigg|_{Mult. \ bin}.
+  \label{CrossSec}
+\end{equation}
+where N represents the raw yield of the \jpsi or \psitwos reconstructed in the given multiplicity bin within the rapidity and transverse momentum ranges mentioned above, \effTot the total efficiency, including acceptance, $\BR_{\mu\mu}$ the branching ratio of the \jpsi or \psitwos decay in two muons and $\mathcal{L}$ the integrated luminosity of the given data sample. The values of branching ratio $\BR(\jpsi\rightarrow\mu^+\mu^-)=(5.961\pm0.033)\%$ is the branching fraction of the decay $\jpsi\rightarrow \mu^+ \mu^-$, and $\BR(\psitwos\rightarrow e^+e^-)=(7.93\pm0.17)\times10^{-3}$ is the branching fraction of the decay $\psitwos\rightarrow e^+ e^-$, quoted from the PDG 2022 review~\cite{Workman:2022ynf}. The dielectron branching fraction is used for \psitwos since it has a much smaller uncertainty than the dimuon one. Assuming lepton universality, the $\BR(\psitwos\rightarrow e^+e^-)$ is used to compute the cross-section.
+Cross-section ratio is defined in Eq.~\ref{CS_ratio}. The width of rapidity, transverse momentum and integrated luminosity are canceled out.
+\begin{equation}
+    \frac{\deriv^2\sigma_{\psitwos}/\deriv y^*\deriv \pt}{\deriv^2\sigma_{\jpsi}/\deriv y^*\deriv \pt}\bigg|_{Mult. \ bin}
+    =\frac{\BR(\jpsi \rightarrow \mu^+ \mu^-)}{\BR(\psitwos\rightarrow e^+e^-)}\times \frac{N_{\psitwos}}{N_{\jpsi}}\bigg|_{Mult. \ bin}\times \frac{\ensuremath{\epsilon_{\mathrm{tot,\jpsi}}}}{\ensuremath{\epsilon_{\mathrm{tot,\psitwos}}}}\bigg|_{Mult. \ bin}.
+\label{CS_ratio}
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Signal Extraction%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Signal extraction}
+\label{Signal extraction}
+The numbers of prompt and from-$b$ \jpsi and \psitwos signal candidates are extracted from a simultaneous fit to the invariant mass and pseudo-proper time $t_z$ distributions. For prompt production, $t_z$ is equal to 0 while for charmonium coming from the decay of a $B$ hadron, $t_z$ is a good approximation of the $B$ hadron propertime and should follow an exponential distribution.
+
+\subsection{Mass fit function}
+The procedure that is described in the following is very close to the one used in previous $pp$ analyses~\cite{LHCb:2015foc}. The function describing the invariant mass of the signal candidates is a Crystal Ball function defined in Eq.~\ref{CBfunction}.
+\begin{equation}
+ f_{\mathrm{CB}}(m;\mu,\sigma,\alpha,n) =
+ \begin{cases}
+      \Big(\frac{n}{|\alpha|}\Big)^n e^{-\frac{1}{2}\alpha^2} (\frac{n}{|\alpha|}-|\alpha|-\frac{m-\mu}{\sigma})^{-n} & \frac{m-\mu}{\sigma} < -|\alpha|\\
+   \exp\Bigg( -\frac{1}{2}\Big(\frac{m-\mu}{\sigma}\Big)^2\Bigg) & \frac{m-\mu}{\sigma}>-|\alpha|.
+\end{cases}.
+\label{CBfunction}
+\end{equation}
+The value of the parameter n is fixed to 1 following the physics arguments described in Ref.~\cite{LefrancoisTalk}, while the value of the parameter $\alpha$ is constrained from the values of the resolution parameter $\sigma$ following
+\begin{equation}
+\alpha = 2.066+0.0085\sigma-0.00011\sigma^2,
+\label{alphasigma}
+\end{equation}
+ extracted from toy Monte Carlo studies and where $\sigma$ is expressed in \mev. The background, which is only combinatorial, is described by an exponential function,
+\begin{equation}
+f_{bkg}(x;p)=e^{-px}.
+\end{equation}
+For \jpsi mass fit, two crystal ball function with common mean value are applied to describe the signals while for \psitwos, only one is used.
+\subsection{Pseudo-propertime fit function}
+To determine the signal yields of prompt and from-\bquark components separately, the $t_z$ distribution is used. In each kinematic and multiplicity bin, an unbinned extended maximum likelihood fit to the two-dimensional distributions of invariant mass $m(\mumu)$ and $t_z$ is performed to separate prompt component from that from \bquark.
+At the generator level, the $t_z$ distribution of the prompt component is a Dirac delta function, $\delta(t_z)$, while that from $\bquark$ follows an exponential function as seen from simulation. For \jpsi and \psitwos signals, the detector resolution is taken into account by convolving a resolution function, which is described by the sum of two Gaussian functions with a common mean and resolution parameters $\sigma$ and $2\sigma$ respectively:
+\begin{equation}
+f_\mathrm{resolution}(t_z;\mu,\sigma,\beta) = \frac{\beta}{\sqrt{2\pi}\sigma} e^{-\frac{(t_z-\mu)^2}{2\sigma^2}}
++\frac{1-\beta}{2\sqrt{2\pi}\sigma} e^{-\frac{(t_z-\mu)^2}{8\sigma^2}}.
+\end{equation}
+The background control sample consists of random combinations of muons from semi-leptonic $\bquark$ and $\cquark$ decays, which tend to produce positive $t_z$ values, as well as mis-reconstructed tracks from decays-in-flight of kaons and pions, which contribute both to positive and negative $t_z$ values. The $t_z$ distribution of the background is therefore modeled with an empirical function, composed of a Dirac delta function and five exponentials (three for positive $t_z$ and two for negative $t_z$, with one positive $t_z$ and one negative sharing the same slope parameter). This function is convolved with the sum of two Gaussian functions as a resolution function, which has different parameters as for signals. The fit function for $t_z$ background is as follows,
+\begin{align}
+f_\mathrm{background} &=
+\left[(1-f_1-f_2-f_3-f_4)\delta(t_z)+\theta(t_z)(\frac{f_1}{\tau_1}e^{-t_z/\tau_1}+\frac{f_2}{\tau_2}e^{-t_z/\tau_2})\right.
+\nonumber\\
+&\left. +\theta(-t_z)\frac{f_3}{\tau_3}e^{t_z/\tau_3}+\frac{f_4}{2\tau_4}e^{-|t_z|/\tau_4}
+\right]\ast \left(\frac{\beta'}{\sqrt{2\pi}S^{'}_1\sigma} e^{-\frac{(t_z-\mu)^2}{2S^{'2}_1\sigma^2}}
+  +\frac{1-\beta'}{\sqrt{2\pi}S^{'}_2\sigma} e^{-\frac{(t_z-\mu)^2}{2S^{'2}_2\sigma^2}}\right).
+\label{eq:TzBKG}
+\end{align}
+The shape of the background is chosen empirically based on the shape seen in the $t_z$ distribution of the \jpsi and \psitwos mass side-bands, which are at 50 \mevcc away from the mass values from the PDG.
+The fit procedures are as follows,
+\begin{itemize}
+\item First step, the one-dimensional fit to the mass spectrum is performed to estimate the yield and the parameters of inclusive (sum of prompt and from-$b$) signal candidates, the background yield and of the exponent of the background function.
+\item Second step, the mass sideband candidates ($|M-M^{PDG}|>50\mevcc$) are used to fit the $t_z$ distribution for the background. 
+\item Last step, a simultaneous fit to the mass and the pseudo-proper decay time distributions is then performed.
+\end{itemize}
+
+As examples, the $t_z$ background fit for \jpsi and \psitwos are shown in Figure~\ref{fig_tzbkg} for $4\leq N_{\rm tracks}^{\rm PV} < 45$ in $p$Pb  configuration and the 2-dimensional fit projected in mass spectrum and $t_z$ spectrum are shown in Figure~\ref{fig_2DFit} for $4\leq N_{\rm tracks}^{\rm PV} < 45$ in  $p$Pb configuration. The fit results for other multiplicity class in $p$Pb and Pb$p$ configurations can be found in appendix.
+\begin{figure}[!tbp]
+\begin{center}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/TzbkgFit/Jpsi_n1y1pt1.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/TzbkgFit/Psi2S_n1y1pt1.pdf}
+\end{center}
+\caption{
+	$t_z$ background fit for \jpsi (left) and \psitwos (right) for $4\leq N_{\rm tracks}^{\rm PV} < 45$ in $p$Pb configuration.}
+\label{fig_tzbkg}
+\end{figure}
+\begin{figure}[!tbp]
+\begin{center}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Jpsi_n1y1pt1.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Psi2S_n1y1pt1.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Jpsi_n1y1pt1.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Psi2S_n1y1pt1.pdf}
+\end{center}
+\caption{
+	2-Dimensional fit projected on $t_z$ spectrum (first row)  and mass spectrum (second row) for \jpsi (left) and \psitwos (right) for $4\leq N_{\rm tracks}^{\rm PV} < 45$ in $p$Pb configuration.}
+\label{fig_2DFit}
+\end{figure}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Efficiency%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Efficiency determination}
+\label{Efficiency determination}
+The number of signal candidates are corrected by the total efficiency to obtain the \psitwos-to-\jpsi cross-section ratio measurements. The efficiencies are assumed to be equal for prompt and from-$b$ signals as can be seen for example in the measurement of \jpsi cross-section at 13 TeV~\cite{LHCb-PAPER-2015-037}. The total efficiency is the product of the acceptance efficiency (\effAcc), the reconstruction and selection efficiency (\effReco), the particle identification efficiency (\effID), and the trigger efficiency (\effTrigger). The acceptance efficiency is calculated for all multiplicity classes. The others are calculated in each multiplicity class. And according to Eq.~\ref{CS_ratio}, we are going to find the efficiency ratio in each multiplicity class. The ratio of total efficiencies for \jpsi and \psitwos is defined in the following equation~\ref{EffRatio}.
+\begin{equation}
+\begin{split}
+R_{tot}=&\frac{\ensuremath{\epsilon_{\mathrm{tot,\jpsi}}}}{\ensuremath{\epsilon_{\mathrm{tot,\psitwos}}}}\bigg|_{Mult. \ bin} \\
+= &\frac{\ensuremath{\epsilon_{\mathrm{acc,\jpsi}}}}{\ensuremath{\epsilon_{\mathrm{acc,\psitwos}}}}\times \frac{\ensuremath{\epsilon_{\mathrm{Reco\&Sel,\jpsi}}}\cdot\ensuremath{\epsilon_{\mathrm{MuonID,\jpsi}}}\cdot\ensuremath{\epsilon_{\mathrm{Trigger,\jpsi}}}}{\ensuremath{\epsilon_{\mathrm{Reco\&Sel,\psitwos}}}\cdot\ensuremath{\epsilon_{\mathrm{MuonID,\psitwos}}}\cdot\ensuremath{\epsilon_{\mathrm{Trigger,\psitwos}}}}\bigg|_{Mult. \ bin} \\
+= &R_{acc}\times R_{eff}|_{Mult. \ bin},
+\end{split}
+\label{EffRatio}
+\end{equation}
+where $R_{acc}$ is the ratio of acceptance efficiencies of \jpsi to \psitwos and $R_{eff}$ is the ratio of the remaining efficiencies of \jpsi and \psitwos. 
+All steps are determined from simulation, with truth matched signal decays, except for the tracking efficiency and the particle identification, where data driven methods are used to correct the efficiencies obtained from the simulation. Their exact definitions are given in the following subsections. In the simulation, \jpsi and \psitwos mesons are assumed produced without polarization. For the simulation samples used for this analysis, the truth matching efficiency is equal to $99.5 \pm 0.1\%$ for both $p$Pb and Pb$p$ samples. It is assumed to be independent of \pt and $y^*$.
+
+\subsection{Re-weight on Monte Carlo sample}
+\label{reweight}
+\subsubsection{Multiplicity distribution}
+Even though the simulated sample used here is multiplicity-fixed sample, which is introduced in Sec~\ref{subsecMC}, there are still differences between the multiplicity distribution in simulated samples and data. Before calculating efficiencies using the simulated sample, we need to reweight the multiplicity distribution in simulated sample to match that in signal sample extracted from data by sPlot method~\cite{Pivk:2004ty}. However, due to the small statistics for \psitwos sample, the reweight on multiplicity can introduce large systematic uncertainty. When the variation in the ratio of efficiency caused by the difference in multiplicity distribution is small, there is no reason to introduce a large uncertainty for it. To see whether the reweight on multiplicity has a huge effect on efficiency ratio, we can compare the distribution in simulated sample and signal sample. If the multiplicity distributions for \jpsi and \psitwos are almost the same in simulated sample and signal sample, we can conclude that, the weight in each multiplicity bin is the same, then when calculating the ratio of efficiency, the variation caused by the differences in simulated and signal sample is expected to cancel.
+
+The distribution of $N_{\rm tracks}^{\rm PV}$, $N_{\rm fwd}^{\rm PV}$ and $N_{\rm bwd}^{\rm PV}$ of simulated and signal sample for both \jpsi and \psitwos in $p$Pb and Pb$p$ configurations are compared. As an example, we draw the distributions for simulated and signal sample in $p$Pb configuration in Figure~\ref{MulReweight}. We can see that the multiplicity distribution for \jpsi and \psitwos signals both in simulated and signal sample are compatible within uncertainties. And what we want in the end is the ratio of total efficiencies. The bias in the ratio of efficiency caused by the difference in multiplicity should be canceled.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.32\linewidth]{pdf/pPb/Workdir/Reweight/sWeightMul.pdf}
+\includegraphics[width=0.32\linewidth]{pdf/pPb/FWorkdir/Reweight/sWeightMul.pdf}
+\includegraphics[width=0.32\linewidth]{pdf/pPb/BWorkdir/Reweight/sWeightMul.pdf}
+\includegraphics[width=0.32\linewidth]{pdf/pPb/Workdir/Reweight/MCMul.pdf}
+\includegraphics[width=0.32\linewidth]{pdf/pPb/FWorkdir/Reweight/MCMul.pdf}
+\includegraphics[width=0.32\linewidth]{pdf/pPb/BWorkdir/Reweight/MCMul.pdf}
+\end{center}
+\caption{
+	Distribution of multiplicity variables for s-weight data (first row) and MC (second row) in $p$Pb configuration.}
+\label{MulReweight}
+\end{figure}
+
+\subsubsection{\pt and $y$ distribution}
+The differences in distribution of \pt and $y^*$ in simulated and signal samples are not negligible. Due to the fact that \pt and $y^*$ are slightly correlated to multiplicity, the reweight procedures are done in high- and low- multiplicity simulated and signal samples for both \jpsi and \psitwos. The high- and low-multiplicity samples are separated by the mean values of multiplicity variables in signal sample according to the multiplicity variable we used. As an example, the re-weight of \pt and $y^*$ for high- and low-multiplicity \jpsi samples when taking $N_{\rm tracks}^{\rm PV}$ as multiplicity variable is shown in Figure~\ref{PTYReweightJ}. And that for \psitwos is shown in Figure~\ref{PTYReweightP}.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.37\linewidth]{pdf/pPb/Workdir/Reweight/JpsiHighMulPT.pdf}
+\includegraphics[width=0.37\linewidth]{pdf/pPb/Workdir/Reweight/JpsiLowMulPT.pdf}
+\includegraphics[width=0.37\linewidth]{pdf/pPb/Workdir/Reweight/JpsiHighMulY.pdf}
+\includegraphics[width=0.37\linewidth]{pdf/pPb/Workdir/Reweight/JpsiLowMulY.pdf}
+\end{center}
+\caption{
+        Re-weight of \pt (first row) and $y^*$ (second row) for high- (left) and low-multiplicity (right) \jpsi samples in $p$Pb configuration.}
+\label{PTYReweightJ}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.37\linewidth]{pdf/pPb/Workdir/Reweight/Psi2SHighMulPT.pdf}
+\includegraphics[width=0.37\linewidth]{pdf/pPb/Workdir/Reweight/Psi2SLowMulPT.pdf}
+\includegraphics[width=0.37\linewidth]{pdf/pPb/Workdir/Reweight/Psi2SHighMulY.pdf}
+\includegraphics[width=0.37\linewidth]{pdf/pPb/Workdir/Reweight/Psi2SLowMulY.pdf}
+\end{center}
+\caption{
+	Re-weight of \pt (first row) and $y^*$ (second row) for high- (left) and low-multiplicity (right) \psitwos samples in $p$Pb configuration.}
+\label{PTYReweightP}
+\end{figure}
+
+An example of the \pt reweight table can be find in Fig~\ref{weight}. By assigning each event a corresponding weight according to which \pt bin this event belong to, the \pt distribution for simulated sample can be matched to signal sample, as shown in first plot of Fig~\ref{PTYReweightP}.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.49\linewidth]{LHCb-latex-template/latest/latex/figs/w.png}
+\includegraphics[width=0.49\linewidth]{LHCb-latex-template/latest/latex/figs/wl.png}
+\end{center}
+\caption{
+	Weight in each \pt bin for (left) high-multiplicity and (left) low-multiplicity sample of \jpsi in $p$Pb collisions.}
+\label{weight}
+\end{figure}
+
+\subsection{Acceptance}
+The acceptance efficiency is defined as
+\begin{equation}
+    \effAcc(\pt,y^*)=\frac{\jpsi(\psitwos) \mathrm{ \ in \  bin \ } (\pt,y^*) \mathrm{ \ with  \ both \ } \mu \mathrm{ \ in \  LHCb \ }}{\jpsi(\psitwos) \mathrm{ \ generated \ in \ bin \ }(\pt,y^*)}
+\end{equation}
+ It is estimated from generator-level only simulations, using the settings described in Sect~\ref{Data and Monte Carlo samples}. Both $\mu$ in LHCb means here that they have a pseudo-rapidity $\eta$ between 2 and 5, before the magnet. In this analysis we only care about the ratio of acceptance efficiencies $R_{acc}$. When calculating the ratio of acceptance efficiencies, 50 random re-weight tables of \pt (as shown in Fig~\ref{weight}) and $y$ from high- and low-multiplicity samples are generated (100 in total) for both \jpsi and \psitwos. The random table is generated in the following way: Within each bin, a Gaussian random number is generated with mean being the content and sigma being the uncertainty in that bin. Then the 100 tables are introduced as correction to acceptance efficiencies. Then 100 ratios of acceptance efficiencies are calculated. Fit 100 $R_{acc}$ values with a Gaussian function we get the mean value as the ratio of acceptance efficiencies and the sigma be its systematic uncertainty. As an example, the fit result for $R_{acc}$ is shown in Figure~\ref{EffAccRatio}. The value is as follows,
+\begin{equation}
+	R_{acc}=\frac{\ensuremath{\epsilon_{\mathrm{acc,\jpsi}}}}{\ensuremath{\epsilon_{\mathrm{acc,\psitwos}}}}=0.991\pm 0.012.
+\end{equation}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\linewidth]{pdf/pPb/Workdir/Eff_RecselPIDTrigger/Racc.pdf}
+\end{center}
+\caption{
+	Fit Gaussian function on the distribution of $R_{acc}$ in $p$Pb collisions from 100 trials with global cuts for $N_{\rm tracks}^{\rm PV}$ as multiplicity variable.}
+\label{EffAccRatio}
+\end{figure}
+
+
+ \subsection{Reconstruction and selection efficiency}
+ The reconstruction and selection efficiency is defined as the fraction of \jpsi (\psitwos) in the acceptance, where both muons are reconstructed as long tracks and then pass the offline selections,
+ \begin{equation}
+    \effReco(\pt,y^*)=\frac{\jpsi(\psitwos) \mathrm{ \ in \  bin \ } (\pt,y^*) \mathrm{ \ with  \ both \ } \mu \mathrm{ \ reconstructed \ and \ selected}}{\jpsi(\psitwos) \mathrm{ \ in \  bin \ } (\pt,y^*) \mathrm{ \ with  \ both \ } \mu \mathrm{ \ in \  LHCb \ }}.
+\end{equation}
+%\input{BackUpEffRecSel.tex}
+Then the reconstruction efficiency is further corrected using the data-over-simulation single tracking efficiency ratio. The ratio of tracking efficiencies for a single track in data and simulation determined with the Long Tag-Probe method is shown in Figure~\ref{TrackTable} which was given by the tracking group~\cite{Trackweb}. For a given event the correction factor is determined by multiplying the efficiency ratios for each of the tracks in the final state.
+\begin{figure}[!tbp]
+\begin{center}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/TrackCalib/pPb.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/TrackCalib/Pbp.pdf}
+\end{center}
+	\caption{Ratio between data and $p$Pb (left) and Pb$p$ simulation of per-track tracking efficiency in bins of the track $\eta$ and $p$.
+    }
+\label{TrackTable}
+\end{figure}
+
+From Eq.~\ref{EffRatio} we can see that, we calculate the ratio of all the efficiencies $R_{eff}$ (except for acceptance efficiencies) as a whole part, since they are all calculated with full-simulation Monte Carlo sample. Another reason is, when calculating \effReco, \effID and \effTrigger, 500 random tables of \pt and $y^*$ from high- and low-multiplicity samples are generated (1000 in total) for both \jpsi and \psitwos in $p$Pb and Pb$p$ configurations and introduced to correct the imperfection on simulation to data. For a certain trial, the re-weight on \pt (or $y^*$) may under- or over-estimate  \effReco, \effID and \effTrigger simultaneously, it is hard to determine the dependence between these efficiencies. So a good way is to calculate them as a whole, each time a certain random re-weight table is introduced. The definition of $R_{eff}$ is in Eq.~\ref{Reff}.
+\begin{equation}
+R_{eff}\bigg|_{Mult. \ bin} = 
+\frac{\ensuremath{\epsilon_{\mathrm{Reco\&Sel,\jpsi}}}\cdot\ensuremath{\epsilon_{\mathrm{MuonID,\jpsi}}}\cdot\ensuremath{\epsilon_{\mathrm{Trigger,\jpsi}}}}{\ensuremath{\epsilon_{\mathrm{Reco\&Sel,\psitwos}}}\cdot\ensuremath{\epsilon_{\mathrm{MuonID,\psitwos}}}\cdot\ensuremath{\epsilon_{\mathrm{Trigger,\psitwos}}}}\bigg|_{Mult. \ bin}.
+\label{Reff}
+\end{equation}
+Similarly, 1000 random tables for data-over-simulation single tracking efficiency ratio are generated and introduced into the 1000 trials, and 1000 random tables for efficiency table obtained from PIDCalib package~\cite{Archilli:2013npa} are introduced in each trial as well to calculate PID efficiencies, and hence, $R_{eff}$, as stated in the following part. So we will give an overall estimation (values and uncertainties) for $R_{eff}$ after introduced \effID and \effTrigger.
+
+\subsection{PID efficiency}
+The PID efficiency is defined as 
+\begin{equation}
+    \effID(\pt,y^*)=\frac{\jpsi(\psitwos) \mathrm{ \ satisfying \ PID \ selection \ in \ bin \ }(\pt,y^*)}{\jpsi(\psitwos)\mathbf{ \ selected \ in \ bin \ }(\pt,y^*)}.
+\end{equation}
+The PID efficiency for muons is taken from data using calibration tables (PIDCalib tables) obtained from control samples, namely \jpsi candidates. These calibration tables give the efficiency of the PID selections as a function of the pseudo-rapidity, of the total momentum of the muon tracks and of the track multiplicity of the event estimated from the number of hits in the SPD. They are available for the $pp$, $p$Pb and Pb$p$ data taking. 
+The muon ID efficiency in each $(\pt,y^*)$ bin is then calculated by averaging the muon ID efficiency of each candidate in the bin, which is the product of the muon ID efficiencies of the two muons from the efficiency table, according to their $(p, \eta, nSPDhits)$ values. As mentioned above, calculation on \effID for \jpsi and \psitwos is only a component of calculation of $R_{eff}$. So 1000 random tables are generated from the PIDCalib efficiency table and introduced to each trial of $R_{eff}$ calculations.
+
+\subsection{Trigger efficiency}
+The trigger efficiency is defined as follows
+\begin{equation}
+    \effTrigger(\pt,y^*)=\frac{\jpsi(\psitwos)\mathrm{ \ TOS of \ L0 \ and \ HLT1 \ in \ bin \ }(\pt,y^*)}{\jpsi(\psitwos)\mathbf{ \ selected \ in \ bin \ }(\pt,y^*)},
+\end{equation}
+where the selection includes the PID requirements. The efficiencies are computed with the simulated samples, with the PID cut 
+requirements to both the numerator and denominator. Note that since the analysis is done on the TURBO candidates, the efficiency of the HLT2 is included in the reconstruction, PID and selection efficiencies. When calculating the trigger efficiencies for \jpsi and \psitwos, same random tables generated from re-weight tables of \pt and $y^*$ are used as that used in \effReco and \effID above for each one of the 1000 trials.
+
+\subsection{Total efficiency}
+Finally, the 1000 ratios of all the efficiencies except geometric acceptance $R_{eff}$'s are fitted with a Gaussian function. Hence, we can calculate the ratio of total efficiencies $R_{tot}=R_{acc}\times R_{eff}$ with the following systematic uncertainties considered,
+\begin{itemize}
+    \item re-weight of \pt distribution from high- and low-multiplicity samples,
+    \item re-weight of $y^*$ distribution from high- and low-multiplicity samples,
+    \item uncertainties due to the limit calibration sample size in PIDCalib efficiency table,
+    \item uncertainties of data-over-simulation ratio of per tracking efficiency.
+\end{itemize}
+Systematic uncertainties from other sources will be discussed in Sec~\ref{Systematic uncertainty}. As an example, the fit results for $R_{eff}$ in different $N_{\rm tracks}^{\rm PV}$ classes for $p$Pb configuration are shown in Figure~\ref{ReffPlots}. The corresponding values of $R_{eff}$ with uncertainties mentioned above are summarized in Table~\ref{ReffTable_PVNTRACKS_pPb}. The summary tables for other multiplicity variables and configurations can be found in appendix.
+\begin{figure}[!tpb]
+\begin{center}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/Eff_RecselPIDTrigger/n1.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/Eff_RecselPIDTrigger/n2.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/Eff_RecselPIDTrigger/n3.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/Eff_RecselPIDTrigger/n4.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/Eff_RecselPIDTrigger/n5.pdf}
+\end{center}
+\caption{
+	Fit Gaussian functions on the distributions of 1000-trial $R_{eff}$ in different $N_{\rm tracks}^{\rm PV}$ bins in $p$Pb collisions.}
+\label{ReffPlots}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\caption{$R_{eff}$ in different $N_{\rm tracks}^{\rm PV}$ regions in $p$Pb configuration.}
+\begin{center}
+\begin{tabular}{c|c}
+\hline
+$4 \leq \mathrm{N_{\rm tracks}^{\rm PV}} < 45$ & $0.810 \pm 0.021$ \\
+\hline
+$45 \leq \mathrm{N_{\rm tracks}^{\rm PV}} < 70$ & $0.811 \pm 0.020$ \\
+\hline
+$70 \leq \mathrm{N_{\rm tracks}^{\rm PV}} < 90$ & $0.813 \pm 0.021$ \\
+\hline
+$90 \leq \mathrm{N_{\rm tracks}^{\rm PV}} < 120$ & $0.803 \pm 0.021$ \\
+\hline
+$120 \leq \mathrm{N_{\rm tracks}^{\rm PV}} < 270$ & $0.791 \pm 0.021$ \\
+\hline
+\end{tabular}
+\end{center}
+\label{ReffTable_PVNTRACKS_pPb}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Uncertainty%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Other Systematic uncertainties}
+\label{Systematic uncertainty}
+Before we proceed this section, we state some systematic uncertainties mentioned in previous sections, and add some conclusions on those which are simple to handle as follow,
+\begin{itemize}
+    \item re-weight of \pt distribution from high- and low-multiplicity samples (for ratios of \effAcc and the other efficiencies),
+    \item re-weight of $y^*$ distribution from high- and low-multiplicity samples (for ratios of \effAcc and the other efficiencies),
+    \item uncertainties due to the limit calibration sample size in PIDCalib efficiency table (for ratios of efficiencies except \effAcc),
+    \item uncertainties of data-over-simulation ratio of per tracking efficiency(for ratios of efficiencies except \effAcc),
+    \item global cut of nVeloClusters $<8000$ (negligible),
+    \item uncertainty of luminosity is canceled when calculating the ratio of \psitwos-to-\jpsi production,
+    \item relative uncertainty due to branching fraction is calculated to be $2.2\%$, this term is not considered when calculating the normalized ratio as function of multiplicity, but when we compare ratio in forward and backward regions, we do not normalize the ratio, hence, need to consider it in this case.
+\end{itemize}
+
+Other systematic uncertainties are reported in this section.
+\subsection{Monte Carlo statistics}
+This uncertainty is the statistical error on the ratio of efficiencies in different multiplicity bins, due to the finite size of the simulation samples. The uncertainty varies from $0.02\%$ to $0.2\%$ over all multiplicity classes divided by three multiplicity variables and in $p$Pb and Pb$p$ configurations, which is negligible compared to other systematic uncertainties.
+\subsection{Signal extraction}
+The choice of the fit model for the mass and $t_z$ distributions affects the number of events. In Sec~\ref{Signal extraction} we have mentioned that two CB functions with common mean are used for \jpsi mass fit while only one is used for \psitwos. The uncertainty associated with the choice of the signal mass function is estimated using a different function of two CB functions for \psitwos. Two CB functions have common mean, the $\alpha$ values for both CB functions are determined by the Eq.~\ref{alphasigma}. And the width of wider CB function is determined by $\sigma_2=sigma_1+25.7$, the ratio of the narrower one is fixed to 0.96 according to the study in 13.TeV $pp$ collisions~\cite{LHCb:2019eaj}.
+New fit model for \psitwos mass spectrum is introduced and then a new two-dimensional fit for mass and $t_z$ is performed. Then the difference in ratio of \psitwos-to-\jpsi ratio and the statistical uncertainty of the ratio in each $N_{\rm tracks}^{\rm PV}$ bin are shown in Figure~\ref{StatsAndFit}.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.7\linewidth]{pdf/pPb/Workdir/SysErr/FitModel.pdf}
+\end{center}
+\caption{
+        The statistical uncertainties and the systematic uncertainty arised from different fit model of \psitwos-to-\jpsi ratio.}
+\label{StatsAndFit}
+\end{figure}
+The variations caused by different fit model (dashed line) are totally overwhelmed by the statistical uncertainties (solid line), the statistical uncertainty is larger than the uncertainty caused by fit model by at least a factor of 3. Which means we can completely treat the difference caused by fit model as statistical fluctuation, hence, negligible.
+
+\subsection{Trigger efficiency}
+The trigger efficiency in simulation is cross-checked with data, and the resulting difference in the ratio of \effTrigger between simulation and data is quoted as a systematic uncertainty. If the statistical uncertainties of the ratio arised from fitting the TIS and TISTOS sample of \jpsi and \psitwos are larger, then it will be quoted as systematic uncertainty. 
+For both L0Muon and Hlt1DiMuonHighMass the TISTOS method is used to evaluate the efficiency for L0Muon \&\& Hlt1DiMuonHighMass both in simulation and data. We use L0Global as the TIS line. As the data sample size is limited by the number of the TIS events of \psitwos sample, the TISTOS efficiencies are derived from data and Monte Carlo sample integrated over all multiplicity and kinematic region. Due to the different global cuts under different multiplicity schemes and configurations, TISTOS method is carried out in each case and the result is summarized in Table~\ref{TISTOStable}.
+\begin{table}[H]
+\caption{Systematic uncertainty of \effTrigger by TISTOS method.}
+\begin{center}
+\begin{tabular}{lllll}
+\hline
+\textbf{Configuration} & \textbf{Mult. Variable} & \textbf{Variation} & \textbf{Stats. Err.} & \textbf{Syst. Err. quoted}  \\
+\hline
+	$p$Pb & $N_{\rm tracks}^{\rm PV}$ & 2.7\% & 3.9\% & 3.9\%\\
+	$p$Pb & $N_{\rm fwd}^{\rm PV}$ & 3.2\% & 3.0\% & 3.2\%\\
+	$p$Pb & $N_{\rm bwd}^{\rm PV}$ & 2.7\% & 3.9\% & 3.9\% \\
+        Pb$p$ & $N_{\rm tracks}^{\rm PV}$ & 2.0\% & 3.8\% & 3.8\% \\
+        Pb$p$ & $N_{\rm fwd}^{\rm PV}$ &  1.7\% & 3.6\% & 3.6\%\\
+        Pb$p$ & $N_{\rm bwd}^{\rm PV}$ &  2.7\% & 4.1\% & 4.1\%\\
+\hline
+\end{tabular}
+\label{TISTOStable}
+\end{center}
+\end{table}
+\subsection{Binning scheme of PID table}
+Uncertainty due to binning scheme of the calibration sample, studied by varying the binning method in $p_\mu$, $\eta_\mu$, and nSPDHits respectively. The default one and the two alternative binning schemes could be found below. The nominal binning scheme of the muon ID efficiency for muons we use to calculate the muon ID efficiency of \jpsi and \psitwos mesons is defined:
+\begin{itemize}
+  \item $p_\mu$ boundaries [\gevc]: 3, 10, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 100, 1000.
+  \item $\eta$ boundaries: 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0.
+  \item nSPDhits boundaries: 0, 300, 500, 700, 1400.
+\end{itemize}
+
+One of the two alternative binning schemes is defined:
+\begin{itemize}
+  \item $p_\mu$ boundaries [\gevc]: 3, 12.5, 22.5, 27.5, 32.5, 37.5, 42.5, 47.5, 55, 65, 75, 85, 100, 1000.
+  \item $\eta$ boundaries: 2.0, 2.6, 2.9, 3.6, 3.9, 4.5, 5.0.
+  \item nSPDhits boundaries: 0, 250, 450, 650, 1400.
+\end{itemize}
+
+The other one binning schemes is defined:
+\begin{itemize}
+  \item $p_\mu$ boundaries [\gevc]: 3, 9, 19, 24, 29, 34, 39, 44, 49, 59, 69, 79, 100, 1000.
+  \item $\eta$ boundaries: 2.0, 2.4, 3.1, 3.4, 3.9, 4.5, 5.0.
+  \item nSPDhits boundaries: 0, 320, 480, 720, 1400.
+\end{itemize}
+The maximum difference between the two new ratios calculated and the nominal ratio is quoted as the systematic uncertainty. The uncertainties are from 0.1\% to 1.8\%.
+
+\subsection{Summary of systematic uncertainties}
+All the systematic uncertainties are summarized in Table~\ref{AllSysErr}.
+\begin{table}[H]
+\caption{Summary of systematic uncertainties on \psitwos-to-\jpsi cross-section ratio.}
+\begin{center}
+\begin{tabular}{llll}
+\hline
+\textbf{source} & \textbf{$p$Pb} & \textbf{Pb$p$} \\
+\hline
+L0\&HLT & 3.2\%-3.9\% & 3.6\%-4.1\% \\
+\hline
+	Tracking Table Uncertainty\& & & \\
+	PID Table Uncertainty\& & & \\
+	\pt spectrum\& & & \\
+	$y$ spectrum & 1.7\%-3.6\% & 2.1\%-3.6\% \\
+\hline
+	PID Table scheme & 0.4\%-1.7\% & 0.1\%-1.8\% \\
+\hline
+	Imperfectly simulating acceptance & 0.8\%-1.2\% & 0.9\%-1.3\% \\
+\hline
+	$\frac{\BR(\jpsi\rightarrow\mu^+\mu^-)}{\BR(\psitwos\rightarrow\mu^+\mu^-}$(canceled if normalized) & 2.2\% &2.2\% \\
+\hline
+	Fit model & negligible & negligible \\
+\hline
+	MC sample size & negligible & negligible \\
+\hline
+	Multiplicity global cut & negligible & negligible \\
+\hline
+\end{tabular}
+\label{AllSysErr}
+\end{center}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Result%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+\label{Results}
+\subsection{\psitwos-to-\jpsi ratio as function of multiplicity}
+With the signal yields determined from the fitting to dimuon invariant mass distributions, the efficiency ratios estimated from simulation and calibrated control samples, and the systematic uncertainties, the ratio of \psitwos and \jpsi production cross-sections are measured as a function of different multiplicity variables. As mentioned in Sec~\ref{Efficiency determination}, the multiplicity distribution of \jpsi and \psitwos can be treated as the same, and due to the large uncertainty of \psitwos multiplicity distribution, the x-coordinate representing the multiplicity is directly the mean value of \jpsi multiplicity distribution in each bin, normalized by the mean value of multiplicity of NoBias data. The box represents systematic uncertainty and the error bar represents the statistical uncertainty. In this analysis statistical uncertainty dominates.
+The normalized \psitwos-to-\jpsi ratio as function of $N_{\rm tracks}^{\rm PV}$ in $p$Pb and Pb$p$ collisions is shown in Figure~\ref{NormPVN}.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/Workdir/Result/All.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/Pbp/Workdir/Result/All.pdf}
+\end{center}
+\caption{Normalized \psitwos-to-\jpsi ratio as function of normalized $N_{\rm tracks}^{\rm PV}$ in $p$Pb (left) Pb$p$ (right).}
+\label{NormPVN}
+\end{figure}
+We can conclude that in $p$Pb collisions the prompt ratio decrease with increasing $N_{\rm tracks}^{\rm PV}$, while in Pb$p$ collisions, we can not conclude any significant trend with $N_{\rm tracks}^{\rm PV}$. For \jpsi and \psitwos from $b$ we do not find any dependence between the ratio and multiplicity.
+If we compare the prompt ratio (not normalized), we should include the uncertainties due to the branching fraction and the comparison is in Figure~\ref{ComparePVN}.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.7\linewidth]{pdf/pPb/Workdir/Result/Norm.pdf}
+\end{center}
+\caption{\psitwos-to-\jpsi ratio as function of normalized $N_{\rm tracks}^{\rm PV}$.}
+\label{ComparePVN}
+\end{figure}
+We find the ratio in Pb$p$ is generally lower than that in $p$Pb collisions. This could results from the higher charged particle multiplicity in Pb$p$ collisions, where \psitwos, with lower binding energy, is easier to dissociate when interacting with higher amount of co-moving particles. But if this is valid, we should also observe a decreasing trend of the ratio with increasing multiplicity, which is indeed not seen.
+We further measure the normalized ratio and ratio as functions of $N_{\rm fwd}^{\rm PV}$, as shown in Figure~\ref{NormFor}. It agrees with the results when measuring by $N_{\rm tracks}^{\rm PV}$. The ratio of non-prompt signals is roughly constant with multiplicity in $p$Pb and Pb$p$ collisions. And ratio of prompt signals decreases with increasing $N_{\rm fwd}^{\rm PV}$ in $p$Pb, but not in Pb$p$ collisions. 
+If we compare the ratio in $p$Pb and Pb$p$ collisions, the ratios in Pb$p$ collisions are generally lower than that in p$Pb$ collisions. But still, we do not observe a decreasing trend like in $p$Pb collisions. Some extra mechanisms might be needed to explain the phenomenon. Since for both $N_{\rm tracks}^{\rm PV}$ and $N_{\rm fwd}^{\rm PV}$ as multiplicity variables, we get the similar outcomes.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/FWorkdir/Result/All.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/Pbp/FWorkdir/Result/All.pdf}
+\includegraphics[width=0.7\linewidth]{pdf/pPb/FWorkdir/Result/Norm.pdf}
+\end{center}
+\caption{Normalized \psitwos-to-\jpsi ratio as function of normalized $N_{\rm fwd}^{\rm PV}$ in $p$Pb (left) Pb$p$ (right).}
+\label{NormFor}
+\end{figure}
+When multiplicity is measured by $N_{\rm bwd}^{\rm PV}$, as shown in Figure~\ref{NormBack}, for ratio of prompt signals, the decreasing trend is much slower with increasing $N_{\rm bwd}^{\rm PV}$ in $p$Pb collisions, and for Pb$p$, the ratio for both prompt and non-prompt signals are roughly constant. Since the $N_{\rm bwd}^{\rm PV}$ are measured in backward direction, where the rapidity range is non-overlapping with charmonia measurements, no decreasing trend will be observed due to comover effect. Additionally, if QGP is not produced, the ratio should keep constant with $N_{\rm bwd}^{\rm PV}$. The subtle decreasing trend for ratio of prompt signals could result from the correlation between $N_{\rm bwd}^{\rm PV}$ and  $N_{\rm fwd}^{\rm PV}$ in $p$Pb collisions. Similarly, there is an overall reduction on the ratio in Pb$p$ collisions since the mean value of charged particle multiplicity is higher, which results in an overall larger amount of co-moving particles. But still, in Pb$p$ collisions, no dependence was found between ratio and $N_{\rm bwd}^{\rm PV}$.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.49\linewidth]{pdf/pPb/BWorkdir/Result/All.pdf}
+\includegraphics[width=0.49\linewidth]{pdf/Pbp/BWorkdir/Result/All.pdf}
+\includegraphics[width=0.7\linewidth]{pdf/pPb/BWorkdir/Result/Norm.pdf}
+\end{center}
+\caption{Normalized \psitwos-to-\jpsi ratio as function of normalized $N_{\rm bwd}^{\rm PV}$ in $p$Pb (left) Pb$p$ (right).}
+\label{NormBack}
+\end{figure}
+
+\subsection{Comparison in different collision systems}
+The multiplicity dependence of \psitwos to \jpsi ratio in different collision systems is compared as shown in Fig~\ref{pppPb}. 
+\begin{figure}[H]
+  \begin{center}
+  \includegraphics[width=0.7\linewidth]{LHCb-latex-template/latest/latex/pdf/pPb/FWorkdir/Result/pppPb.pdf}
+  \end{center}
+  \caption{Comparisons on the ratio of \psitwos/\jpsi in $pp$, $p$Pb (Pb$p$) and PbPb collisions~\cite{ALICE:2022jeh}.}
+\label{pppPb}
+\end{figure}
+The multiplicity dependence in $p$Pb collisions is consistent with that in $pp$ result, suggesting a similar environment in the final stages in both collision systems. It is within expectation since both are measured in the $p$ going direction, suggesting a similar environment. However, in Pb$p$ collisions, where the charmonia and multiplicity are measured in the $Pb$-going direction, a higher baryon density will achieve, resulting in an environment closer to PbPb collisions. Therefore, a slower decreasing trend is observed in Pb$p$ collisions, which is very close to the result in PbPb collisions measured by ALICE~\cite{ALICE:2022jeh}. A transition phenomenon from small collision systems to large systems is observed.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Conclusion%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\label{conclusion}
+The ratio of production cross-sections of \psitwos to \jpsi in $p$Pb and Pb$p$ collisions at a center-of-mass energy $\sqrt{s_{NN}}=8.16\tev$ are reported with a data sample corresponding to an integrated luminosity of $13.6\pm0.3$nb$^{-1}$ for $p$Pb and $20.8\pm0.5$nb$^{-1}$ for Pb$p$ collected by the \lhcb detector in 2016. The (normalized) ratios of prompt and non-prompt \psitwos-to-\jpsi production, as functions of different multiplicity variables, are measured in region of $0\gev<\pt<14\gev$ and $1.5<y^*<4.5$ for $p$Pb and $-5.5<y^*<-2.5$ for Pb$p$. In $p$Pb collisions, we see an obvious decreasing trend for ratio of prompt production as a function of $N_{\rm tracks}^{\rm PV}$ and $N_{\rm fwd}^{\rm PV}$ in $p$Pb and a slower decrease as a function of $N_{\rm bwd}^{\rm PV}$. In Pb$p$ collisions, even though the ratios have an overall lower value compared to $p$Pb with same multiplicity scheme, the prompt and non-prompt \psitwos-to-\jpsi ratio does not show an obvious decrease as in $p$Pb. The overall ratios in $p$Pb and Pb$p$ show good agreements with other measurements in different collision systems at different energies.
+
+
+
+
+
+\appendix
+\clearpage
+\section{Table of ratios}
+\label{Table of ratios}
+In the appendix, we attach the ratios only, one can easily get the normalized ratios by simple calculations. Remember to cut off 2.2$\%$ relative systematic uncertainties from uncertainties of branching ratios.
+\input{Table/Ratio/PVNRatio.tex}
+\input{Table/Ratio/ForRatio.tex}
+\input{Table/Ratio/BackRatio.tex}
+
+\clearpage
+\section{Table of efficiency ratios $R_eff$}
+\input{Table/Eff/Eff_PVNTRACKS.tex}
+\input{Table/Eff/Eff_Nback.tex}
+\input{Table/Eff/Eff_Nfor.tex}
+\input{Table/Eff/PbpEff_PVNTRACKS.tex}
+\input{Table/Eff/PbpEff_Nback.tex}
+\input{Table/Eff/PbpEff_Nfor.tex}
+
+\clearpage
+\section{Fit plots}
+Two-dimensional fit for $p$Pb collisions:
+\label{Fit plots}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Jpsi_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Jpsi_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Psi2S_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Psi2S_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 4$\leq$$N_{\rm tracks}^{\rm PV}$$<$45.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Jpsi_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Jpsi_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Psi2S_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Psi2S_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 45$\leq$$N_{\rm tracks}^{\rm PV}$$<70$.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Jpsi_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Jpsi_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Psi2S_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Psi2S_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 70$\leq$$N_{\rm tracks}^{\rm PV}$$<$90.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Jpsi_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Jpsi_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Psi2S_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Psi2S_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 90$\leq$$N_{\rm tracks}^{\rm PV}$$<$120.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Jpsi_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Jpsi_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjMass/Psi2S_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/Workdir/TwoDimFit/ProjTz/Psi2S_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 120$\leq$$N_{\rm tracks}^{\rm PV}$$<$270.}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjMass/Jpsi_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjTz/Jpsi_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjMass/Psi2S_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjTz/Psi2S_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 0$\leq$$N_{\rm fwd}^{\rm PV}$$<$25.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjMass/Jpsi_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjTz/Jpsi_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjMass/Psi2S_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjTz/Psi2S_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 25$\leq$$N_{\rm fwd}^{\rm PV}$$<43$.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjMass/Jpsi_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjTz/Jpsi_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjMass/Psi2S_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjTz/Psi2S_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 43$\leq$$N_{\rm fwd}^{\rm PV}$$<$57.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjMass/Jpsi_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjTz/Jpsi_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjMass/Psi2S_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjTz/Psi2S_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 57$\leq$$N_{\rm fwd}^{\rm PV}$$<$72.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjMass/Jpsi_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjTz/Jpsi_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjMass/Psi2S_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/FWorkdir/TwoDimFit/ProjTz/Psi2S_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 72$\leq$$N_{\rm fwd}^{\rm PV}$$<$150.}
+\end{figure}
+
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjMass/Jpsi_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjTz/Jpsi_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjMass/Psi2S_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjTz/Psi2S_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 0$\leq$$N_{\rm bwd}^{\rm PV}$$<$17.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjMass/Jpsi_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjTz/Jpsi_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjMass/Psi2S_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjTz/Psi2S_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 17$\leq$$N_{\rm bwd}^{\rm PV}$$<29$.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjMass/Jpsi_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjTz/Jpsi_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjMass/Psi2S_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjTz/Psi2S_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 29$\leq$$N_{\rm bwd}^{\rm PV}$$<$40.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjMass/Jpsi_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjTz/Jpsi_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjMass/Psi2S_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjTz/Psi2S_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 40$\leq$$N_{\rm bwd}^{\rm PV}$$<$54.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjMass/Jpsi_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjTz/Jpsi_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjMass/Psi2S_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/pPb/BWorkdir/TwoDimFit/ProjTz/Psi2S_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 54$\leq$$N_{\rm bwd}^{\rm PV}$$<$180.}
+\end{figure}
+
+
+Two-dimensional fit for Pb$p$ collisions:
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjMass/Jpsi_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjTz/Jpsi_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjMass/Psi2S_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjTz/Psi2S_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 4$\leq$$N_{\rm tracks}^{\rm PV}$$<$45.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjMass/Jpsi_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjTz/Jpsi_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjMass/Psi2S_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjTz/Psi2S_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 45$\leq$$N_{\rm tracks}^{\rm PV}$$<70$.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjMass/Jpsi_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjTz/Jpsi_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjMass/Psi2S_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjTz/Psi2S_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 70$\leq$$N_{\rm tracks}^{\rm PV}$$<$90.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjMass/Jpsi_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjTz/Jpsi_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjMass/Psi2S_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjTz/Psi2S_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 90$\leq$$N_{\rm tracks}^{\rm PV}$$<$120.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjMass/Jpsi_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjTz/Jpsi_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjMass/Psi2S_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/Workdir/TwoDimFit/ProjTz/Psi2S_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 120$\leq$$N_{\rm tracks}^{\rm PV}$$<$270.}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjMass/Jpsi_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjTz/Jpsi_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjMass/Psi2S_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjTz/Psi2S_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 0$\leq$$N_{\rm fwd}^{\rm PV}$$<$25.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjMass/Jpsi_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjTz/Jpsi_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjMass/Psi2S_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjTz/Psi2S_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 25$\leq$$N_{\rm fwd}^{\rm PV}$$<43$.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjMass/Jpsi_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjTz/Jpsi_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjMass/Psi2S_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjTz/Psi2S_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 43$\leq$$N_{\rm fwd}^{\rm PV}$$<$57.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjMass/Jpsi_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjTz/Jpsi_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjMass/Psi2S_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjTz/Psi2S_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 57$\leq$$N_{\rm fwd}^{\rm PV}$$<$72.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjMass/Jpsi_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjTz/Jpsi_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjMass/Psi2S_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/FWorkdir/TwoDimFit/ProjTz/Psi2S_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 72$\leq$$N_{\rm fwd}^{\rm PV}$$<$150.}
+\end{figure}
+
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjMass/Jpsi_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjTz/Jpsi_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjMass/Psi2S_n1y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjTz/Psi2S_n1y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 0$\leq$$N_{\rm bwd}^{\rm PV}$$<$17.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjMass/Jpsi_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjTz/Jpsi_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjMass/Psi2S_n2y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjTz/Psi2S_n2y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 17$\leq$$N_{\rm bwd}^{\rm PV}$$<29$.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjMass/Jpsi_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjTz/Jpsi_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjMass/Psi2S_n3y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjTz/Psi2S_n3y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 29$\leq$$N_{\rm bwd}^{\rm PV}$$<$40.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjMass/Jpsi_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjTz/Jpsi_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjMass/Psi2S_n4y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjTz/Psi2S_n4y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 40$\leq$$N_{\rm bwd}^{\rm PV}$$<$54.}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjMass/Jpsi_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjTz/Jpsi_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjMass/Psi2S_n5y1pt1.pdf}
+\includegraphics[width=0.45\linewidth]{pdf/Pbp/BWorkdir/TwoDimFit/ProjTz/Psi2S_n5y1pt1.pdf}
+\vspace*{-0.5cm}
+\end{center}
+\caption{Fit results in $0\gevc<\pt<14\gevc$, $1.5<y^*<4.5$ and 54$\leq$$N_{\rm bwd}^{\rm PV}$$<$180.}
+\end{figure}
+
+
+\clearpage
+% Do not include this in any draft (just for information in the template)
+%\input{acknowledgements_intro}
+% Comment this in for paper drafts; do not include this in analysis note, conference and figure reports
+%\input{acknowledgements}
+%\input{supplementary}
+%\input{appendix}
+% This should be taken out in the final paper
+%\input{supplementary-app}
+\addcontentsline{toc}{section}{References}
+%\setboolean{inbibliography}{true}
+\bibliographystyle{LHCb}
+\bibliography{main,standard,LHCb-PAPER,LHCb-CONF,LHCb-DP,LHCb-TDR}
+\end{document}

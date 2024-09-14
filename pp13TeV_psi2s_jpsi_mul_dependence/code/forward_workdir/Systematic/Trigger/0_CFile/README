@@ -1,0 +1,2 @@
+1. cut：cut出Jpsi和Psi2S的TIS和TOSsample，其中TIS用globalTIS是因为triggerTIS的sample太少了
+2. CBFit：对TIS和TISTOSsample做拟合，通过比值去得到

@@ -1,0 +1,36 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Data and Monte Carlo samples}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Data}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Monte Carlo}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Candidate Reconstruction and selection}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Trigger and Turbo stream selection}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Offline Selection}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{Ratio of Cross-Section Determination}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Double Differential Cross-Section}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Ratio of Cross-Section}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Signal Extraction}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Determination of the prompt and detached signal yields}{section.5}% 12
+\BOOKMARK [1][-]{section.6}{Efficiency determination}{}% 13
+\BOOKMARK [2][-]{subsection.6.1}{Geometrical acceptance}{section.6}% 14
+\BOOKMARK [2][-]{subsection.6.2}{Reconstruction-selection efficiency}{section.6}% 15
+\BOOKMARK [2][-]{subsection.6.3}{Muon identification efficiency}{section.6}% 16
+\BOOKMARK [2][-]{subsection.6.4}{Trigger efficiency}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.5}{Total efficiency}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.6}{Variation due do different reweight samples}{section.6}% 19
+\BOOKMARK [1][-]{section.7}{Systematic Uncertainties}{}% 20
+\BOOKMARK [2][-]{subsection.7.1}{Signal extraction}{section.7}% 21
+\BOOKMARK [3][-]{subsubsection.7.1.1}{Signal mass shape}{subsection.7.1}% 22
+\BOOKMARK [3][-]{subsubsection.7.1.2}{Fit to tz background}{subsection.7.1}% 23
+\BOOKMARK [3][-]{subsubsection.7.1.3}{Fit to tz signal}{subsection.7.1}% 24
+\BOOKMARK [2][-]{subsection.7.2}{Trigger efficiency}{section.7}% 25
+\BOOKMARK [2][-]{subsection.7.3}{Tracking efficiency}{section.7}% 26
+\BOOKMARK [2][-]{subsection.7.4}{MuonID efficiency}{section.7}% 27
+\BOOKMARK [2][-]{subsection.7.5}{MC sample size}{section.7}% 28
+\BOOKMARK [2][-]{subsection.7.6}{Other systematic uncertainties}{section.7}% 29
+\BOOKMARK [1][-]{section.8}{Bin Width Correction}{}% 30
+\BOOKMARK [1][-]{section.9}{Results}{}% 31
+\BOOKMARK [2][-]{subsection.9.1}{\(2S\)-to-J-3mu/-2mu ratio as functions of multiplicity}{section.9}% 32
+\BOOKMARK [2][-]{subsection.9.2}{\(2S\)-to-J-3mu/-2mu ratio in different pT regions}{section.9}% 33
+\BOOKMARK [2][-]{subsection.9.3}{\(2S\)-to-J-3mu/-2mu ratio in different y regions}{section.9}% 34
+\BOOKMARK [1][-]{section.10}{Conclusion}{}% 35
+\BOOKMARK [1][-]{figure.caption.303}{References}{}% 36

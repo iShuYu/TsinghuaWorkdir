@@ -1,0 +1,10 @@
+355617
+NsigError = 670.241
+Nbkg = 157213
+NbkgError = 500.819
+mean = -0.972952
+meanError = 0.0238313
+sigma = 4.58569
+sigmaError = 0.0513138
+p0 =0.000473685
+p0Error =3.82706e-05

@@ -1,0 +1,60 @@
+\section{Definition of observables}
+\label{Observables}
+\def\effTot{\ensuremath{\epsilon_{\mathrm{tot}}}\xspace}
+\def\effAcc{\ensuremath{\epsilon_{\mathrm{acc}}}\xspace}
+\def\effReco{\ensuremath{\epsilon_{\mathrm{Reco\&Sel}}}\xspace}
+\def\effID{\ensuremath{\epsilon_{\mathrm{MuonID}}}\xspace}
+\def\effTrigger{\ensuremath{\epsilon_{\mathrm{Trigger}}}\xspace}
+All observables involved in this analysis are multiplicity variables, cross-sections and ratios of cross-sections. For cross-sections and the ratios, they require efficiency corrections to event yields obtained from data. The raw event yields are extracted from a combined fit of the di-muon invariant mass and of the pseudo-proper decay time to separate the prompt and the from-$b$ signal contributions, where the pseudo-proper decay time is defined in Eq.~\ref{tz}.
+\begin{equation}
+	t_z=\frac{(z_{\jpsi(\psitwos)}-z_{PV})\times M_{\jpsi(\psitwos)}}{p_z},   
+\label{tz}
+\end{equation}
+with $z_{\jpsi(\psitwos)}$ the z-coordinate of the \jpsi or \psitwos decay vertex and $z_{PV}$ the z-coordinate of the primary vertex.
+\textbf{Prompt} here means produced directly at the nucleon-nucleon interaction, or via a decay of a charmonium produced directly at the interaction (such as a $\chi_c\rightarrow \jpsi \gamma$ decay). \textbf{from-$b$} means a charmonium coming from a $B$ decay (either directly, or via a charmonium decay where the charmonium state is produced in a $B$ decay). The observables of the analysis are measured separately for the prompt and from-$b$ production components. Given the large statistics available, the observables are also computed in bin of \pt, the transverse momentum with respect to the beam axis and of $y^*$, the rapidity with respect to the beam axis in the center-of-mass frame, taking the direction of the proton beam to define the polar axis, and neglecting the small angle between the two due to the crossing angle of the two beams at LHCb. The rapidity is related to the rapidity in the lab frame, $y_{lab}$, with $y^* = y_{lab} - 0.465$ for the $p$Pb configuration and with $y^* = -(y_{lab} + 0.465)$ for the Pb$p$ configuration. For $pp$ collisions (used as reference in the various ratios given below), $y^*=y_{lab}$.
+
+\subsection{Multiplicity variables}
+For $p$Pb and Pb$p$ configurations, the variables we used to separate multiplicity classes are $N_{\rm tracks}^{\rm PV}$, $N_{\rm bwd}^{\rm PV}$ and $N_{\rm fwd}^{\rm PV}$. Cross-sections and cross-section ratios are calculated in each multiplicity class and then we can get the cross-section ratios as a function of different multiplicity variables. For the \jpsi and \psitwos mesons, cross-sections are extracted in the rapidity range $1.5 < y^* < 4.0 (-5.0 < y^* -2.5)$ for $p$Pb (Pb$p$), together with the transverse momentum range $0 < \pt < 14\gevc$. In this analysis, we do not separate any rapidity bin or transverse momentum bin due to poor statistics of \psitwos meson. And the systematic uncertainties due to that will be discussed throughly in chapter for systematic uncertainties. After calculating the ratio of \psitwos-to-\jpsi cross-section ratios in each multiplicity bin, we will further normalized the multiplicity variables by dividing it by the mean values from \textbf{NoBias} data samples.
+The binning schemes and mean values from \textbf{NoBias} data samples for different multiplicity variables are summarized in Table~\ref{MultiplicityBin}. $N_{\rm tracks}^{\rm PV}$ starts at 4 since at least four tracks required to form a primary vertex. 
+\begin{table}[H]
+\caption{Binning schemes for different multiplicity variables.}
+\begin{center}
+\begin{tabular}{c|c|l|c}
+\hline
+\textbf{Configurations} & \textbf{Mult. Variables} & \textbf{Schemes} & \textbf{Mean (NoBias)}\\
+\hline
+$p$Pb & $N_{\rm tracks}^{\rm PV}$ & 4, 45, 70, 90, 120, 270 & 60.54\\
+\hline
+$p$Pb & $N_{\rm fwd}^{\rm PV}$ & 0, 25, 43, 57, 72, 150 & 33.17 \\
+\hline
+$p$Pb & $N_{\rm bwd}^{\rm PV}$ & 0, 17, 29, 40, 54, 140 & 27.37 \\
+\hline
+Pb$p$ & $N_{\rm tracks}^{\rm PV}$ & 4, 60, 90, 120, 160, 330 & 69.54\\
+\hline
+Pb$p$ & $N_{\rm fwd}^{\rm PV}$ & 0, 35, 65, 85, 110, 250 & 47.07\\
+\hline
+Pb$p$ & $N_{\rm bwd}^{\rm PV}$ & 0, 13, 22, 30, 47, 120 & 22.47\\
+\hline
+\end{tabular}
+\end{center}
+\label{MultiplicityBin}
+\end{table}
+
+\subsection{Cross-sections and cross-section ratios}
+ The absolute double differential cross-sections for \jpsi or \psitwos production are defined in Eq~\ref{CrossSec}.
+\begin{equation}
+    \frac{\deriv^2\sigma}{\deriv y^*\deriv \pt}\bigg|_{Mult. \ bin}
+    = \frac{N}
+           {\mathcal{L}\times\effTot\times \BR_{\mu\mu}\times\Delta y^* \times \Delta \pt}\bigg|_{Mult. \ bin}.
+  \label{CrossSec}
+\end{equation}
+where N represents the raw yield of the \jpsi or \psitwos reconstructed in the given multiplicity bin within the rapidity and transverse momentum ranges mentioned above, \effTot the total efficiency, including acceptance, $\BR_{\mu\mu}$ the branching ratio of the \jpsi or \psitwos decay in two muons and $\mathcal{L}$ the integrated luminosity of the given data sample. The values of branching ratio $\BR(\jpsi\rightarrow\mu^+\mu^-)=(5.961\pm0.033)\%$ is the branching fraction of the decay $\jpsi\rightarrow \mu^+ \mu^-$, and $\BR(\psitwos\rightarrow e^+e^-)=(7.93\pm0.17)\times10^{-3}$ is the branching fraction of the decay $\psitwos\rightarrow e^+ e^-$, quoted from the PDG 2022 review~\cite{Workman:2022ynf}. The dielectron branching fraction is used for \psitwos since it has a much smaller uncertainty than the dimuon one. Assuming lepton universality, the later is used to compute the cross-section.
+Cross-section ratio is defined in Eq.~\ref{CS_ratio}. The width of rapidity, transverse momentum and integrated luminosity are canceled out.
+\begin{equation}
+    \frac{\deriv^2\sigma_{\psitwos}/\deriv y^*\deriv \pt}{\deriv^2\sigma_{\jpsi}/\deriv y^*\deriv \pt}\bigg|_{Mult. \ bin}
+    =\frac{\BR(\jpsi \rightarrow \mu^+ \mu^-)}{\BR(\psitwos\rightarrow e^+e^-)}\times \frac{N_{\psitwos}}{N_{\jpsi}}\bigg|_{Mult. \ bin}\times \frac{\ensuremath{\epsilon_{\mathrm{tot,\jpsi}}}}{\ensuremath{\epsilon_{\mathrm{tot,\psitwos}}}}\bigg|_{Mult. \ bin}.
+\label{CS_ratio}
+\end{equation}
+
+
+

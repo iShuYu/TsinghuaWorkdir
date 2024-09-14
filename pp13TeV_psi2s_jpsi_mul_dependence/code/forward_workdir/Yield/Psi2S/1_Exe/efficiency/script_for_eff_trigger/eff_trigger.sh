@@ -1,0 +1,4 @@
+./eff_trigger_ud ../../../rawdata/3_Bins/ybin ../../../rawdata/3_Bins/ptbin ../../3_Result/reweight/reweight.root ../../../rawdata/1_Rootfile/TrackCalib/Ratio_Long_P-ETA_2016_25ns.root ../../../rawdata/1_Rootfile/TrackCalib/Ratio_Long_P-ETA_2016_25ns.root ../../2_Rootfile/MC_after_cut/n${1}_MagUp_fromb.root ../../2_Rootfile/MC_after_cut/n${1}_MagDown_fromb.root ../../3_Result/eff_trigger/n${1}_fromb.root "#psi(2S) #epsilon_{trigger}(b decay)" "reweightbN" "reweightbPTY"
+
+./eff_trigger_ud ../../../rawdata/3_Bins/ybin ../../../rawdata/3_Bins/ptbin ../../3_Result/reweight/reweight.root ../../../rawdata/1_Rootfile/TrackCalib/Ratio_Long_P-ETA_2016_25ns.root ../../../rawdata/1_Rootfile/TrackCalib/Ratio_Long_P-ETA_2016_25ns.root ../../2_Rootfile/MC_after_cut/n${1}_MagUp_prompt.root ../../2_Rootfile/MC_after_cut/n${1}_MagDown_prompt.root ../../3_Result/eff_trigger/n${1}_prompt.root "#psi(2S) #epsilon_{trigger}(prompt)" "reweightpN" "reweightpPTY"
+

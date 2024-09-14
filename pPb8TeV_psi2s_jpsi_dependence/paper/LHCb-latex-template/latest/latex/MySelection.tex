@@ -1,0 +1,31 @@
+\section{Selections}
+\label{Selections}
+
+In this analysis, the dimuon channels $\jpsi\rightarrow \mu^+\mu^-$ and $\psitwos\rightarrow \mu^+\mu^-$ are used. Trigger selection ensure that events containing two tracks with muon hypothesis are selected. The two muon are required to be oppositively charged, and have good quality ($\chi^2$ probability larger than $0.5\%$) to form a vertex. The momentum and transverse momentum are required to be larger than 4 and 0.3\gevc. 
+Offline selections are further applied. Global cuts on \jpsi and \psitwos candidates includes: number of primary vertex (PV) is restricted to be exactly one to avoid the pile-up, mass of \jpsi and \psitwos candidates are  within $\pm 120 \mevcc $ from the known mass according to the PDG 2022 review~\cite{Workman:2022ynf}, z-coordinate of PV ($z_{PV}$) are restricted to maintain equivalence of vertex locater acceptance according to the multiplicity variables utilized~\ref{TablePVZ}, the pseudo decay time $t_z$ and its uncertainty, are required to be $|t_z|<10$ps and $|\sigma_{t_z}|<0.3$ps where the pseudo decay time $t_z$ is defined as
+\begin{equation}
+    \label{PseudoDecayTime}
+    t_z = \frac{(z_{X}-z_{\mathrm{PV}}) \times{} m_X}{p_z},
+\end{equation}
+where $X$ is $\jpsi$ or $\psitwos$, $z_{X}$ is the z position of the decay vertex.
+The charmonia production are measured with transverse momentum $0<\pt<14\gevc$, and rapid in center-of-mass frame $1.5<y^*<4.0$ ($-5.0<y^*<-2.5$)  for $p$Pb (Pb$p$) collisions.
+Further selections on two muons includes: each muon should have \pt$>$1.2\gevc and $2.0<\eta<5.0$, transverse momentum should be larger than 0.9\gevc, PID information is employed to enhance the likelihood of the muon candidates to be muons.
+\begin{table}[H]
+\caption{Global cuts on $z_{PV}$.}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+\textbf{Configuration} & \textbf{Mult. Variable} & \textbf{$z_{PV}$}\\
+\hline
+        $p$Pb & $N^{\rm PV}_{\rm tracks}$ & [-30, 180] mm\\
+        $p$Pb & $N^{\rm PV}_{\rm fwd}$ & [-180, 180] mm\\
+        $p$Pb & $N^{\rm PV}_{\rm bwd}$ & [-30, 180] mm\\
+        Pb$p$ & $N^{\rm PV}_{\rm tracks}$ & [-60, 180] mm\\
+        Pb$p$ & $N^{\rm PV}_{\rm fwd}$ & [-180, 120] mm\\
+        Pb$p$ & $N^{\rm PV}_{\rm bwd}$ & [-30, 180] mm\\
+\hline
+\end{tabular}
+\end{center}
+\label{TablePVZ}
+\end{table}
+

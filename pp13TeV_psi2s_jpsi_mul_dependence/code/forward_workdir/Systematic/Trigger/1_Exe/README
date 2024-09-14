@@ -1,0 +1,5 @@
+1.选取globalTIS sample和globalTIS+DiMuonTOSsample ---cut.sh
+2.将Psi2Spt1和pt2,3,4的合在一起做（因为拟合不上） ---merge.sh
+3.fit ---CBFit.sh
+4.之后把TISTOSsample signal数比去TISsample ---TISTOS.sh
+5.

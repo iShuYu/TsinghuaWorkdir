@@ -1,0 +1,16 @@
+bias = 1.58035e-05
+biasError = 0.000356516
+sigma1 = 2.93144
+sigma1Error = 0.376325
+sigma2 = 0.977362
+sigma2Error = 0.00924221
+beta = 0.0267063
+betaError = 0.00713194
+tau = 1.44319
+tauError = 0.0228997
+Nprompt = 14039.2
+NpromptError = 121.089
+Nfromb = 4724.68
+NfrombError = 73.1658
+Ntail = 10.0198
+NtailError = 5.26107

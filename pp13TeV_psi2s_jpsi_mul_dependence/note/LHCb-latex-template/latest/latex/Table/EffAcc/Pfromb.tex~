@@ -1,0 +1,17 @@
+\begin{table}[H]
+\centering
+\caption{The efficiency $\epsilon_\mathrm{acc}$ in different bins of \pt and $y$ for \psitwos from b hardron decay mesons for PVZ>-60mm.}
+\begin{center}
+\begin{tabular}{c|ccc}
+\hline
+\pt(\gevc)& $2<y<2.8$& $2.8<y<3.5$& $3.5<y<4.5$ \\
+\hline
+0-2&$0.671\pm0.008$&$0.908\pm0.006$&$0.867\pm0.007$\\
+2-4&$0.718\pm0.006$&$0.918\pm0.005$&$0.897\pm0.005$\\
+4-6&$0.798\pm0.007$&$0.959\pm0.004$&$0.937\pm0.006$\\
+6-8&$0.867\pm0.008$&$0.969\pm0.005$&$0.958\pm0.007$\\
+8-20&$0.904\pm0.007$&$0.985\pm0.004$&$0.981\pm0.005$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}

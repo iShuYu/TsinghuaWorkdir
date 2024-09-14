@@ -1,0 +1,10 @@
+282280
+NsigError = 556.523
+Nbkg = 16645.6
+NbkgError = 209.951
+mean = -0.490618
+meanError = 0.0285451
+sigma = 6.98012
+sigmaError = 0.0452194
+p0 =-0.00106041
+p0Error =0.000138209
